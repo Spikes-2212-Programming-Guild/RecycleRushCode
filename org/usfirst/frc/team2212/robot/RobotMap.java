@@ -6,6 +6,12 @@ package org.usfirst.frc.team2212.robot;
  * floating around.
  */
 public class RobotMap {
+    public static final int LEFT_FORWARD_TALON_PORT = 0;
+    public static final int LEFT_BACKWARDS_TALON_PORT = 0;
+    public static final int RIGHT_FORWARD_TALON_PORT = 0;
+    public static final int RIGHT_BACKWARDS_TALON_PORT = 0;
+    public static final int MIDDLE_FRONT_TALON_PORT = 0;
+    public static final int MIDDLE_BACKWARDS_TALON_PORT = 0; 
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static int leftMotor = 1;
