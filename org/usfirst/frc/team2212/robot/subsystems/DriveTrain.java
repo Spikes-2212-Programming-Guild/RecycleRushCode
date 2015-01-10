@@ -29,8 +29,28 @@ public class DriveTrain extends Subsystem {
         this(new Gearbox(leftForward, leftBackwards), new Gearbox(rightForward, rightBackwards), new VictorSP(middleFront), new VictorSP(middleRear));
     }
 
+    public void forward(double speed) {
+        left.set(-speed);
+        right.set(speed);
+    }
+
+    public void turn(double speed) {
+        left.set(speed);
+        right.set(speed);
+//        omni turn inculded
+        front.set(speed);
+        rear.set(speed);
+    }
+
+    public void sideways(double speed) {
+//        positive to go left
+        front.set(speed);
+        rear.set(-speed);
+    }
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
