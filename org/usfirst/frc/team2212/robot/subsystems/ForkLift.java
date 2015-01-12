@@ -53,6 +53,22 @@ public class ForkLift extends Subsystem {
         lock.set(Relay.Value.kReverse);
     }
 
+    public boolean isUp() {
+        return up.get();
+    }
+
+    public boolean isDown() {
+        return down.get();
+    }
+
+    public boolean isClosed() {
+        return close.get();
+    }
+
+    public boolean isOpen() {
+        return open.get();
+    }
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
