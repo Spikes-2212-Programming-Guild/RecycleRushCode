@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 
-    Gearbox left, right;
-    VictorSP front, rear;
+    private Gearbox left, right;
+    private VictorSP front, rear;
 
     public DriveTrain(Gearbox left, Gearbox right, VictorSP front, VictorSP rear) {
         this.left = left;
