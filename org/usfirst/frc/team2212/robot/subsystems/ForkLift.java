@@ -28,9 +28,29 @@ public class ForkLift extends Subsystem {
         this.up = up;
         this.down = down;
     }
-    
-    public ForkLift(int elevatorPort,int lockPort,int openPort,int closePort,int upPort, int downPort ){
-        this(new Relay(elevatorPort),new Relay(lockPort), new DigitalInput(openPort), new DigitalInput(closePort), new DigitalInput(upPort), new DigitalInput(downPort));
+
+    public ForkLift(int elevatorPort, int lockPort, int openPort, int closePort, int upPort, int downPort) {
+        this(new Relay(elevatorPort), new Relay(lockPort), new DigitalInput(openPort), new DigitalInput(closePort), new DigitalInput(upPort), new DigitalInput(downPort));
+    }
+
+    public void up() {
+//        assuming forward for up
+        elevator.set(Relay.Value.kForward);
+    }
+
+    public void down() {
+//        assuming forward for up
+        elevator.set(Relay.Value.kReverse);
+    }
+
+    public void open() {
+//        assuming forward for open
+        lock.set(Relay.Value.kForward);
+    }
+
+    public void close() {
+//        assuming forward for open
+        lock.set(Relay.Value.kReverse);
     }
 
     public void initDefaultCommand() {
