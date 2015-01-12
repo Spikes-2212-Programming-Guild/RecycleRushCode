@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team2212.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team2212.robot.subsystems.ForkLift;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -18,6 +19,11 @@ import org.usfirst.frc.team2212.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
     public static final DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FORWARD_TALON_PORT, RobotMap.LEFT_BACKWARDS_TALON_PORT, RobotMap.RIGHT_FORWARD_TALON_PORT, RobotMap.RIGHT_BACKWARDS_TALON_PORT, RobotMap.MIDDLE_FRONT_TALON_PORT, RobotMap.MIDDLE_BACKWARDS_TALON_PORT);
+
+    /**
+     *
+     */
+    public static final ForkLift forkLift = new ForkLift(RobotMap.LIFTER_ELEVATOR_PORT, RobotMap.LIFTER_LOCK_PORT, RobotMap.LIFTER_OPEN_PORT, RobotMap.LIFTER_CLOSE_PORT, RobotMap.LIFTER_UP_PORT, RobotMap.LIFTER_DOWN_PORT);
     public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;
 
