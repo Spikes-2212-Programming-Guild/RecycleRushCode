@@ -6,7 +6,8 @@
 package org.usfirst.frc.team2212.robot.commands.Driving;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2212.robot.Robot;
+import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.oi;
 
 /**
  *
@@ -15,7 +16,7 @@ import org.usfirst.frc.team2212.robot.Robot;
 public class Forward extends Command {
     
     public Forward() {
-        requires(Robot.driveTrain);
+        requires(driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -26,7 +27,7 @@ public class Forward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.driveTrain.forward(Robot.oi.getDriverY());
+        driveTrain.forward(oi.getDriverY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +37,7 @@ public class Forward extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.driveTrain.forward(0);
+        driveTrain.forward(0);
     }
 
     // Called when another command which requires one or more of the same
