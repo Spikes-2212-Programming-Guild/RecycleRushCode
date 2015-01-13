@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AddToteToStack extends CommandGroup {
     
     public AddToteToStack() {
+        addSequential(new Up());
         addSequential(new Open());
         addSequential(new Down());
         addSequential(new Close());
