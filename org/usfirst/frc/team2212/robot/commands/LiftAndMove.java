@@ -6,6 +6,8 @@
 package org.usfirst.frc.team2212.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.commands.PID.PIDSideways;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.LiftALittle;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Up;
 
@@ -17,7 +19,7 @@ public class LiftAndMove extends CommandGroup {
 
     public LiftAndMove() {
         addSequential(new LiftALittle());
-//        TODO: DriveTo() parallel 
+        addParallel(new PIDSideways(RobotMap.AUTO_SIDEWAYS_DEST, RobotMap.AUTO_SIDEWAYS_KP, RobotMap.AUTO_SIDEWAYS_KI, RobotMap.AUTO_SIDEWAYS_KD, RobotMap.AUTO_SIDEWAYS_DT, RobotMap.AUTO_SIDEWAYS_THRESHOLD));
         addSequential(new Up());
     }
 
