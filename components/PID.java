@@ -15,15 +15,14 @@ public class PID {
     private final long DT;
     private double p, i, d, error, prevError;
 
-    public PID(double DESTINATION, double KP, double KI, double KD, long DT,
-            double THRESHOLD, double in) {
+    public PID(double DESTINATION, double KP, double KI, double KD, long DT, double THRESHOLD) {
         this.DESTINATION = DESTINATION;
         this.KP = KP;
         this.KI = KI;
         this.KD = KD;
         this.DT = DT;
         this.THRESHOLD = THRESHOLD;
-        reset(in);
+        reset();
     }
 
     public double doPID(double in) {
@@ -50,11 +49,11 @@ public class PID {
         return Math.abs(error) < THRESHOLD;
     }
 
-    public void reset(double in) {
+    public void reset() {
         p = 0;
         i = 0;
         d = 0;
-        error = DESTINATION - in;
+        error = DESTINATION;
         prevError = error;
     }
 
