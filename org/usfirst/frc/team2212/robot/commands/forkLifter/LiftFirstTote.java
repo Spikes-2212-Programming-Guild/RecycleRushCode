@@ -17,6 +17,6 @@ public class LiftFirstTote extends CommandGroup {
         addSequential(new Open());
         addSequential(new Down());
         addSequential(new Close());
-        addSequential(new Up());
+        addSequential(new LiftALittle());
     }
 }
