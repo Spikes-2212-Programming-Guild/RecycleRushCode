@@ -18,9 +18,11 @@ public class RobotMap {
     public static final int FORK_LOCK_PORT = 0;
     public static final int FORK_OPEN_PORT = 0;
     public static final int FORK_CLOSE_PORT = 0;
+
     public static final int LIFTER_ELEVATOR_PORT = 0;
     public static final int LIFTER_UP_PORT = 0;
     public static final int LIFTER_DOWN_PORT = 0;
+    public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static int leftMotor = 1;
