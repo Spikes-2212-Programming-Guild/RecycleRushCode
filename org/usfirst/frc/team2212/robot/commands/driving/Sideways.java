@@ -6,16 +6,17 @@
 package org.usfirst.frc.team2212.robot.commands.driving;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2212.robot.Robot;
+import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.oi;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class Sideways extends Command{
-    
+public class Sideways extends Command {
+
     public Sideways() {
-        requires(Robot.driveTrain);
+        requires(driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -26,7 +27,7 @@ public class Sideways extends Command{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.driveTrain.sideways(Robot.oi.getDriverX());
+        driveTrain.sideways(oi.getDriverX());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +37,7 @@ public class Sideways extends Command{
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.driveTrain.sideways(0);
+        driveTrain.sideways(0);
     }
 
     // Called when another command which requires one or more of the same

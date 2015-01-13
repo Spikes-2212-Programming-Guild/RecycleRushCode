@@ -7,15 +7,17 @@ package org.usfirst.frc.team2212.robot.commands.driving;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team2212.robot.Robot;
+import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.oi;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class Turn extends Command{
-    
+public class Turn extends Command {
+
     public Turn() {
-        requires(Robot.driveTrain);
+        requires(driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -26,7 +28,7 @@ public class Turn extends Command{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.driveTrain.turn(Robot.oi.getDriverX());
+        driveTrain.turn(oi.getDriverX());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +38,7 @@ public class Turn extends Command{
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.driveTrain.turn(0);
+        driveTrain.turn(0);
     }
 
     // Called when another command which requires one or more of the same
