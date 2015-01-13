@@ -6,16 +6,17 @@
 package org.usfirst.frc.team2212.robot.commands.driving;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2212.robot.Robot;
+import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.oi;
 
 /**
  *
  * @author ThinkRedstone
  */
 public class FreeMovement extends Command {
-    
+
     public FreeMovement() {
-        requires(Robot.driveTrain);
+        requires(driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -26,7 +27,7 @@ public class FreeMovement extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.driveTrain.freeMovement(Robot.oi.getDriverY(), Robot.oi.getDriverX());
+        driveTrain.freeMovement(oi.getDriverY(), oi.getDriverX());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +37,7 @@ public class FreeMovement extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.driveTrain.freeMovement(0, 0);
+        driveTrain.freeMovement(0, 0);
     }
 
     // Called when another command which requires one or more of the same
