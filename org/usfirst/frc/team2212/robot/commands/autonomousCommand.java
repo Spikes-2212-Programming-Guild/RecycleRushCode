@@ -6,8 +6,11 @@
 package org.usfirst.frc.team2212.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.commands.PID.PIDForward;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.AddToteToStack;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
+import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 
 /**
  *
@@ -22,6 +25,15 @@ public class autonomousCommand extends CommandGroup {
         addSequential(new LiftAndMove());
 //        add the second tote to the stack
         addSequential(new AddToteToStack());
-//        TODO: move to third toe and pick it up.
+//        lift and move to third tote
+        addSequential(new LiftAndMove());
+//        add the third tote
+        addSequential(new AddToteToStack());
+//        move to autonomous area
+        addSequential(new PIDForward(RobotMap.AUTO_FORWARD_DEST, RobotMap.AUTO_FORWARD_KP, RobotMap.AUTO_FORWARD_KI, RobotMap.AUTO_FORWARD_KD, RobotMap.AUTO_FORWARD_DT, RobotMap.AUTO_FORWARD_THRESHOLD));
+//        release the stack
+        addSequential(new Open());
+//        go back a little
+        addSequential(new PIDForward(RobotMap.AUTO_FORWARD_SMALL_DEST, RobotMap.AUTO_FORWARD_KP, RobotMap.AUTO_FORWARD_KI, RobotMap.AUTO_FORWARD_KD, RobotMap.AUTO_FORWARD_DT, RobotMap.AUTO_FORWARD_THRESHOLD));
     }
 }
