@@ -19,7 +19,7 @@ import org.usfirst.frc.team2212.robot.subsystems.Lifter;
  */
 public class Robot extends IterativeRobot {
 
-    public static final DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FORWARD_TALON_PORT, RobotMap.LEFT_BACKWARDS_TALON_PORT, RobotMap.RIGHT_FORWARD_TALON_PORT, RobotMap.RIGHT_BACKWARDS_TALON_PORT, RobotMap.MIDDLE_FRONT_TALON_PORT, RobotMap.MIDDLE_BACKWARDS_TALON_PORT);
+    public static final DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FORWARD_TALON_PORT, RobotMap.LEFT_BACKWARDS_TALON_PORT, RobotMap.RIGHT_FORWARD_TALON_PORT, RobotMap.RIGHT_BACKWARDS_TALON_PORT, RobotMap.MIDDLE_FRONT_TALON_PORT, RobotMap.MIDDLE_BACKWARDS_TALON_PORT,RobotMap.FORWARD_ENCODER_1_PORT, RobotMap.FORWARD_ENCODE2_2_PORT, RobotMap.SIDEWAYS_ENCODER_1_PORT, RobotMap.SIDEWAYS_ENCODER_2_PORT, RobotMap.WHEEL_DIAMETER);
 
     /**
      *
