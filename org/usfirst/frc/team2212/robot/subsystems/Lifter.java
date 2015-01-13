@@ -17,8 +17,8 @@ public class Lifter extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    Relay elevator;
-    DigitalInput up, down;
+    private Relay elevator;
+    private DigitalInput up, down;
 
     public Lifter(Relay elevator, DigitalInput up, DigitalInput down) {
         this.elevator = elevator;

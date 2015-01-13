@@ -17,8 +17,8 @@ public class Fork extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    Relay lock;
-    DigitalInput open, close;
+    private Relay lock;
+    private DigitalInput open, close;
 
     public Fork(Relay lock, DigitalInput open, DigitalInput close) {
         this.lock = lock;
