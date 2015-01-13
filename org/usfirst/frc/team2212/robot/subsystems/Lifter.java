@@ -40,6 +40,10 @@ public class Lifter extends Subsystem {
         elevator.set(Relay.Value.kReverse);
     }
 
+    public void stop() {
+        elevator.set(Relay.Value.kOff);
+    }
+
     public boolean isUp() {
         return up.get();
     }

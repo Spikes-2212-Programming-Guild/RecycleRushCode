@@ -40,6 +40,10 @@ public class Fork extends Subsystem {
         lock.set(Relay.Value.kReverse);
     }
 
+    public void stop() {
+        lock.set(Relay.Value.kOff);
+    }
+
     public boolean isClosed() {
         return close.get();
     }
