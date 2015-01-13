@@ -39,6 +39,13 @@ public class PID {
 
     }
 
+    public void waitForPID() {
+        long prevTime = System.currentTimeMillis();
+        while (System.currentTimeMillis() - prevTime < DT) {
+            prevTime = System.currentTimeMillis();
+        }
+    }
+
     public boolean hasArrived() {
         return Math.abs(error) < THRESHOLD;
     }
