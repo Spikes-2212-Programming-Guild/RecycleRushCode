@@ -13,34 +13,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  * @author ThinkRedstone
  */
-public class ForkLift extends Subsystem {
+public class Fork extends Subsystem {
 
-    Relay elevator, lock;
-    DigitalInput open, close, up, down;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    Relay lock;
+    DigitalInput open, close;
 
-    public ForkLift(Relay elevator, Relay lock, DigitalInput open, DigitalInput close, DigitalInput up, DigitalInput down) {
-        this.elevator = elevator;
+    public Fork(Relay lock, DigitalInput open, DigitalInput close) {
         this.lock = lock;
         this.open = open;
         this.close = close;
-        this.up = up;
-        this.down = down;
     }
 
-    public ForkLift(int elevatorPort, int lockPort, int openPort, int closePort, int upPort, int downPort) {
-        this(new Relay(elevatorPort), new Relay(lockPort), new DigitalInput(openPort), new DigitalInput(closePort), new DigitalInput(upPort), new DigitalInput(downPort));
-    }
-
-    public void up() {
-//        assuming forward for up
-        elevator.set(Relay.Value.kForward);
-    }
-
-    public void down() {
-//        assuming forward for up
-        elevator.set(Relay.Value.kReverse);
+    public Fork(int lockPort, int openPort, int closePort) {
+        this(new Relay(lockPort), new DigitalInput(openPort), new DigitalInput(closePort));
     }
 
     public void open() {
@@ -51,14 +38,6 @@ public class ForkLift extends Subsystem {
     public void close() {
 //        assuming forward for open
         lock.set(Relay.Value.kReverse);
-    }
-
-    public boolean isUp() {
-        return up.get();
-    }
-
-    public boolean isDown() {
-        return down.get();
     }
 
     public boolean isClosed() {
