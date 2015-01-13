@@ -19,6 +19,7 @@ public class RobotMap {
     public static final int SIDEWAYS_ENCODER_1_PORT = 0;
     public static final int SIDEWAYS_ENCODER_2_PORT = 0;
     public static final double WHEEL_DIAMETER = 0;
+    public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
 
     public static final int FORK_LOCK_PORT = 0;
     public static final int FORK_OPEN_PORT = 0;
@@ -37,4 +38,5 @@ public class RobotMap {
     // number and the module. For example you with a rangefinder:
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
+    
 }
