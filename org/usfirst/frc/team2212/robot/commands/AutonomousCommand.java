@@ -16,9 +16,9 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
  *
  * @author ThinkRedstone
  */
-public class AutonomousCommand extends CommandGroup {
+public class autonomousCommand extends CommandGroup {
     
-    public AutonomousCommand() {
+    public autonomousCommand() {
 //        close the fork to hold the first tote
         addSequential(new Close());
 //        lift and move to the first tote
