@@ -33,6 +33,7 @@ public class RobotMap {
     public static final double LIFTER_DOWN_SPEED = 0;
     public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
     public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0;
+    public static final double LIFTER_STAY_SPEED = 0;
     
     public static final double AUTO_FORWARD_DEST = 0;
     public static final double AUTO_FORWARD_SMALL_DEST = 0;
