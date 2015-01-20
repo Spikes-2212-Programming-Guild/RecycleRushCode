@@ -37,8 +37,6 @@ public class PIDSideways extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-//        make sure PID is updated
-        pid.doPID(driveTrain.sidewaysGet());
         return pid.hasArrived();
     }
 

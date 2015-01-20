@@ -37,8 +37,6 @@ public class PIDForward extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-//        make sure PID is updated
-        pid.doPID(driveTrain.forwardGet());
         return pid.hasArrived();
     }
 
