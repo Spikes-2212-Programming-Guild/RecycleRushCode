@@ -29,7 +29,7 @@ public class RobotMap {
     public static final int LIFTER_UP_PORT = 0;
     public static final int LIFTER_DOWN_PORT = 0;
     public static final int LIFTER_ENCODER_PORT1 = 0;
-    public static final int LIFTER_ENCODER_PORT2= 0;
+    public static final int LIFTER_ENCODER_PORT2 = 0;
     public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
     public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0;
 
@@ -47,13 +47,20 @@ public class RobotMap {
     public static final double AUTO_SIDEWAYS_KD = 0;
     public static final long AUTO_SIDEWAYS_DT = 0;
     public static final double AUTO_SIDEWAYS_THRESHOLD = 0;
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static int leftMotor = 1;
-    // public static int rightMotor = 2;
 
-    // If you are using multiple modules, make sure to define both the port
-    // number and the module. For example you with a rangefinder:
-    // public static int rangefinderPort = 1;
-    // public static int rangefinderModule = 1;
+    public static final double ONE_TOTE_DEST = 0;
+    public static final double ONE_TOTE_KP = 0;
+    public static final double ONE_TOTE_KI = 0;
+    public static final double ONE_TOTE_KD = 0;
+    public static final long ONE_TOTE_DT = 0;
+    public static final double ONE_TOTE_THRESHOLD = 0;
+               // For example to map the left and right motors, you could define the
+            // following variables to use with your drivetrain subsystem.
+            // public static int leftMotor = 1;
+            // public static int rightMotor = 2;
+            // If you are using multiple modules, make sure to define both the port
+            // number and the module. For example you with a rangefinder:
+            // public static int rangefinderPort = 1;
+            // public static int rangefinderModule = 1;
+
 }
