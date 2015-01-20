@@ -45,6 +45,14 @@ public class Lifter extends Subsystem {
     public boolean isDown() {
         return down.get();
     }
+    
+    public double get(){
+        return encoder.get();
+    }
+    
+    public void reset(){
+        encoder.reset();
+    }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
