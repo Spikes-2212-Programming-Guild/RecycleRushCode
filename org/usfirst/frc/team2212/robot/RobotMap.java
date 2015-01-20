@@ -28,7 +28,10 @@ public class RobotMap {
     public static final int LIFTER_ELEVATOR_PORT = 0;
     public static final int LIFTER_UP_PORT = 0;
     public static final int LIFTER_DOWN_PORT = 0;
+    public static final int LIFTER_ENCODER_PORT1 = 0;
+    public static final int LIFTER_ENCODER_PORT2= 0;
     public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
+    public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0;
 
     public static final double AUTO_FORWARD_DEST = 0;
     public static final double AUTO_FORWARD_SMALL_DEST = 0;

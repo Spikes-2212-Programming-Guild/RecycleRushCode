@@ -6,7 +6,9 @@
 package org.usfirst.frc.team2212.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -17,31 +19,23 @@ public class Lifter extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    private Relay elevator;
+    private Talon elevator;
     private DigitalInput up, down;
+    private Encoder encoder;
 
-    public Lifter(Relay elevator, DigitalInput up, DigitalInput down) {
+    public Lifter(Talon elevator, DigitalInput up, DigitalInput down, Encoder encoder) {
         this.elevator = elevator;
         this.up = up;
         this.down = down;
+        this.encoder = encoder;
     }
 
-    public Lifter(int elevatorPort, int upPort, int downPort) {
-        this(new Relay(elevatorPort), new DigitalInput(upPort), new DigitalInput(downPort));
+    public Lifter(int victorPort, int upPort, int downPort, int encoderPort1, int encoderPort2) {
+        this(new Talon(victorPort), new DigitalInput(upPort), new DigitalInput(downPort), new Encoder(encoderPort1, encoderPort2));
     }
 
-    public void up() {
-//        assuming forward for up
-        elevator.set(Relay.Value.kForward);
-    }
-
-    public void down() {
-//        assuming forward for up
-        elevator.set(Relay.Value.kReverse);
-    }
-
-    public void stop() {
-        elevator.set(Relay.Value.kOff);
+    public void set(double s) {
+        elevator.set(s);
     }
 
     public boolean isUp() {

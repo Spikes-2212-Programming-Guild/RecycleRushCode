@@ -7,14 +7,15 @@ package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
+import static org.usfirst.frc.team2212.robot.Robot.oi;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class Down extends Command {
+public class Move extends Command {
     
-    public Down() {
+    public Move() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(lifter);
@@ -26,7 +27,7 @@ public class Down extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        lifter.down();
+        lifter.set(oi.getNavY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +37,7 @@ public class Down extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        lifter.stop();
+        lifter.set(0);
     }
 
     // Called when another command which requires one or more of the same

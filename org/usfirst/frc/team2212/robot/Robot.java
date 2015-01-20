@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
     /**
      *
      */
-    public static final Lifter lifter = new Lifter(RobotMap.LIFTER_ELEVATOR_PORT,RobotMap.LIFTER_UP_PORT, RobotMap.LIFTER_DOWN_PORT);
+    public static final Lifter lifter = new Lifter(RobotMap.LIFTER_ELEVATOR_PORT,RobotMap.LIFTER_UP_PORT, RobotMap.LIFTER_DOWN_PORT, RobotMap.LIFTER_ENCODER_PORT1, RobotMap.LIFTER_ENCODER_PORT2);
     public static final Fork fork = new Fork(RobotMap.FORK_LOCK_PORT, RobotMap.FORK_OPEN_PORT, RobotMap.FORK_CLOSE_PORT);
     public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;

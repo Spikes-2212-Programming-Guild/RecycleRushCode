@@ -14,9 +14,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AddToteToStack extends CommandGroup {
     
     public AddToteToStack() {
-        addSequential(new Up());
+//        TODO use PIDelevetor
+        addSequential(new Move());
         addSequential(new Open());
-        addSequential(new Down());
+        addSequential(new Move());
         addSequential(new Close());
         addSequential(new LiftALittle());
     }
