@@ -38,7 +38,7 @@ public class PIDMove extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return pid.hasArrived();
+        return pid.hasArrived() || lifter.isDown() || lifter.isUp();
     }
 
     // Called once after isFinished returns true
