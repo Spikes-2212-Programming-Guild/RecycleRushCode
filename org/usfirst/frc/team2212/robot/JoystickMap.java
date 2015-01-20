@@ -13,4 +13,5 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class JoystickMap {
     protected Joystick driverJ = new Joystick(0);
+    protected Joystick navJ = new Joystick(0);
 }
