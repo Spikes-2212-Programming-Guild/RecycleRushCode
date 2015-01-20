@@ -67,10 +67,18 @@ public class DriveTrain extends Subsystem {
     public double sidewaysGet() {
         return wheelDiameter * Math.PI * (sideways.get() / RobotMap.ENCODER_TICKS_IN_FULL_TURN);
     }
-    
-    public void reset(){
+
+    public void reset() {
         sideways.reset();
         forward.reset();
+    }
+
+    public double leftGet() {
+        return left.get();
+    }
+
+    public double rightGet() {
+        return right.get();
     }
 
     // Put methods for controlling this subsystem
