@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team2212.robot.commands.forkLifter.Stay;
 
 /**
  *
@@ -55,6 +56,7 @@ public class Lifter extends Subsystem {
     }
 
     public void initDefaultCommand() {
+        setDefaultCommand(new Stay());
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
