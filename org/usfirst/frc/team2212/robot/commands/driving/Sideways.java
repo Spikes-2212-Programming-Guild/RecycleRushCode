@@ -8,12 +8,15 @@ package org.usfirst.frc.team2212.robot.commands.driving;
 import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
+import org.usfirst.frc.team2212.robot.RobotMap;
 
 /**
  *
  * @author ThinkRedstone
  */
 public class Sideways extends Command {
+
+    private double currentSpeed;
 
     public Sideways() {
         requires(driveTrain);
@@ -27,10 +30,19 @@ public class Sideways extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.sideways(oi.getDriverX());
+        double newSpeed;
+        if (Math.abs(oi.getDriverX() - currentSpeed) < RobotMap.CHANGE_IN_SPEED) {
+            newSpeed = oi.getDriverX();
+        } else if(oi.getDriverX() - currentSpeed > 0){
+            newSpeed = currentSpeed + RobotMap.CHANGE_IN_SPEED;
+        } else{
+            newSpeed = currentSpeed - RobotMap.CHANGE_IN_SPEED;
+        }
+        driveTrain.sideways(newSpeed);
+        currentSpeed = newSpeed;
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+// Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
     }
