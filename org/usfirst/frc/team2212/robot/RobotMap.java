@@ -21,6 +21,8 @@ public class RobotMap {
     public static final double WHEEL_DIAMETER = 0;
     public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
     public static final double CHANGE_IN_SPEED = 0;
+    public static final double MAX_FORWARD_ACC = 0;
+    public static final double MAX_SIDEWAYS_ACC = 0;
 
     public static final int FORK_LOCK_PORT = 0;
     public static final int FORK_OPEN_PORT = 0;
@@ -35,7 +37,7 @@ public class RobotMap {
     public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
     public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0;
     public static final double LIFTER_STAY_SPEED = 0;
-    
+
     public static final double AUTO_FORWARD_DEST = 0;
     public static final double AUTO_FORWARD_SMALL_DEST = 0;
     public static final double AUTO_FORWARD_KP = 0;
@@ -58,12 +60,12 @@ public class RobotMap {
     public static final long ONE_TOTE_DT = 0;
     public static final double ONE_TOTE_THRESHOLD = 0;
                // For example to map the left and right motors, you could define the
-            // following variables to use with your drivetrain subsystem.
-            // public static int leftMotor = 1;
-            // public static int rightMotor = 2;
-            // If you are using multiple modules, make sure to define both the port
-            // number and the module. For example you with a rangefinder:
-            // public static int rangefinderPort = 1;
-            // public static int rangefinderModule = 1;
+    // following variables to use with your drivetrain subsystem.
+    // public static int leftMotor = 1;
+    // public static int rightMotor = 2;
+    // If you are using multiple modules, make sure to define both the port
+    // number and the module. For example you with a rangefinder:
+    // public static int rangefinderPort = 1;
+    // public static int rangefinderModule = 1;
 
 }

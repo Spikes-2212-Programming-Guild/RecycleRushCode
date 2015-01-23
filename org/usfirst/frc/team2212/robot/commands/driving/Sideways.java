@@ -30,13 +30,16 @@ public class Sideways extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double newSpeed;
-        if (Math.abs(oi.getDriverX() - currentSpeed) < RobotMap.CHANGE_IN_SPEED) {
-            newSpeed = oi.getDriverX();
-        } else if(oi.getDriverX() - currentSpeed > 0){
-            newSpeed = currentSpeed + RobotMap.CHANGE_IN_SPEED;
-        } else{
-            newSpeed = currentSpeed - RobotMap.CHANGE_IN_SPEED;
+        double newSpeed = currentSpeed;
+//        assuming X is sideways
+        if (driveTrain.getXAcceleration() < RobotMap.MAX_SIDEWAYS_ACC) {
+            if (Math.abs(oi.getDriverX() - currentSpeed) < RobotMap.CHANGE_IN_SPEED) {
+                newSpeed = oi.getDriverX();
+            } else if (oi.getDriverX() - currentSpeed > 0) {
+                newSpeed = currentSpeed + RobotMap.CHANGE_IN_SPEED;
+            } else {
+                newSpeed = currentSpeed - RobotMap.CHANGE_IN_SPEED;
+            }
         }
         driveTrain.sideways(newSpeed);
         currentSpeed = newSpeed;

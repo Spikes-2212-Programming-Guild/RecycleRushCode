@@ -15,6 +15,7 @@ import org.usfirst.frc.team2212.robot.RobotMap;
  * @author ThinkRedstone
  */
 public class Forward extends Command {
+
     private double currentSpeed;
 
     public Forward() {
@@ -29,13 +30,16 @@ public class Forward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double newSpeed;
-        if (Math.abs(oi.getDriverY() - currentSpeed) < RobotMap.CHANGE_IN_SPEED) {
-            newSpeed = oi.getDriverY();
-        } else if (oi.getDriverY() - currentSpeed > 0) {
-            newSpeed = currentSpeed + RobotMap.CHANGE_IN_SPEED;
-        } else {
-            newSpeed = currentSpeed - RobotMap.CHANGE_IN_SPEED;
+        double newSpeed = currentSpeed;
+//        assuming Y is pointing forward
+        if (driveTrain.getYAcceleration() < RobotMap.MAX_FORWARD_ACC) {
+            if (Math.abs(oi.getDriverY() - currentSpeed) < RobotMap.CHANGE_IN_SPEED) {
+                newSpeed = oi.getDriverY();
+            } else if (oi.getDriverY() - currentSpeed > 0) {
+                newSpeed = currentSpeed + RobotMap.CHANGE_IN_SPEED;
+            } else {
+                newSpeed = currentSpeed - RobotMap.CHANGE_IN_SPEED;
+            }
         }
         driveTrain.forward(newSpeed);
         currentSpeed = newSpeed;
