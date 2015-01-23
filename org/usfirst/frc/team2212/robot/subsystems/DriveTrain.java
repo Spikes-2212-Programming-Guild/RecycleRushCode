@@ -6,6 +6,7 @@
 package org.usfirst.frc.team2212.robot.subsystems;
 
 import components.Gearbox;
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -21,6 +22,7 @@ public class DriveTrain extends Subsystem {
     private VictorSP front, rear;
     private Encoder sideways, forward;
     private double wheelDiameter;
+    private BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
 
     public DriveTrain(Gearbox left, Gearbox right, VictorSP front, VictorSP rear, Encoder forward, Encoder sideways, double wheelDiameter) {
         this.left = left;
@@ -79,6 +81,13 @@ public class DriveTrain extends Subsystem {
 
     public double rightGet() {
         return right.get();
+    }
+    
+    public double getXAcceleration(){
+        return accelerometer.getX();
+    }
+    public double getYAcceleration(){
+        return accelerometer.getY();
     }
 
     // Put methods for controlling this subsystem
