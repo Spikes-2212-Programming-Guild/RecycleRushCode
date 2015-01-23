@@ -8,13 +8,15 @@ package org.usfirst.frc.team2212.robot.commands.Driving;
 import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
+import org.usfirst.frc.team2212.robot.RobotMap;
 
 /**
  *
  * @author ThinkRedstone
  */
 public class Forward extends Command {
-    
+    private double currentSpeed;
+
     public Forward() {
         requires(driveTrain);
         // Use requires() here to declare subsystem dependencies
@@ -27,7 +29,16 @@ public class Forward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.forward(oi.getDriverY());
+        double newSpeed;
+        if (Math.abs(oi.getDriverY() - currentSpeed) < RobotMap.CHANGE_IN_SPEED) {
+            newSpeed = oi.getDriverY();
+        } else if (oi.getDriverY() - currentSpeed > 0) {
+            newSpeed = currentSpeed + RobotMap.CHANGE_IN_SPEED;
+        } else {
+            newSpeed = currentSpeed - RobotMap.CHANGE_IN_SPEED;
+        }
+        driveTrain.forward(newSpeed);
+        currentSpeed = newSpeed;
     }
 
     // Make this return true when this Command no longer needs to run execute()
