@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.usfirst.frc.team2212.robot.commands.Driving;
+package org.usfirst.frc.team2212.robot.commands.driving;
 
 import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
