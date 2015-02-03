@@ -73,6 +73,22 @@ public class DriveTrain extends Subsystem {
         forward.reset();
     }
 
+    public Gearbox getLeft() {
+        return left;
+    }
+
+    public Gearbox getRight() {
+        return right;
+    }
+
+    public VictorSP getFront() {
+        return front;
+    }
+
+    public VictorSP getRear() {
+        return rear;
+    }
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void initDefaultCommand() {

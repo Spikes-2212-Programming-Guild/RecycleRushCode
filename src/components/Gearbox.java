@@ -28,6 +28,9 @@ public class Gearbox {
         forward.set(speed);
         backwards.set(speed);
     }
+    public double get(){
+        return (forward.get() + backwards.get())/2;
+    }
     
 
 }
