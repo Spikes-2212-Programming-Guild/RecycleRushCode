@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Stay;
 
 /**
@@ -23,16 +24,18 @@ public class Lifter extends Subsystem {
     private Talon elevator;
     private DigitalInput up, down;
     private Encoder encoder;
-
-    public Lifter(Talon elevator, DigitalInput up, DigitalInput down, Encoder encoder) {
+    private double wheelDiameter;
+    
+    public Lifter(Talon elevator, DigitalInput up, DigitalInput down, Encoder encoder,double wheelDiameter) {
         this.elevator = elevator;
         this.up = up;
         this.down = down;
         this.encoder = encoder;
+        this.wheelDiameter = wheelDiameter;
     }
 
-    public Lifter(int victorPort, int upPort, int downPort, int encoderPort1, int encoderPort2) {
-        this(new Talon(victorPort), new DigitalInput(upPort), new DigitalInput(downPort), new Encoder(encoderPort1, encoderPort2));
+    public Lifter(int victorPort, int upPort, int downPort, int encoderPort1, int encoderPort2, double wheelDiameter) {
+        this(new Talon(victorPort), new DigitalInput(upPort), new DigitalInput(downPort), new Encoder(encoderPort1, encoderPort2),wheelDiameter);
     }
 
     public void set(double s) {
@@ -48,7 +51,7 @@ public class Lifter extends Subsystem {
     }
     
     public double get(){
-        return encoder.get();
+        return encoder.get()*RobotMap.ENCODER_TICKS_IN_FULL_TURN*Math.PI*wheelDiameter;
     }
     
     public void reset(){
