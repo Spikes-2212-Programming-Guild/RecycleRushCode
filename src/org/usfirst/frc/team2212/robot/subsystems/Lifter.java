@@ -63,4 +63,17 @@ public class Lifter extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+    public Talon getElevator() {
+        return elevator;
+    }
+
+    public DigitalInput getUp() {
+        return up;
+    }
+
+    public DigitalInput getDown() {
+        return down;
+    }
+    
 }
