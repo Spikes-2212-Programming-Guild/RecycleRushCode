@@ -18,6 +18,7 @@ import org.usfirst.frc.team2212.robot.Robot;
 import org.usfirst.frc.team2212.robot.Robot.*;
 import static org.usfirst.frc.team2212.robot.Robot.fork;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
+import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 
 /**
  *
@@ -59,6 +60,24 @@ public class TestFork {
         }
         assertEquals(Relay.Value.kReverse, fork.getLock().get());
         fork.getClose().set(true);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TestFork.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        assertEquals(Relay.Value.kOff, fork.getLock().get());
+    }
+    @Test
+    public void testOpen(){
+        Open o = new Open();
+        o.start();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TestFork.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        assertEquals(Relay.Value.kForward, fork.getLock().get());
+        fork.getOpen().set(true);
         try {
             Thread.sleep(100);
         } catch (InterruptedException ex) {
