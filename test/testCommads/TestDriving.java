@@ -58,6 +58,19 @@ public class TestDriving {
         assertEquals(1,driveTrain.getRight().get(),0);
         
     }
+    @Test
+    public void testSideways(){
+        Sideways s = new Sideways();
+        s.start();
+        try{
+            Thread.sleep(100);
+        }catch(InterruptedException ex){
+            ex.printStackTrace();
+        }
+        assertEquals(-1, driveTrain.getFront().get(), 0);
+        assertEquals(1, driveTrain.getRear().get(), 0);
+        
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
