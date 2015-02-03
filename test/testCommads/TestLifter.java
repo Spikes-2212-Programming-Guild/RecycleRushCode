@@ -5,6 +5,7 @@
  */
 package testCommads;
 
+import com.sun.org.apache.xalan.internal.xsltc.DOM;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;
@@ -15,6 +16,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.usfirst.frc.team2212.robot.Robot;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
+import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Move;
 
 /**
@@ -71,6 +73,25 @@ public class TestLifter {
             Logger.getLogger(TestFork.class.getName()).log(Level.SEVERE, null, ex);
         }
         assertEquals(1, lifter.getElevator().get(), 0);
+        lifter.getDown().set(true);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TestFork.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        assertEquals(0, lifter.getElevator().get(), 0);
+        lifter.getDown().set(false);
+    }
+    @Test
+    public void testDown(){
+        Down down = new Down();
+        down.start();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TestFork.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        assertEquals(-1, lifter.getElevator().get(), 0);
         lifter.getDown().set(true);
         try {
             Thread.sleep(100);
