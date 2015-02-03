@@ -56,4 +56,17 @@ public class Fork extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+    public Relay getLock() {
+        return lock;
+    }
+
+    public DigitalInput getOpen() {
+        return open;
+    }
+
+    public DigitalInput getClose() {
+        return close;
+    }
+    
 }
