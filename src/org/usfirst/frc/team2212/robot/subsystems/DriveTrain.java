@@ -50,9 +50,9 @@ public class DriveTrain extends Subsystem {
     }
 
     public void sideways(double speed) {
-//        positive to go left
-        front.set(speed);
-        rear.set(-speed);
+//        positive to go right
+        front.set(-speed);
+        rear.set(speed);
     }
 
     public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
