@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * @author ThinkRedstone
  */
 public class LiftFirstTote extends CommandGroup {
-    
-    public LiftFirstTote() {
-        addSequential(new Open());
-        addSequential(new Down());
-        addSequential(new Close());
-        addSequential(new LiftALittle());
-    }
+
+	public LiftFirstTote() {
+		addSequential(new Open());
+		addSequential(new Down());
+		addSequential(new Close());
+		addSequential(new LiftALittle());
+	}
 }

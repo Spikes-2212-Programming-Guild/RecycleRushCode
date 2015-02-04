@@ -14,35 +14,35 @@ import static org.usfirst.frc.team2212.robot.Robot.oi;
  * @author ThinkRedstone
  */
 public class Forward extends Command {
-    
-    public Forward() {
-        requires(driveTrain);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public Forward() {
+		requires(driveTrain);
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        driveTrain.forward(oi.getDriverY());
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		driveTrain.forward(oi.getDriverY());
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-        driveTrain.forward(0);
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return false;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-        end();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		driveTrain.forward(0);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		end();
+	}
 }

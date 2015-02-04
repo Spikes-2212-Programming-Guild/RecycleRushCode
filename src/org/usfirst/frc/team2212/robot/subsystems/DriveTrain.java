@@ -15,49 +15,52 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 
-    private Gearbox left, right;
-    private VictorSP front, rear;
+	private Gearbox left, right;
+	private VictorSP front, rear;
 
-    public DriveTrain(Gearbox left, Gearbox right, VictorSP front, VictorSP rear) {
-        this.left = left;
-        this.right = right;
-        this.front = front;
-        this.rear = rear;
-    }
+	public DriveTrain(Gearbox left, Gearbox right, VictorSP front, VictorSP rear) {
+		this.left = left;
+		this.right = right;
+		this.front = front;
+		this.rear = rear;
+	}
 
-    public DriveTrain(int leftForward, int leftBackwards, int rightForward, int rightBackwards, int middleFront, int middleRear) {
-        this(new Gearbox(leftForward, leftBackwards), new Gearbox(rightForward, rightBackwards), new VictorSP(middleFront), new VictorSP(middleRear));
-    }
+	public DriveTrain(int leftForward, int leftBackwards, int rightForward,
+			int rightBackwards, int middleFront, int middleRear) {
+		this(new Gearbox(leftForward, leftBackwards), new Gearbox(rightForward,
+				rightBackwards), new VictorSP(middleFront), new VictorSP(
+				middleRear));
+	}
 
-    public void forward(double speed) {
-        left.set(-speed);
-        right.set(speed);
-    }
+	public void forward(double speed) {
+		left.set(-speed);
+		right.set(speed);
+	}
 
-    public void turn(double speed) {
-        left.set(speed);
-        right.set(speed);
-//        omni turn inculded
-        front.set(speed);
-        rear.set(speed);
-    }
+	public void turn(double speed) {
+		left.set(speed);
+		right.set(speed);
+		// omni turn inculded
+		front.set(speed);
+		rear.set(speed);
+	}
 
-    public void sideways(double speed) {
-//        positive to go left
-        front.set(speed);
-        rear.set(-speed);
-    }
-    
-    public void freeMovement(double forwardSpeed, double sidewaysSpeed){
-        forward(forwardSpeed);
-        sideways(sidewaysSpeed);
-    }
+	public void sideways(double speed) {
+		// positive to go left
+		front.set(speed);
+		rear.set(-speed);
+	}
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
+		forward(forwardSpeed);
+		sideways(sidewaysSpeed);
+	}
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
+
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+	}
 }

@@ -13,21 +13,20 @@ import edu.wpi.first.wpilibj.VictorSP;
  */
 public class Gearbox {
 
-    private VictorSP forward, backwards;
+	private VictorSP forward, backwards;
 
-    public Gearbox(VictorSP forward, VictorSP backwards) {
-        this.forward = forward;
-        this.backwards = backwards;
-    }
+	public Gearbox(VictorSP forward, VictorSP backwards) {
+		this.forward = forward;
+		this.backwards = backwards;
+	}
 
-    public Gearbox(int forwardPort,int backwardsPort) {
-        this(new VictorSP(forwardPort),new VictorSP(backwardsPort));
-    }
-    
-    public void set(double speed){
-        forward.set(speed);
-        backwards.set(speed);
-    }
-    
+	public Gearbox(int forwardPort, int backwardsPort) {
+		this(new VictorSP(forwardPort), new VictorSP(backwardsPort));
+	}
+
+	public void set(double speed) {
+		forward.set(speed);
+		backwards.set(speed);
+	}
 
 }

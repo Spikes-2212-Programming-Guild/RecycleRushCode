@@ -15,45 +15,46 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Lifter extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-    private Relay elevator;
-    private DigitalInput up, down;
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
+	private Relay elevator;
+	private DigitalInput up, down;
 
-    public Lifter(Relay elevator, DigitalInput up, DigitalInput down) {
-        this.elevator = elevator;
-        this.up = up;
-        this.down = down;
-    }
+	public Lifter(Relay elevator, DigitalInput up, DigitalInput down) {
+		this.elevator = elevator;
+		this.up = up;
+		this.down = down;
+	}
 
-    public Lifter(int elevatorPort, int upPort, int downPort) {
-        this(new Relay(elevatorPort), new DigitalInput(upPort), new DigitalInput(downPort));
-    }
+	public Lifter(int elevatorPort, int upPort, int downPort) {
+		this(new Relay(elevatorPort), new DigitalInput(upPort),
+				new DigitalInput(downPort));
+	}
 
-    public void up() {
-//        assuming forward for up
-        elevator.set(Relay.Value.kForward);
-    }
+	public void up() {
+		// assuming forward for up
+		elevator.set(Relay.Value.kForward);
+	}
 
-    public void down() {
-//        assuming forward for up
-        elevator.set(Relay.Value.kReverse);
-    }
+	public void down() {
+		// assuming forward for up
+		elevator.set(Relay.Value.kReverse);
+	}
 
-    public void stop() {
-        elevator.set(Relay.Value.kOff);
-    }
+	public void stop() {
+		elevator.set(Relay.Value.kOff);
+	}
 
-    public boolean isUp() {
-        return up.get();
-    }
+	public boolean isUp() {
+		return up.get();
+	}
 
-    public boolean isDown() {
-        return down.get();
-    }
+	public boolean isDown() {
+		return down.get();
+	}
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+	}
 }

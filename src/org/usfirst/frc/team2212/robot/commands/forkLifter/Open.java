@@ -13,35 +13,35 @@ import static org.usfirst.frc.team2212.robot.Robot.fork;
  * @author ThinkRedstone
  */
 public class Open extends Command {
-    
-    public Open() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-        requires(fork);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public Open() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(fork);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        fork.open();
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return fork.isOpen();
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		fork.open();
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-        fork.stop();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return fork.isOpen();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-        end();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		fork.stop();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		end();
+	}
 }

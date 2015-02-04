@@ -15,45 +15,46 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Fork extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-    private Relay lock;
-    private DigitalInput open, close;
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
+	private Relay lock;
+	private DigitalInput open, close;
 
-    public Fork(Relay lock, DigitalInput open, DigitalInput close) {
-        this.lock = lock;
-        this.open = open;
-        this.close = close;
-    }
+	public Fork(Relay lock, DigitalInput open, DigitalInput close) {
+		this.lock = lock;
+		this.open = open;
+		this.close = close;
+	}
 
-    public Fork(int lockPort, int openPort, int closePort) {
-        this(new Relay(lockPort), new DigitalInput(openPort), new DigitalInput(closePort));
-    }
+	public Fork(int lockPort, int openPort, int closePort) {
+		this(new Relay(lockPort), new DigitalInput(openPort), new DigitalInput(
+				closePort));
+	}
 
-    public void open() {
-//        assuming forward for open
-        lock.set(Relay.Value.kForward);
-    }
+	public void open() {
+		// assuming forward for open
+		lock.set(Relay.Value.kForward);
+	}
 
-    public void close() {
-//        assuming forward for open
-        lock.set(Relay.Value.kReverse);
-    }
+	public void close() {
+		// assuming forward for open
+		lock.set(Relay.Value.kReverse);
+	}
 
-    public void stop() {
-        lock.set(Relay.Value.kOff);
-    }
+	public void stop() {
+		lock.set(Relay.Value.kOff);
+	}
 
-    public boolean isClosed() {
-        return close.get();
-    }
+	public boolean isClosed() {
+		return close.get();
+	}
 
-    public boolean isOpen() {
-        return open.get();
-    }
+	public boolean isOpen() {
+		return open.get();
+	}
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+	}
 }

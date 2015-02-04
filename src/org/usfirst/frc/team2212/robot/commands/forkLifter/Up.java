@@ -13,35 +13,35 @@ import static org.usfirst.frc.team2212.robot.Robot.lifter;
  * @author ThinkRedstone
  */
 public class Up extends Command {
-    
-    public Up() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-        requires(lifter);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public Up() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(lifter);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        lifter.up();
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return lifter.isUp();
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		lifter.up();
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-        lifter.stop();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return lifter.isUp();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-        end();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		lifter.stop();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		end();
+	}
 }

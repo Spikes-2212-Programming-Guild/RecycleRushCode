@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * @author ThinkRedstone
  */
 public class AddToteToStack extends CommandGroup {
-    
-    public AddToteToStack() {
-        addSequential(new Up());
-        addSequential(new Open());
-        addSequential(new Down());
-        addSequential(new Close());
-        addSequential(new LiftALittle());
-    }
+
+	public AddToteToStack() {
+		addSequential(new Up());
+		addSequential(new Open());
+		addSequential(new Down());
+		addSequential(new Close());
+		addSequential(new LiftALittle());
+	}
 }

@@ -21,7 +21,7 @@ public class LiftALittle extends Command {
         requires(lifter);
     }
 
-    // Called just before this Command runs the first time
+	// Called just before this Command runs the first time
     protected void initialize() {
         setTimeout(RobotMap.LIFTER_LIFT_A_LITTLE_TIMEOUT);
     }
