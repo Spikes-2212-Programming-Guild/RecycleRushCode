@@ -1,14 +1,13 @@
 package org.usfirst.frc.team2212.robot;
 
+import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2212.robot.subsystems.Fork;
+import org.usfirst.frc.team2212.robot.subsystems.Lifter;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team2212.robot.commands.ExampleCommand;
-import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team2212.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team2212.robot.subsystems.Fork;
-import org.usfirst.frc.team2212.robot.subsystems.Lifter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,7 +34,6 @@ public class Robot extends IterativeRobot {
 			RobotMap.LIFTER_DOWN_PORT);
 	public static final Fork fork = new Fork(RobotMap.FORK_LOCK_PORT,
 			RobotMap.FORK_OPEN_PORT, RobotMap.FORK_CLOSE_PORT);
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -47,7 +45,6 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		// instantiate the command used for the autonomous period
-		autonomousCommand = new ExampleCommand();
 	}
 
 	public void disabledPeriodic() {
