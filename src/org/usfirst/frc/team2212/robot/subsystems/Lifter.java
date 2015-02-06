@@ -8,9 +8,9 @@ package org.usfirst.frc.team2212.robot.subsystems;
 import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Stay;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -21,13 +21,13 @@ public class Lifter extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private final TalonSRX elevator;
+	private final CANTalon elevator;
 	private final DigitalInput up, down;
 	private final Encoder encoder;
 	private final double wheelDiameter;
 	private int currentLevel;
 
-	public Lifter(TalonSRX elevator, DigitalInput up, DigitalInput down,
+	public Lifter(CANTalon elevator, DigitalInput up, DigitalInput down,
 			Encoder encoder, double wheelDiameter) {
 		this.elevator = elevator;
 		this.up = up;
@@ -36,11 +36,11 @@ public class Lifter extends Subsystem {
 		this.wheelDiameter = wheelDiameter;
 	}
 
-	public Lifter(int talonPort, int upPort, int downPort, int encoderPort1,
+	public Lifter(int talonID, int upPort, int downPort, int encoderPort1,
 			int encoderPort2, double wheelDiameter) {
-		this(new TalonSRX(talonPort), new DigitalInput(upPort),
-				new DigitalInput(downPort), new Encoder(encoderPort1,
-						encoderPort2), wheelDiameter);
+		this(new CANTalon(talonID), new DigitalInput(upPort), new DigitalInput(
+				downPort), new Encoder(encoderPort1, encoderPort2),
+				wheelDiameter);
 	}
 
 	public void set(double s) {

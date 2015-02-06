@@ -22,11 +22,11 @@ public class RobotMap {
 
 	public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
 
-	public static final int FORK_TALON_PORT = 0;
+	public static final int FORK_TALON_ID = 0;
 	public static final int FORK_OPEN_DI_PORT = 0;
 	public static final int FORK_CLOSE_DI_PORT = 0;
 
-	public static final int LIFTER_TALON_PORT = 0;
+	public static final int LIFTER_TALON_ID = 0;
 	public static final int LIFTER_UP_DI_PORT = 0;
 	public static final int LIFTER_DOWN_DI_PORT = 0;
 	public static final int LIFTER_ENCODER_PORT1 = 0;

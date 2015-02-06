@@ -33,11 +33,11 @@ public class Robot extends IterativeRobot {
 	/**
      *
      */
-	public static final Lifter lifter = new Lifter(RobotMap.LIFTER_TALON_PORT,
+	public static final Lifter lifter = new Lifter(RobotMap.LIFTER_TALON_ID,
 			RobotMap.LIFTER_UP_DI_PORT, RobotMap.LIFTER_DOWN_DI_PORT,
 			RobotMap.LIFTER_ENCODER_PORT1, RobotMap.LIFTER_ENCODER_PORT2,
 			RobotMap.LIFTER_WHEEL_DIAMETER);
-	public static final Fork fork = new Fork(RobotMap.FORK_TALON_PORT,
+	public static final Fork fork = new Fork(RobotMap.FORK_TALON_ID,
 			RobotMap.FORK_OPEN_DI_PORT, RobotMap.FORK_CLOSE_DI_PORT);
 	public static OI oi;
 

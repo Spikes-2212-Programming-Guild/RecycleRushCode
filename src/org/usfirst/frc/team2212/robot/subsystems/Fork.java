@@ -5,8 +5,8 @@
  */
 package org.usfirst.frc.team2212.robot.subsystems;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -17,17 +17,17 @@ public class Fork extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private final TalonSRX lock;
+	private final CANTalon lock;
 	private final DigitalInput open, close;
 
-	public Fork(TalonSRX lock, DigitalInput open, DigitalInput close) {
+	public Fork(CANTalon lock, DigitalInput open, DigitalInput close) {
 		this.lock = lock;
 		this.open = open;
 		this.close = close;
 	}
 
-	public Fork(int talonPort, int openPort, int closePort) {
-		this(new TalonSRX(talonPort), new DigitalInput(openPort),
+	public Fork(int talonID, int openPort, int closePort) {
+		this(new CANTalon(talonID), new DigitalInput(openPort),
 				new DigitalInput(closePort));
 	}
 
