@@ -29,7 +29,7 @@ public class Turn extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.turn(oi.getDriverX());
+		driveTrain.turn(oi.getDriverTwist());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
