@@ -19,13 +19,13 @@ import org.usfirst.frc.team2212.robot.subsystems.Lifter;
  */
 public class Robot extends IterativeRobot {
 
-    public static final DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FORWARD_TALON_PORT, RobotMap.LEFT_BACKWARDS_TALON_PORT, RobotMap.RIGHT_FORWARD_TALON_PORT, RobotMap.RIGHT_BACKWARDS_TALON_PORT, RobotMap.MIDDLE_FRONT_TALON_PORT, RobotMap.MIDDLE_BACKWARDS_TALON_PORT,RobotMap.FORWARD_ENCODER_1_PORT, RobotMap.FORWARD_ENCODE2_2_PORT, RobotMap.SIDEWAYS_ENCODER_1_PORT, RobotMap.SIDEWAYS_ENCODER_2_PORT, RobotMap.WHEEL_DIAMETER);
+    public static final DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FORWARD_VICTOR_PORT, RobotMap.LEFT_BACKWARDS_VICTOR_PORT, RobotMap.RIGHT_FORWARD_VICTOR_PORT, RobotMap.RIGHT_BACKWARDS_VICTOR_PORT, RobotMap.MIDDLE_FRONT_VICTOR_PORT, RobotMap.MIDDLE_BACKWARDS_VICTOR_PORT,RobotMap.FORWARD_ENCODER_1_PORT, RobotMap.FORWARD_ENCODE2_2_PORT, RobotMap.SIDEWAYS_ENCODER_1_PORT, RobotMap.SIDEWAYS_ENCODER_2_PORT, RobotMap.WHEEL_DIAMETER);
 
     /**
      *
      */
-    public static final Lifter lifter = new Lifter(RobotMap.LIFTER_ELEVATOR_PORT,RobotMap.LIFTER_UP_PORT, RobotMap.LIFTER_DOWN_PORT, RobotMap.LIFTER_ENCODER_PORT1, RobotMap.LIFTER_ENCODER_PORT2,RobotMap.LIFTER_WHEEL_DIAMETER);
-    public static final Fork fork = new Fork(RobotMap.FORK_LOCK_PORT, RobotMap.FORK_OPEN_PORT, RobotMap.FORK_CLOSE_PORT);
+    public static final Lifter lifter = new Lifter(RobotMap.LIFTER_TALON_PORT,RobotMap.LIFTER_UP_DI_PORT, RobotMap.LIFTER_DOWN_DI_PORT, RobotMap.LIFTER_ENCODER_PORT1, RobotMap.LIFTER_ENCODER_PORT2,RobotMap.LIFTER_WHEEL_DIAMETER);
+    public static final Fork fork = new Fork(RobotMap.FORK_TALON_PORT, RobotMap.FORK_OPEN_DI_PORT, RobotMap.FORK_CLOSE_DI_PORT);
     public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;
 

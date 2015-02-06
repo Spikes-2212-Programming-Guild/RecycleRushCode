@@ -36,9 +36,9 @@ public class Lifter extends Subsystem {
 		this.wheelDiameter = wheelDiameter;
 	}
 
-	public Lifter(int victorPort, int upPort, int downPort, int encoderPort1,
+	public Lifter(int talonPort, int upPort, int downPort, int encoderPort1,
 			int encoderPort2, double wheelDiameter) {
-		this(new TalonSRX(victorPort), new DigitalInput(upPort),
+		this(new TalonSRX(talonPort), new DigitalInput(upPort),
 				new DigitalInput(downPort), new Encoder(encoderPort1,
 						encoderPort2), wheelDiameter);
 	}

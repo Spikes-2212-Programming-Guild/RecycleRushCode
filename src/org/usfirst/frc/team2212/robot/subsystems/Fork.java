@@ -26,8 +26,8 @@ public class Fork extends Subsystem {
 		this.close = close;
 	}
 
-	public Fork(int lockPort, int openPort, int closePort) {
-		this(new TalonSRX(lockPort), new DigitalInput(openPort),
+	public Fork(int talonPort, int openPort, int closePort) {
+		this(new TalonSRX(talonPort), new DigitalInput(openPort),
 				new DigitalInput(closePort));
 	}
 
