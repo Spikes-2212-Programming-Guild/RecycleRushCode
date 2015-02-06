@@ -6,6 +6,7 @@
 package org.usfirst.frc.team2212.robot.subsystems;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.commands.driving.FreeMovement;
 
 import components.Gearbox;
 
@@ -101,7 +102,6 @@ public class DriveTrain extends Subsystem {
 	// here. Call these from Commands.
 	@Override
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new FreeMovement());
 	}
 }
