@@ -3,41 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.usfirst.frc.team2212.robot.commands.driving;
+package org.usfirst.frc.team2212.robot.commands.PID;
 
+import components.PID;
 import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
-import static org.usfirst.frc.team2212.robot.Robot.oi;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class Sideways extends Command {
-
-    public Sideways() {
-        requires(driveTrain);
+public class PIDForward extends Command {
+    private PID pid;
+    
+    public PIDForward(double dest, double KP, double KI, double KD, long DT, double threshold) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(driveTrain);
+        pid = new PID(dest, KP, KI, KD, DT, threshold);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        driveTrain.reset();
+        pid.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.sideways(oi.getDriverX());
+        driveTrain.forward(pid.doPID(driveTrain.forwardGet()));
+        pid.waitForPID();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return pid.hasArrived();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        driveTrain.sideways(0);
+        driveTrain.forward(0);
     }
 
     // Called when another command which requires one or more of the same

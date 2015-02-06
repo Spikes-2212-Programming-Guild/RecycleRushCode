@@ -5,7 +5,12 @@
  */
 package org.usfirst.frc.team2212.robot.subsystems;
 
+import org.usfirst.frc.team2212.robot.RobotMap;
+
 import components.Gearbox;
+
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -15,21 +20,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 
-	private Gearbox left, right;
-	private VictorSP front, rear;
+	private final Gearbox left, right;
+	private final VictorSP front, rear;
+	private final Encoder sideways, forward;
+	private final double wheelDiameter;
+	private final BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
 
-	public DriveTrain(Gearbox left, Gearbox right, VictorSP front, VictorSP rear) {
+	public DriveTrain(Gearbox left, Gearbox right, VictorSP front,
+			VictorSP rear, Encoder forward, Encoder sideways,
+			double wheelDiameter) {
 		this.left = left;
 		this.right = right;
 		this.front = front;
 		this.rear = rear;
+		this.forward = forward;
+		this.sideways = sideways;
+		this.wheelDiameter = wheelDiameter;
 	}
 
 	public DriveTrain(int leftForward, int leftBackwards, int rightForward,
-			int rightBackwards, int middleFront, int middleRear) {
+			int rightBackwards, int middleFront, int middleRear,
+			int forwardEncoderPort1, int forwardEncoderPort2,
+			int sidewaysEncoderPort1, int sidewaysEncoderPort2,
+			double wheelDiameter) {
 		this(new Gearbox(leftForward, leftBackwards), new Gearbox(rightForward,
 				rightBackwards), new VictorSP(middleFront), new VictorSP(
-				middleRear));
+				middleRear), new Encoder(forwardEncoderPort1,
+				forwardEncoderPort2), new Encoder(sidewaysEncoderPort1,
+				sidewaysEncoderPort2), wheelDiameter);
 	}
 
 	public void forward(double speed) {
@@ -46,9 +64,9 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void sideways(double speed) {
-		// positive to go left
-		front.set(speed);
-		rear.set(-speed);
+		// positive to go right
+		front.set(-speed);
+		rear.set(speed);
 	}
 
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
@@ -56,9 +74,32 @@ public class DriveTrain extends Subsystem {
 		sideways(sidewaysSpeed);
 	}
 
+	public double forwardGet() {
+		return wheelDiameter * Math.PI
+				* (forward.get() / RobotMap.ENCODER_TICKS_IN_FULL_TURN);
+	}
+
+	public double sidewaysGet() {
+		return wheelDiameter * Math.PI
+				* (sideways.get() / RobotMap.ENCODER_TICKS_IN_FULL_TURN);
+	}
+
+	public void reset() {
+		sideways.reset();
+		forward.reset();
+	}
+
+	public double getXAcceleration() {
+		return accelerometer.getX();
+	}
+
+	public double getYAcceleration() {
+		return accelerometer.getY();
+	}
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-
+	@Override
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());

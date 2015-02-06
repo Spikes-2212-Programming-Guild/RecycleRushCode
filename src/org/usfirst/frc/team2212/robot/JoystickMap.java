@@ -12,5 +12,6 @@ import edu.wpi.first.wpilibj.Joystick;
  * @author ThinkRedstone
  */
 public class JoystickMap {
-	protected Joystick driverJ = new Joystick(0);
+    protected Joystick driverJ = new Joystick(0);
+    protected Joystick navJ = new Joystick(0);
 }

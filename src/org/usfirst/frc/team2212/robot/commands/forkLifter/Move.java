@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.usfirst.frc.team2212.robot.commands.driving;
+package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import edu.wpi.first.wpilibj.command.Command;
-import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.lifter;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class Sideways extends Command {
-
-    public Sideways() {
-        requires(driveTrain);
+public class Move extends Command {
+    
+    public Move() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(lifter);
     }
 
     // Called just before this Command runs the first time
@@ -27,17 +27,18 @@ public class Sideways extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.sideways(oi.getDriverX());
+        lifter.set(oi.getNavY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return lifter.isDown() || lifter.isUp();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        driveTrain.sideways(0);
+        lifter.verifyLevel();
+        lifter.set(0);
     }
 
     // Called when another command which requires one or more of the same
