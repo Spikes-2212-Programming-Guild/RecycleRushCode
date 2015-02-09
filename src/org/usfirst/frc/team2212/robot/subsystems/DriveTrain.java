@@ -75,6 +75,18 @@ public class DriveTrain extends Subsystem {
 		sideways(sidewaysSpeed);
 	}
 
+	public void freeMovement(double forwardSpeed, double sidewaysSpeed,
+			double turnSpeed) {
+		if (Math.abs(turnSpeed) > RobotMap.TURN_TOLERANCE) {
+			front.set(turnSpeed);
+			rear.set(turnSpeed);
+			left.set(forwardSpeed + turnSpeed);
+			right.set(-forwardSpeed - turnSpeed);
+		} else {
+			freeMovement(forwardSpeed, sidewaysSpeed);
+		}
+	}
+
 	public double forwardGet() {
 		return wheelDiameter * Math.PI
 				* (forward.get() / RobotMap.ENCODER_TICKS_IN_FULL_TURN);
