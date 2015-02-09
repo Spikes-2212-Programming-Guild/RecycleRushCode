@@ -23,32 +23,36 @@ public class DriveTrain extends Subsystem {
 
 	private final Gearbox left, right;
 	private final VictorSP front, rear;
-	private final Encoder sideways, forward;
 	private final double wheelDiameter;
 	private final BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
+	private final Encoder leftE, rightE, frontE, rearE;
 
 	public DriveTrain(Gearbox left, Gearbox right, VictorSP front,
-			VictorSP rear, Encoder forward, Encoder sideways,
-			double wheelDiameter) {
+			VictorSP rear, Encoder leftE, Encoder rightE, Encoder frontE,
+			Encoder rearE, double wheelDiameter) {
 		this.left = left;
 		this.right = right;
 		this.front = front;
 		this.rear = rear;
-		this.forward = forward;
-		this.sideways = sideways;
+		this.frontE = frontE;
+		this.rearE = rearE;
+		this.leftE = leftE;
+		this.rightE = rightE;
 		this.wheelDiameter = wheelDiameter;
 	}
 
 	public DriveTrain(int leftForward, int leftBackwards, int rightForward,
 			int rightBackwards, int middleFront, int middleRear,
-			int forwardEncoderPort1, int forwardEncoderPort2,
-			int sidewaysEncoderPort1, int sidewaysEncoderPort2,
+			int leftEncoderPort1, int leftEncoderPort2, int rightEncoderPort1,
+			int rightEncoderPort2, int frontEncoderPort1,
+			int frontEncoderPort2, int rearEncoderPort1, int rearEncoderPort2,
 			double wheelDiameter) {
 		this(new Gearbox(leftForward, leftBackwards), new Gearbox(rightForward,
 				rightBackwards), new VictorSP(middleFront), new VictorSP(
-				middleRear), new Encoder(forwardEncoderPort1,
-				forwardEncoderPort2), new Encoder(sidewaysEncoderPort1,
-				sidewaysEncoderPort2), wheelDiameter);
+				middleRear), new Encoder(leftEncoderPort1, leftEncoderPort2),
+				new Encoder(rightEncoderPort1, rightEncoderPort2), new Encoder(
+						frontEncoderPort1, frontEncoderPort2), new Encoder(
+						rearEncoderPort1, rearEncoderPort2), wheelDiameter);
 	}
 
 	public void forward(double speed) {
@@ -57,6 +61,9 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turn(double speed) {
+		if (Math.abs(speed) > 0.3) {
+			speed = Math.signum(speed) * 0.3;
+		}
 		left.set(speed);
 		right.set(speed);
 		// omni turn inculded
@@ -75,6 +82,19 @@ public class DriveTrain extends Subsystem {
 		sideways(sidewaysSpeed);
 	}
 
+	public void fixedForward(double speed) {
+		if (Math.abs(getLeft() - getRight()) > RobotMap.FIXED_TOLARANCE) {
+			if (getLeft() > getRight()) {
+				front.set(speed * (getRight() / getLeft()));
+				rear.set(speed);
+			} else {
+				front.set(speed);
+				rear.set(speed * (getLeft() / getRight()));
+			}
+		}
+		reset();
+	}
+
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed,
 			double turnSpeed) {
 		if (Math.abs(turnSpeed) > RobotMap.TURN_TOLERANCE) {
@@ -87,19 +107,27 @@ public class DriveTrain extends Subsystem {
 		}
 	}
 
-	public double forwardGet() {
-		return wheelDiameter * Math.PI
-				* (forward.get() / RobotMap.ENCODER_TICKS_IN_FULL_TURN);
-	}
-
-	public double sidewaysGet() {
-		return wheelDiameter * Math.PI
-				* (sideways.get() / RobotMap.ENCODER_TICKS_IN_FULL_TURN);
-	}
-
 	public void reset() {
-		sideways.reset();
-		forward.reset();
+		rightE.reset();
+		leftE.reset();
+		frontE.reset();
+		rearE.reset();
+	}
+
+	public double getRight() {
+		return rightE.get() * Math.PI;
+	}
+
+	public double getLeft() {
+		return leftE.get() * Math.PI;
+	}
+
+	public double getFront() {
+		return frontE.get() * Math.PI;
+	}
+
+	public double getRear() {
+		return rearE.get() * Math.PI;
 	}
 
 	public double getXAcceleration() {

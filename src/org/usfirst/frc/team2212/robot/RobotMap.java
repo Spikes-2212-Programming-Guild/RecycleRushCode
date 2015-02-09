@@ -14,14 +14,18 @@ public class RobotMap {
 	public static final int RIGHT_BACKWARDS_VICTOR_PORT = 0;
 	public static final int MIDDLE_FRONT_VICTOR_PORT = 0;
 	public static final int MIDDLE_BACKWARDS_VICTOR_PORT = 0;
-	public static final int FORWARD_ENCODER_1_PORT = 0;
-	public static final int FORWARD_ENCODE2_2_PORT = 0;
-	public static final int SIDEWAYS_ENCODER_1_PORT = 0;
-	public static final int SIDEWAYS_ENCODER_2_PORT = 0;
+	public static final int LEFT_ENCODER_1_PORT = 0;
+	public static final int LEFT_ENCODER_2_PORT = 0;
+	public static final int RIGHT_ENCODER_1_PORT = 0;
+	public static final int RIGHT_ENCODER_2_PORT = 0;
+	public static final int FRONT_ENCODER_1_PORT = 0;
+	public static final int FRONT_ENCODER_2_PORT = 0;
+	public static final int REAR_ENCODER_1_PORT = 0;
+	public static final int REAR_ENCODER_2_PORT = 0;
+
 	public static final double WHEEL_DIAMETER = 0;
-
+	public static final double FIXED_TOLARANCE = 0;
 	public static final double TURN_TOLERANCE = 0.01;
-
 	public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
 
 	public static final int FORK_TALON_ID = 0;
