@@ -115,19 +115,19 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public double getRight() {
-		return rightE.get() * Math.PI;
+		return rightE.get() * Math.PI * wheelDiameter;
 	}
 
 	public double getLeft() {
-		return leftE.get() * Math.PI;
+		return leftE.get() * Math.PI * wheelDiameter;
 	}
 
 	public double getFront() {
-		return frontE.get() * Math.PI;
+		return frontE.get() * Math.PI * wheelDiameter;
 	}
 
 	public double getRear() {
-		return rearE.get() * Math.PI;
+		return rearE.get() * Math.PI * wheelDiameter;
 	}
 
 	public double getXAcceleration() {
