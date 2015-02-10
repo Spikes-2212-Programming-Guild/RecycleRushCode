@@ -61,8 +61,8 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turn(double speed) {
-		if (Math.abs(speed) > 0.3) {
-			speed = Math.signum(speed) * 0.3;
+		if (Math.abs(speed) > RobotMap.MAX_TURN_SPEED) {
+			speed = Math.signum(speed) * RobotMap.MAX_TURN_SPEED;
 		}
 		left.set(speed);
 		right.set(speed);
