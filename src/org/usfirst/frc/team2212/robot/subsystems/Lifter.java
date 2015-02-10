@@ -21,30 +21,32 @@ public class Lifter extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private final CANTalon elevator;
+	private final CANTalon elevator1, elevator2;
 	private final DigitalInput up, down;
 	private final Encoder encoder;
 	private final double wheelDiameter;
 	private int currentLevel;
 
-	public Lifter(CANTalon elevator, DigitalInput up, DigitalInput down,
-			Encoder encoder, double wheelDiameter) {
-		this.elevator = elevator;
+	public Lifter(CANTalon elevator1, CANTalon elevator2, DigitalInput up,
+			DigitalInput down, Encoder encoder, double wheelDiameter) {
+		this.elevator1 = elevator1;
+		this.elevator2 = elevator2;
 		this.up = up;
 		this.down = down;
 		this.encoder = encoder;
 		this.wheelDiameter = wheelDiameter;
 	}
 
-	public Lifter(int talonID, int upPort, int downPort, int encoderPort1,
-			int encoderPort2, double wheelDiameter) {
-		this(new CANTalon(talonID), new DigitalInput(upPort), new DigitalInput(
-				downPort), new Encoder(encoderPort1, encoderPort2),
-				wheelDiameter);
+	public Lifter(int talon1ID, int talon2ID, int upPort, int downPort,
+			int encoderPort1, int encoderPort2, double wheelDiameter) {
+		this(new CANTalon(talon1ID), new CANTalon(talon2ID), new DigitalInput(
+				upPort), new DigitalInput(downPort), new Encoder(encoderPort1,
+				encoderPort2), wheelDiameter);
 	}
 
 	public void set(double s) {
-		elevator.set(s);
+		elevator1.set(s);
+		elevator2.set(s);
 	}
 
 	public boolean isUp() {
