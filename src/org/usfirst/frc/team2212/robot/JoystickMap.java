@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class JoystickMap {
 
 	protected Joystick driverJoystick = new Joystick(0);
-	protected Joystick navJoystick = new Joystick(0);
+	protected Joystick navJoystick = new Joystick(1);
 
 	protected Button UP_BUTTON = new JoystickButton(navJoystick, 3);
 	protected Button DOWN_BUTTON = new JoystickButton(navJoystick, 2);
