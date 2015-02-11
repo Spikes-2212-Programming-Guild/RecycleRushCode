@@ -45,8 +45,8 @@ public class Lifter extends Subsystem {
 	}
 
 	public void set(double s) {
-		elevator1.set(s);
-		elevator2.set(s);
+		elevator1.set(-s);
+		elevator2.set(-s);
 	}
 
 	public boolean isUp() {
