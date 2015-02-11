@@ -105,8 +105,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		if (!putData.isRunning())
-			putData.start();
+		putData.cancel();
 		driveTrain.reset();
 		lifter.reset();
 	}
