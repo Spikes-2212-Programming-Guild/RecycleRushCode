@@ -18,6 +18,7 @@ public class PutData extends Command {
 		SmartDashboard.putNumber("Right Encoder", driveTrain.getRight());
 		SmartDashboard.putNumber("Front Encoder", driveTrain.getFront());
 		SmartDashboard.putNumber("Rear Encoder", driveTrain.getRear());
+		SmartDashboard.putNumber("Lifter Encoder", lifter.get());
 		SmartDashboard.putBoolean("Lifter Up", lifter.isUp());
 		SmartDashboard.putBoolean("Lifter Down", lifter.isDown());
 		SmartDashboard.putBoolean("Fork Open", fork.isOpen());
