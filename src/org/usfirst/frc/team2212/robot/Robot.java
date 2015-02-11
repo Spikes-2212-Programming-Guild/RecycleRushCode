@@ -93,8 +93,9 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
-		if (!putData.isRunning())
+		if (!putData.isRunning()) {
 			putData.start();
+		}
 		driveTrain.reset();
 		lifter.reset();
 	}
@@ -124,5 +125,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+
 	}
 }
