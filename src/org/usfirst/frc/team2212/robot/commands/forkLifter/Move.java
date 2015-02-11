@@ -5,45 +5,54 @@
  */
 package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
-import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  * @author ThinkRedstone
  */
 public class Move extends Command {
-    
-    public Move() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-        requires(lifter);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public Move() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(lifter);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        lifter.set(oi.getNavY());
-    }
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() {
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return lifter.isDown() || lifter.isUp();
-    }
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
+		if ((oi.getNavY() < 0/* for going up */&& lifter.isUp())
+				|| (oi.getNavY() > 0 && lifter.isDown())) {
+			return;
+		}
+		lifter.set(oi.getNavY());
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-        lifter.verifyLevel();
-        lifter.set(0);
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
+	protected boolean isFinished() {
+		return lifter.isDown() || lifter.isUp();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-        end();
-    }
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+		lifter.verifyLevel();
+		lifter.set(0);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+		end();
+	}
 }
