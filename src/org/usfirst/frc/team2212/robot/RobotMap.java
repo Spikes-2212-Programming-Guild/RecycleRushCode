@@ -38,8 +38,8 @@ public class RobotMap {
 
 	public static final int LIFTER_TALON_1_ID = 1;
 	public static final int LIFTER_TALON_2_ID = 2;
-	public static final int LIFTER_UP_DI_PORT = 12;
-	public static final int LIFTER_DOWN_DI_PORT = 13;
+	public static final int LIFTER_UP_DI_PORT = 22;
+	public static final int LIFTER_DOWN_DI_PORT = 23;
 	public static final int LIFTER_ENCODER_PORT1 = 6;
 	public static final int LIFTER_ENCODER_PORT2 = 7;
 
