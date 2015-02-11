@@ -11,50 +11,51 @@ package components;
  */
 public class PID {
 
-    private final double DESTINATION, KP, KI, KD, THRESHOLD;
-    private final long DT;
-    private double p, i, d, error, prevError;
+	private final double destination, kp, ki, kd, threshold;
+	private final long dt;
+	private double p, i, d, error, prevError;
 
-    public PID(double DESTINATION, double KP, double KI, double KD, long DT, double THRESHOLD) {
-        this.DESTINATION = DESTINATION;
-        this.KP = KP;
-        this.KI = KI;
-        this.KD = KD;
-        this.DT = DT;
-        this.THRESHOLD = THRESHOLD;
-        reset();
-    }
+	public PID(double destination, double kp, double ki, double kd, long dt,
+			double threshold) {
+		this.destination = destination;
+		this.kp = kp;
+		this.ki = ki;
+		this.kd = kd;
+		this.dt = dt;
+		this.threshold = threshold;
+		reset();
+	}
 
-    public double doPID(double in) {
-        prevError = error;
-        error = DESTINATION - in;
-        p = KP * error;
-        i += KI * DT * error;
-        d = KD * (prevError - error) / DT;
-        return (p + i + d);
-//		long prevTime = System.currentTimeMillis();
-//		while (System.currentTimeMillis() - prevTime < DT)
-//			prevTime = System.currentTimeMillis();
+	public double doPID(double in) {
+		prevError = error;
+		error = destination - in;
+		p = kp * error;
+		i += ki * dt * error;
+		d = kd * (prevError - error) / dt;
+		return (p + i + d);
+		// long prevTime = System.currentTimeMillis();
+		// while (System.currentTimeMillis() - prevTime < DT)
+		// prevTime = System.currentTimeMillis();
 
-    }
+	}
 
-    public void waitForPID() {
-        long prevTime = System.currentTimeMillis();
-        while (System.currentTimeMillis() - prevTime < DT) {
-            prevTime = System.currentTimeMillis();
-        }
-    }
+	public void waitForPID() {
+		long prevTime = System.currentTimeMillis();
+		while (System.currentTimeMillis() - prevTime < dt) {
+			prevTime = System.currentTimeMillis();
+		}
+	}
 
-    public boolean hasArrived() {
-        return Math.abs(error) < THRESHOLD;
-    }
+	public boolean hasArrived() {
+		return Math.abs(error) < threshold;
+	}
 
-    public void reset() {
-        p = 0;
-        i = 0;
-        d = 0;
-        error = DESTINATION;
-        prevError = error;
-    }
+	public void reset() {
+		p = 0;
+		i = 0;
+		d = 0;
+		error = destination;
+		prevError = error;
+	}
 
 }
