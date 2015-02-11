@@ -8,6 +8,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PutData extends Command {
 
+	public PutData() {
+
+	}
+
 	@Override
 	protected void initialize() {
 	}

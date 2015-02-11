@@ -63,8 +63,8 @@ public class Lifter extends Subsystem {
 	}
 
 	public double get() {
-		return encoder.get() * RobotMap.ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+		return encoder.get() / (double) RobotMap.ENCODER_TICKS_IN_FULL_TURN
+				* Math.PI * wheelDiameter;
 	}
 
 	public void reset() {

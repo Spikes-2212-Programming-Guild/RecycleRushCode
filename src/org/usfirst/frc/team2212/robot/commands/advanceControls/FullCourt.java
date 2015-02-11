@@ -7,8 +7,9 @@ package org.usfirst.frc.team2212.robot.commands.advanceControls;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import static org.usfirst.frc.team2212.robot.RobotMap.*;
-import org.usfirst.frc.team2212.robot.commands.PID.PIDForward;
-import org.usfirst.frc.team2212.robot.commands.PID.PIDSideways;
+
+import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
+import org.usfirst.frc.team2212.robot.commands.pid.PIDSideways;
 
 /**
  *

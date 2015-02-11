@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.usfirst.frc.team2212.robot.commands.PID;
+package org.usfirst.frc.team2212.robot.commands.pid;
 
 import components.PID;
 import edu.wpi.first.wpilibj.command.Command;
