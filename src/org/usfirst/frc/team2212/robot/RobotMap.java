@@ -44,7 +44,7 @@ public class RobotMap {
 	public static final int LIFTER_ENCODER_PORT2 = 11; // 1, 2, 3
 
 	public static final double LIFTER_UP_SPEED = 0.4;
-	public static final double LIFTER_DOWN_SPEED = 0.1;
+	public static final double LIFTER_DOWN_SPEED = -0.142;
 	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
 	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0;
 	public static final double LIFTER_STAY_SPEED = 0.15;
