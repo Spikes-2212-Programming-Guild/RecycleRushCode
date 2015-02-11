@@ -48,7 +48,7 @@ public class RobotMap {
 	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
 	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0;
 	public static final double LIFTER_STAY_SPEED = 0.15;
-	public static final double LIFTER_WHEEL_DIAMETER = 0;
+	public static final double LIFTER_WHEEL_DIAMETER = 1;
 	public static final int MAX_LIFTER_LEVEL = 6;
 
 	public static final double AUTO_FORWARD_DEST = 0;
