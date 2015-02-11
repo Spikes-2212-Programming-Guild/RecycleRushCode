@@ -31,8 +31,10 @@ public class Fork extends Subsystem {
 	}
 
 	public Fork(int talonID, int open1Port, int open2Port, int closePort) {
-		this(new CANTalon(talonID), new DigitalInput(open1Port),
-				new DigitalInput(open2Port), new DigitalInput(closePort));
+		this(new CANTalon(talonID), open1Port == -1 ? null : new DigitalInput(
+				open1Port), open2Port == -1 ? null
+				: new DigitalInput(open2Port), closePort == -1 ? null
+				: new DigitalInput(closePort));
 	}
 
 	public void open() {
@@ -50,11 +52,15 @@ public class Fork extends Subsystem {
 	}
 
 	public boolean isClosed() {
-		return !close.get();
+		if (close != null)
+			return !close.get();
+		return false;
 	}
 
 	public boolean isOpen() {
-		return !open1.get() || !open2.get();
+		if (open1 != null && open2 != null)
+			return !open1.get() || !open2.get();
+		return false;
 	}
 
 	@Override

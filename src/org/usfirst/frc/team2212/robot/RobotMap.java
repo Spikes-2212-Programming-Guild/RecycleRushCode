@@ -14,14 +14,14 @@ public class RobotMap {
 	public static final int RIGHT_BACKWARDS_VICTOR_PORT = 1;
 	public static final int MIDDLE_FRONT_VICTOR_PORT = 4;
 	public static final int MIDDLE_BACKWARDS_VICTOR_PORT = 5;
-	public static final int LEFT_ENCODER_1_PORT = 3;
-	public static final int LEFT_ENCODER_2_PORT = 4;
-	public static final int RIGHT_ENCODER_1_PORT = 7;
-	public static final int RIGHT_ENCODER_2_PORT = 8;
-	public static final int FRONT_ENCODER_1_PORT = 17; // 7
-	public static final int FRONT_ENCODER_2_PORT = 18; // 8, 9, 10
-	public static final int REAR_ENCODER_1_PORT = 5;
-	public static final int REAR_ENCODER_2_PORT = 6;
+	public static final int LEFT_ENCODER_1_PORT = 2;
+	public static final int LEFT_ENCODER_2_PORT = 3;
+	public static final int RIGHT_ENCODER_1_PORT = 8;
+	public static final int RIGHT_ENCODER_2_PORT = 9;
+	public static final int FRONT_ENCODER_1_PORT = 0; // 7
+	public static final int FRONT_ENCODER_2_PORT = 1; // 8, 9, 10
+	public static final int REAR_ENCODER_1_PORT = 6;
+	public static final int REAR_ENCODER_2_PORT = 7;
 
 	public static final double MAX_TURN_SPEED = 0.3;
 	public static final double WHEEL_DIAMETER = 6; // inches
@@ -30,18 +30,18 @@ public class RobotMap {
 	public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
 
 	public static final int FORK_TALON_ID = 3;
-	public static final int FORK_OPEN_DI_1_PORT = 1;
-	public static final int FORK_OPEN_DI_2_PORT = 2;
-	public static final int FORK_CLOSE_DI_PORT = 23; // 13
+	public static final int FORK_OPEN_DI_1_PORT = -1;
+	public static final int FORK_OPEN_DI_2_PORT = -1;
+	public static final int FORK_CLOSE_DI_PORT = -1; // 13
 
 	public static final double FORK_SPEED = 0.6;
 
 	public static final int LIFTER_TALON_1_ID = 1;
 	public static final int LIFTER_TALON_2_ID = 2;
-	public static final int LIFTER_UP_DI_PORT = 9;
-	public static final int LIFTER_DOWN_DI_PORT = 0;
-	public static final int LIFTER_ENCODER_PORT1 = 10; // 0
-	public static final int LIFTER_ENCODER_PORT2 = 11; // 1, 2, 3
+	public static final int LIFTER_UP_DI_PORT = -1;
+	public static final int LIFTER_DOWN_DI_PORT = -1;
+	public static final int LIFTER_ENCODER_PORT1 = 4; // 0
+	public static final int LIFTER_ENCODER_PORT2 = 5; // 1, 2, 3
 
 	public static final double LIFTER_UP_SPEED = 0.4;
 	public static final double LIFTER_DOWN_SPEED = -0.142;

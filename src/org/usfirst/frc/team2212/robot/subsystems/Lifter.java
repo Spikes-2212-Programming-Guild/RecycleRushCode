@@ -39,9 +39,10 @@ public class Lifter extends Subsystem {
 
 	public Lifter(int talon1ID, int talon2ID, int upPort, int downPort,
 			int encoderPort1, int encoderPort2, double wheelDiameter) {
-		this(new CANTalon(talon1ID), new CANTalon(talon2ID), new DigitalInput(
-				upPort), new DigitalInput(downPort), new Encoder(encoderPort1,
-				encoderPort2), wheelDiameter);
+		this(new CANTalon(talon1ID), new CANTalon(talon2ID),
+				upPort == -1 ? null : new DigitalInput(upPort),
+				downPort == -1 ? null : new DigitalInput(downPort),
+				new Encoder(encoderPort1, encoderPort2), wheelDiameter);
 	}
 
 	public void set(double s) {
@@ -50,11 +51,15 @@ public class Lifter extends Subsystem {
 	}
 
 	public boolean isUp() {
-		return up.get();
+		if (up != null)
+			return up.get();
+		return false;
 	}
 
 	public boolean isDown() {
-		return down.get();
+		if (down != null)
+			return down.get();
+		return false;
 	}
 
 	public double get() {
@@ -96,10 +101,10 @@ public class Lifter extends Subsystem {
 	}
 
 	public void verifyLevel() {
-		if (down.get()) {
+		if (down != null && down.get()) {
 			this.resetLevel();
 		}
-		if (up.get()) {
+		if (up != null && up.get()) {
 			this.setLevel(RobotMap.MAX_LIFTER_LEVEL);
 		}
 	}
