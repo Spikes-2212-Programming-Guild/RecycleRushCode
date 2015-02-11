@@ -53,8 +53,10 @@ public class DriveTrain extends Subsystem {
 				rightBackwards), new VictorSP(middleFront), new VictorSP(
 				middleRear), new Encoder(leftEncoderPort1, leftEncoderPort2),
 				new Encoder(rightEncoderPort1, rightEncoderPort2), new Encoder(
-						frontEncoderPort1, frontEncoderPort2), new Encoder(
-						rearEncoderPort1, rearEncoderPort2), wheelDiameter);
+						frontEncoderPort1, frontEncoderPort2),
+				rearEncoderPort1 == -1 || rearEncoderPort2 == -1 ? null
+						: new Encoder(rearEncoderPort1, rearEncoderPort2),
+				wheelDiameter);
 	}
 
 	public void forward(double speed) {
