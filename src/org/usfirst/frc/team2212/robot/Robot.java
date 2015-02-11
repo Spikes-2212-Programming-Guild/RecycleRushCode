@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.AutonomousCommand;
+import org.usfirst.frc.team2212.robot.commands.PutData;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autonomousCommand;
+	Command putData;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -55,6 +57,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		// instantiate the command used for the autonomous period
 		autonomousCommand = new AutonomousCommand();
+		putData = new PutData();
 	}
 
 	@Override
@@ -68,6 +71,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
+		putData.start();
 	}
 
 	/**
@@ -87,6 +91,8 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+		if (!putData.isRunning())
+			putData.start();
 	}
 
 	/**
@@ -95,7 +101,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		putData.cancel();
 	}
 
 	/**
