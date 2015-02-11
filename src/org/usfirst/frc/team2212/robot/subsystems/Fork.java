@@ -58,9 +58,11 @@ public class Fork extends Subsystem {
 	}
 
 	public boolean isOpen() {
-		if (open1 != null && open2 != null)
-			return !open1.get() || !open2.get();
-		return false;
+		if (open1 == null)
+			return !open2.get();
+		else if (open2 == null)
+			return !open1.get();
+		return !open1.get() || !open2.get();
 	}
 
 	@Override
