@@ -18,17 +18,19 @@ public class Fork extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	private final CANTalon lock;
-	private final DigitalInput open, close;
+	private final DigitalInput open1, open2, close;
 
-	public Fork(CANTalon lock, DigitalInput open, DigitalInput close) {
+	public Fork(CANTalon lock, DigitalInput open1, DigitalInput open2,
+			DigitalInput close) {
 		this.lock = lock;
-		this.open = open;
+		this.open1 = open1;
+		this.open2 = open2;
 		this.close = close;
 	}
 
-	public Fork(int talonID, int openPort, int closePort) {
-		this(new CANTalon(talonID), new DigitalInput(openPort),
-				new DigitalInput(closePort));
+	public Fork(int talonID, int open1Port, int open2Port, int closePort) {
+		this(new CANTalon(talonID), new DigitalInput(open1Port),
+				new DigitalInput(open2Port), new DigitalInput(closePort));
 	}
 
 	public void open() {
@@ -50,7 +52,7 @@ public class Fork extends Subsystem {
 	}
 
 	public boolean isOpen() {
-		return open.get();
+		return open1.get() || open2.get();
 	}
 
 	@Override

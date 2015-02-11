@@ -18,8 +18,8 @@ public class RobotMap {
 	public static final int LEFT_ENCODER_2_PORT = 4;
 	public static final int RIGHT_ENCODER_1_PORT = 7;
 	public static final int RIGHT_ENCODER_2_PORT = 8;
-	public static final int FRONT_ENCODER_1_PORT = 1;
-	public static final int FRONT_ENCODER_2_PORT = 2;
+	public static final int FRONT_ENCODER_1_PORT = -1; // 7
+	public static final int FRONT_ENCODER_2_PORT = -1; // 8, 9, 10
 	public static final int REAR_ENCODER_1_PORT = 5;
 	public static final int REAR_ENCODER_2_PORT = 6;
 
@@ -30,15 +30,16 @@ public class RobotMap {
 	public static final int ENCODER_TICKS_IN_FULL_TURN = 0;
 
 	public static final int FORK_TALON_ID = 3;
-	public static final int FORK_OPEN_DI_PORT = -1;
+	public static final int FORK_OPEN_DI_1_PORT = 1;
+	public static final int FORK_OPEN_DI_2_PORT = 2;
 	public static final int FORK_CLOSE_DI_PORT = -1;
 
 	public static final int LIFTER_TALON_1_ID = 1;
 	public static final int LIFTER_TALON_2_ID = 2;
 	public static final int LIFTER_UP_DI_PORT = 9;
 	public static final int LIFTER_DOWN_DI_PORT = 0;
-	public static final int LIFTER_ENCODER_PORT1 = -1;
-	public static final int LIFTER_ENCODER_PORT2 = -1;
+	public static final int LIFTER_ENCODER_PORT1 = -1; // 0
+	public static final int LIFTER_ENCODER_PORT2 = -1; // 1, 2, 3
 	public static final double LIFTER_UP_SPEED = 0.1;
 	public static final double LIFTER_DOWN_SPEED = 0.1;
 	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
