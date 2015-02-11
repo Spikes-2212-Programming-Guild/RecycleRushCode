@@ -27,7 +27,7 @@ public class RobotMap {
 	public static final double WHEEL_DIAMETER = 6; // inches
 	public static final double FIXED_TOLARANCE = 0;
 	public static final double TURN_TOLERANCE = 0.01;
-	public static final int ENCODER_TICKS_IN_FULL_TURN = 0;
+	public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
 
 	public static final int FORK_TALON_ID = 3;
 	public static final int FORK_OPEN_DI_1_PORT = 1;
