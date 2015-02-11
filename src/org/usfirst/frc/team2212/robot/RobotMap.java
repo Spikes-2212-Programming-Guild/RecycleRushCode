@@ -34,6 +34,8 @@ public class RobotMap {
 	public static final int FORK_OPEN_DI_2_PORT = 2;
 	public static final int FORK_CLOSE_DI_PORT = 23; // 13
 
+	public static final double FORK_SPEED = 0.3;
+
 	public static final int LIFTER_TALON_1_ID = 1;
 	public static final int LIFTER_TALON_2_ID = 2;
 	public static final int LIFTER_UP_DI_PORT = 9;

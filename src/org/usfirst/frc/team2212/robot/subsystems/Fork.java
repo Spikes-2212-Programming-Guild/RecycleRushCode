@@ -5,6 +5,8 @@
  */
 package org.usfirst.frc.team2212.robot.subsystems;
 
+import org.usfirst.frc.team2212.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -35,12 +37,12 @@ public class Fork extends Subsystem {
 
 	public void open() {
 		// assuming forward for open
-		lock.set(1);
+		lock.set(RobotMap.FORK_SPEED);
 	}
 
 	public void close() {
 		// assuming forward for open
-		lock.set(-1);
+		lock.set(-RobotMap.FORK_SPEED);
 	}
 
 	public void stop() {
@@ -48,11 +50,11 @@ public class Fork extends Subsystem {
 	}
 
 	public boolean isClosed() {
-		return close.get();
+		return !close.get();
 	}
 
 	public boolean isOpen() {
-		return open1.get() || open2.get();
+		return !open1.get() || !open2.get();
 	}
 
 	@Override
