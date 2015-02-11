@@ -89,11 +89,11 @@ public class DriveTrain extends Subsystem {
 	public void fixedForward(double speed) {
 		if (Math.abs(getLeft() - getRight()) > RobotMap.FIXED_TOLARANCE) {
 			if (getLeft() > getRight()) {
-				front.set(speed * (getRight() / getLeft()));
-				rear.set(speed);
+				front.set(-speed * (getRight() / getLeft()));
+				rear.set(-speed);
 			} else {
-				front.set(speed);
-				rear.set(speed * (getLeft() / getRight()));
+				front.set(-speed);
+				rear.set(-speed * (getLeft() / getRight()));
 			}
 		}
 		reset();
@@ -115,12 +115,13 @@ public class DriveTrain extends Subsystem {
 		rightE.reset();
 		leftE.reset();
 		frontE.reset();
-		rearE.reset();
+		if (rearE != null)
+			rearE.reset();
 	}
 
-	public double getRight() {
-		return rightE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+	public double getRear() {
+		return rearE == null ? 0 : rightE.get()
+				/ (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI * wheelDiameter;
 	}
 
 	public double getLeft() {
@@ -133,8 +134,8 @@ public class DriveTrain extends Subsystem {
 				* wheelDiameter;
 	}
 
-	public double getRear() {
-		return rearE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
+	public double getRight() {
+		return rightE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
 				* wheelDiameter;
 	}
 

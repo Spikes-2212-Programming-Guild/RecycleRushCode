@@ -52,7 +52,7 @@ public class Lifter extends Subsystem {
 
 	public boolean isUp() {
 		if (up != null)
-			return up.get();
+			return !up.get();
 		return false;
 	}
 
