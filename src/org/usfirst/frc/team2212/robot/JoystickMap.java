@@ -21,7 +21,7 @@ public class JoystickMap {
 	protected Button UP_BUTTON = new JoystickButton(navJoystick, 3);
 	protected Button DOWN_BUTTON = new JoystickButton(navJoystick, 2);
 	protected Button OPEN_BUTTON = new JoystickButton(navJoystick, 5);
-	protected Button CLOSE_BUTTON = new JoystickButton(navJoystick, 6);
+	protected Button CLOSE_BUTTON = new JoystickButton(navJoystick, 4);
 
 	protected Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 1);
 	protected Button SIDEWAYS_BUTTON = new JoystickButton(driverJoystick, 2);
