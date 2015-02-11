@@ -34,7 +34,7 @@ public class RobotMap {
 	public static final int FORK_OPEN_DI_2_PORT = 2;
 	public static final int FORK_CLOSE_DI_PORT = 23; // 13
 
-	public static final double FORK_SPEED = 0.3;
+	public static final double FORK_SPEED = 0.6;
 
 	public static final int LIFTER_TALON_1_ID = 1;
 	public static final int LIFTER_TALON_2_ID = 2;
@@ -42,7 +42,8 @@ public class RobotMap {
 	public static final int LIFTER_DOWN_DI_PORT = 0;
 	public static final int LIFTER_ENCODER_PORT1 = 10; // 0
 	public static final int LIFTER_ENCODER_PORT2 = 11; // 1, 2, 3
-	public static final double LIFTER_UP_SPEED = 0.1;
+
+	public static final double LIFTER_UP_SPEED = 0.4;
 	public static final double LIFTER_DOWN_SPEED = 0.1;
 	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
 	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0;

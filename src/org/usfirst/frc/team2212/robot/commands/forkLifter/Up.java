@@ -31,13 +31,13 @@ public class Up extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		lifter.set(RobotMap.LIFTER_DOWN_SPEED);
+		lifter.set(RobotMap.LIFTER_UP_SPEED);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return lifter.isDown();
+		return lifter.isUp();
 	}
 
 	// Called once after isFinished returns true
