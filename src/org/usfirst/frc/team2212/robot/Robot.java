@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,8 +45,9 @@ public class Robot extends IterativeRobot {
 	public static final Fork fork = new Fork(RobotMap.FORK_TALON_ID,
 			RobotMap.FORK_OPEN_DI_1_PORT, RobotMap.FORK_OPEN_DI_2_PORT,
 			RobotMap.FORK_CLOSE_DI_PORT);
-	public static OI oi;
+	public static OI oi = new OI();
 
+	SendableChooser autoChooser;
 	Command autonomousCommand;
 	Command putData;
 
@@ -54,9 +57,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
 		// instantiate the command used for the autonomous period
-		autonomousCommand = new AutonomousCommand();
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Default", new AutonomousCommand());
+		SmartDashboard.putData("Auto Chooser", autoChooser);
 		putData = new PutData();
 		driveTrain.reset();
 		lifter.reset();
@@ -70,6 +74,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		autonomousCommand = (Command) autoChooser.getSelected();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
