@@ -58,6 +58,8 @@ public class Robot extends IterativeRobot {
 		// instantiate the command used for the autonomous period
 		autonomousCommand = new AutonomousCommand();
 		putData = new PutData();
+		driveTrain.reset();
+		lifter.reset();
 	}
 
 	@Override
@@ -93,6 +95,8 @@ public class Robot extends IterativeRobot {
 		}
 		if (!putData.isRunning())
 			putData.start();
+		driveTrain.reset();
+		lifter.reset();
 	}
 
 	/**
@@ -102,6 +106,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledInit() {
 		putData.cancel();
+		driveTrain.reset();
+		lifter.reset();
 	}
 
 	/**
