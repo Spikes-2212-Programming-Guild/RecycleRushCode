@@ -2,6 +2,7 @@ package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team2212.robot.commands.PutData;
+import org.usfirst.frc.team2212.robot.commands.StupidAutoCommand;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -59,7 +60,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		// instantiate the command used for the autonomous period
 		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Default", new AutonomousCommand());
+		autoChooser.addObject("Full Auto", new AutonomousCommand());
+		autoChooser.addDefault("Stupid Auto", new StupidAutoCommand());
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 		putData = new PutData();
 		driveTrain.reset();
