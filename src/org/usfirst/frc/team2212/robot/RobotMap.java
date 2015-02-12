@@ -45,10 +45,10 @@ public class RobotMap {
 
 	public static final double LIFTER_UP_SPEED = 0.4;
 	public static final double LIFTER_DOWN_SPEED = -0.142;
-	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0;
-	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0;
+	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0.5;
+	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0.4;
 	public static final double LIFTER_STAY_SPEED = 0.15;
-	public static final double LIFTER_WHEEL_DIAMETER = 1;
+	public static final double LIFTER_WHEEL_DIAMETER = 4;
 	public static final int MAX_LIFTER_LEVEL = 6;
 	public static final double LIFTER_ENCODER_TICKS_IN_FULL_TURN = 1;
 
