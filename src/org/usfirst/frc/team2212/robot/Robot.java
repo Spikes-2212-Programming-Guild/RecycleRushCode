@@ -1,8 +1,6 @@
 package org.usfirst.frc.team2212.robot;
 
-import org.usfirst.frc.team2212.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team2212.robot.commands.PutData;
-import org.usfirst.frc.team2212.robot.commands.StupidAutoCommand;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -11,8 +9,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -48,9 +44,8 @@ public class Robot extends IterativeRobot {
 			RobotMap.FORK_CLOSE_DI_PORT);
 	public static OI oi = new OI();
 
-	SendableChooser autoChooser;
 	Command autonomousCommand;
-	Command putData;
+	PutData putData;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -59,13 +54,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// instantiate the command used for the autonomous period
-		autoChooser = new SendableChooser();
-		autoChooser.addObject("Full Auto", new AutonomousCommand());
-		autoChooser.addDefault("Stupid Auto", new StupidAutoCommand());
-		SmartDashboard.putData("Auto Chooser", autoChooser);
 		putData = new PutData();
 		driveTrain.reset();
 		lifter.reset();
+		putData.start();
 	}
 
 	@Override
@@ -76,11 +68,13 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand = putData.getSelectedAutoCommand();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
-		putData.start();
+		if (!putData.isRunning()) {
+			putData.start();
+		}
 	}
 
 	/**

@@ -4,16 +4,23 @@ import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.fork;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PutData extends Command {
 
-	public PutData() {
+	private SendableChooser autoChooser;
 
+	public PutData() {
+		autoChooser = new SendableChooser();
 	}
 
 	@Override
 	protected void initialize() {
+		autoChooser.addObject("Full Auto", new AutonomousCommand());
+		autoChooser.addDefault("Stupid Auto", new StupidAutoCommand());
+		autoChooser.addObject("No Auto", null);
+		SmartDashboard.putData("Auto Chooser", autoChooser);
 	}
 
 	@Override
@@ -40,6 +47,10 @@ public class PutData extends Command {
 
 	@Override
 	protected void interrupted() {
+	}
+
+	public Command getSelectedAutoCommand() {
+		return (Command) autoChooser.getSelected();
 	}
 
 }
