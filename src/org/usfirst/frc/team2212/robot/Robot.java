@@ -54,10 +54,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// instantiate the command used for the autonomous period
-		putData = new PutData();
-		driveTrain.reset();
-		lifter.reset();
-		putData.start();
+		try {
+			putData = new PutData();
+			driveTrain.reset();
+			lifter.reset();
+			putData.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -68,12 +72,16 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		autonomousCommand = putData.getSelectedAutoCommand();
-		if (autonomousCommand != null) {
-			autonomousCommand.start();
-		}
-		if (!putData.isRunning()) {
-			putData.start();
+		try {
+			autonomousCommand = putData.getSelectedAutoCommand();
+			if (autonomousCommand != null) {
+				autonomousCommand.start();
+			}
+			if (!putData.isRunning()) {
+				putData.start();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -91,14 +99,18 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null) {
-			autonomousCommand.cancel();
+		try {
+			if (autonomousCommand != null) {
+				autonomousCommand.cancel();
+			}
+			if (!putData.isRunning()) {
+				putData.start();
+			}
+			driveTrain.reset();
+			lifter.reset();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		if (!putData.isRunning()) {
-			putData.start();
-		}
-		driveTrain.reset();
-		lifter.reset();
 	}
 
 	/**
@@ -107,9 +119,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		putData.cancel();
-		driveTrain.reset();
-		lifter.reset();
+		try {
+			putData.cancel();
+			driveTrain.reset();
+			lifter.reset();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
