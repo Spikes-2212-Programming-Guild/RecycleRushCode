@@ -43,24 +43,24 @@ public class RobotMap {
 	public static final int LIFTER_ENCODER_PORT1 = 6;
 	public static final int LIFTER_ENCODER_PORT2 = 7;
 
-	public static final double LIFTER_UP_SPEED = 0.4;
+	public static final double LIFTER_UP_SPEED = 0.6;
 	public static final double LIFTER_DOWN_SPEED = -0.142;
 	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0.5;
-	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0.4;
+	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0.6;
 	public static final double LIFTER_STAY_SPEED = 0.15;
 	public static final double LIFTER_WHEEL_DIAMETER = 4;
 	public static final int MAX_LIFTER_LEVEL = 6;
 	public static final double LIFTER_ENCODER_TICKS_IN_FULL_TURN = 1;
 
-	public static final double AUTO_FORWARD_DEST = 0;
-	public static final double AUTO_FORWARD_TOTE_SIZE = 0;
+	public static final double AUTO_FORWARD_DEST = -(8 * 12 + 11);
+	public static final double AUTO_FORWARD_TOTE_SIZE = 16.9;
 	public static final double AUTO_FORWARD_KP = 0;
 	public static final double AUTO_FORWARD_KI = 0;
 	public static final double AUTO_FORWARD_KD = 0;
 	public static final long AUTO_FORWARD_DT = 0;
 	public static final double AUTO_FORWARD_THRESHOLD = 0;
 
-	public static final double AUTO_SIDEWAYS_DEST = 0;
+	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2);
 	public static final double FULL_COURT_SIDEWAYS_DEST = 0;
 	public static final double AUTO_SIDEWAYS_KP = 0;
 	public static final double AUTO_SIDEWAYS_KI = 0;
@@ -68,7 +68,7 @@ public class RobotMap {
 	public static final long AUTO_SIDEWAYS_DT = 0;
 	public static final double AUTO_SIDEWAYS_THRESHOLD = 0;
 
-	public static final double ONE_TOTE_DEST = 0;
+	public static final double ONE_TOTE_DEST = 12.1;
 	public static final double ONE_TOTE_KP = 0;
 	public static final double ONE_TOTE_KI = 0;
 	public static final double ONE_TOTE_KD = 0;

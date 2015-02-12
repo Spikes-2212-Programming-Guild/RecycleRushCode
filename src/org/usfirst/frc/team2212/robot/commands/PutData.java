@@ -3,7 +3,6 @@ package org.usfirst.frc.team2212.robot.commands;
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.fork;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
-import static org.usfirst.frc.team2212.robot.Robot.oi;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -28,7 +27,6 @@ public class PutData extends Command {
 		SmartDashboard.putBoolean("Lifter Down", lifter.isDown());
 		SmartDashboard.putBoolean("Fork Open", fork.isOpen());
 		SmartDashboard.putBoolean("Fork Closed", fork.isClosed());
-		SmartDashboard.putNumber("Nav Y", oi.getNavY());
 	}
 
 	@Override
