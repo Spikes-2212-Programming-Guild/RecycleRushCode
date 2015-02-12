@@ -23,8 +23,8 @@ public class JoystickMap {
 	protected Button OPEN_BUTTON = new JoystickButton(navJoystick, 5);
 	protected Button CLOSE_BUTTON = new JoystickButton(navJoystick, 4);
 
-	protected Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 1);
-	protected Button SIDEWAYS_BUTTON = new JoystickButton(driverJoystick, 2);
-	protected Button TURN_BUTTON = new JoystickButton(driverJoystick, 3);
+	protected Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 2);
+	protected Button SIDEWAYS_BUTTON = new JoystickButton(driverJoystick, 4);
+	protected Button TURN_BUTTON = new JoystickButton(driverJoystick, 1);
 
 }
