@@ -5,6 +5,8 @@
  */
 package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
+import org.usfirst.frc.team2212.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -12,12 +14,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * @author ThinkRedstone
  */
 public class AddToteToStack extends CommandGroup {
-    
-    public AddToteToStack() {
-//        Robot is holding stack right above box
-        addSequential(new Open());
-        addSequential(new Down());
-        addSequential(new Close());
-        addSequential(new LiftALittle());
-    }
+
+	public AddToteToStack() {
+		// Robot is holding stack right above box
+		addSequential(new Open());
+		addSequential(new Down());
+		addSequential(new Close(), RobotMap.AUTONOMOUS_CLOSE_TIMEOUT);
+		addSequential(new LiftALittle());
+	}
 }
