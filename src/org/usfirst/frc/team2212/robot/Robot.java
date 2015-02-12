@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
+import org.usfirst.frc.team2212.robot.commands.StupidAutoCommand;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -72,17 +73,19 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		try {
-			autonomousCommand = putData.getSelectedAutoCommand();
-			if (autonomousCommand != null) {
-				autonomousCommand.start();
-			}
-			if (!putData.isRunning()) {
-				putData.start();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		// try {
+		// autonomousCommand = putData.getSelectedAutoCommand();
+		// if (autonomousCommand != null) {
+		// autonomousCommand.start();
+		// }
+		// if (!putData.isRunning()) {
+		// putData.start();
+		// }
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+		autonomousCommand = new StupidAutoCommand();
+		autonomousCommand.start();
 	}
 
 	/**

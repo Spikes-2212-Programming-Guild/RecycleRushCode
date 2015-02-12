@@ -71,8 +71,8 @@ public class DriveTrain extends Subsystem {
 		left.set(speed);
 		right.set(speed);
 		// omni turn inculded
-		front.set(-speed);
-		rear.set(-speed);
+		front.set(speed);
+		rear.set(speed);
 	}
 
 	public void sideways(double speed) {
@@ -105,7 +105,7 @@ public class DriveTrain extends Subsystem {
 			front.set(turnSpeed);
 			rear.set(turnSpeed);
 			left.set(forwardSpeed + turnSpeed);
-			right.set(-forwardSpeed - turnSpeed);
+			right.set(-forwardSpeed + turnSpeed);
 		} else {
 			freeMovement(forwardSpeed, sidewaysSpeed);
 		}
