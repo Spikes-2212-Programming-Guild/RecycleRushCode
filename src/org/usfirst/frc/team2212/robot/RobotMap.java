@@ -50,6 +50,7 @@ public class RobotMap {
 	public static final double LIFTER_STAY_SPEED = 0.15;
 	public static final double LIFTER_WHEEL_DIAMETER = 1;
 	public static final int MAX_LIFTER_LEVEL = 6;
+	public static final double LIFTER_ENCODER_TICKS_IN_FULL_TURN = 1;
 
 	public static final double AUTO_FORWARD_DEST = 0;
 	public static final double AUTO_FORWARD_TOTE_SIZE = 0;
