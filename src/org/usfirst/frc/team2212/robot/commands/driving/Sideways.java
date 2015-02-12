@@ -5,9 +5,9 @@
  */
 package org.usfirst.frc.team2212.robot.commands.driving;
 
-import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
@@ -15,34 +15,51 @@ import static org.usfirst.frc.team2212.robot.Robot.oi;
  */
 public class Sideways extends Command {
 
-    public Sideways() {
-        requires(driveTrain);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
+	private double speed;
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public Sideways() {
+		requires(driveTrain);
+		speed = 0;
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        driveTrain.sideways(oi.getDriverX());
-    }
+	public Sideways(double speed) {
+		this();
+		this.speed = speed;
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() {
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-        driveTrain.sideways(0);
-    }
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
+		if (speed != 0)
+			driveTrain.sideways(oi.getDriverX());
+		else {
+			driveTrain.sideways(speed);
+		}
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-        end();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
+	protected boolean isFinished() {
+		return false;
+	}
+
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+		driveTrain.sideways(0);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+		end();
+	}
 }

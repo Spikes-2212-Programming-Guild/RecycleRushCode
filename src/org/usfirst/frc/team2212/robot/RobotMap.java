@@ -75,9 +75,9 @@ public class RobotMap {
 	public static final long ONE_TOTE_DT = 0;
 	public static final double ONE_TOTE_THRESHOLD = 0;
 
-	public static final double AUTONOMOUS_CLOSE_TIMEOUT = 1.5;
+	public static final double AUTONOMOUS_CLOSE_TIMEOUT = 0.5;
 
-	public static final double STUPID_AUTO_TIMEOUT = 4;
+	public static final double STUPID_AUTO_TIMEOUT = 5;
 	public static final double STUPID_AUTO_SPEED = 0.6;
 
 }
