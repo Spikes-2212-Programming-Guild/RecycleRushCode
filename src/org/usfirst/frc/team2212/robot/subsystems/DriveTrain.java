@@ -5,8 +5,6 @@
  */
 package org.usfirst.frc.team2212.robot.subsystems;
 
-import static org.usfirst.frc.team2212.robot.RobotMap.ENCODER_TICKS_IN_FULL_TURN;
-
 import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.driving.FreeMovement;
 
@@ -120,23 +118,19 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public double getRear() {
-		return rearE == null ? 0 : rightE.get()
-				/ (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI * wheelDiameter;
+		return rearE == null ? 0 : rightE.get() / Math.PI * wheelDiameter;
 	}
 
 	public double getLeft() {
-		return leftE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+		return leftE.get() / Math.PI * wheelDiameter;
 	}
 
 	public double getFront() {
-		return frontE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+		return frontE.get() / Math.PI * wheelDiameter;
 	}
 
 	public double getRight() {
-		return rightE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+		return rightE.get() / Math.PI * wheelDiameter;
 	}
 
 	public double getXAcceleration() {
