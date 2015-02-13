@@ -7,6 +7,9 @@ package org.usfirst.frc.team2212.robot.commands.driving;
 
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
+
+import org.usfirst.frc.team2212.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -29,7 +32,7 @@ public class Turn extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.turn(oi.getDriverTwist());
+		driveTrain.turn(oi.getDriverTwist() * RobotMap.MAX_TURN_SPEED);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
