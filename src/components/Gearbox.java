@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.VictorSP;
 /**
  *
  * @author ThinkRedstone
+ * 
+ * 
+ *         This code is working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
  */
 public class Gearbox implements SpeedController {
 
