@@ -12,7 +12,7 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Up;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI extends JoystickMap {
+public class OI /* GEVALD */extends JoystickMap {
 
 	public OI() {
 		UP_BUTTON.whileHeld(new Up());

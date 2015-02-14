@@ -65,9 +65,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turn(double speed) {
-		if (Math.abs(speed) > RobotMap.MAX_TURN_SPEED) {
-			speed = Math.signum(speed) * RobotMap.MAX_TURN_SPEED;
-		}
+		speed = speed * RobotMap.MAX_TURN_SPEED;
 		left.set(speed);
 		right.set(speed);
 		// omni turn inculded
@@ -85,6 +83,10 @@ public class DriveTrain extends Subsystem {
 		forward(forwardSpeed);
 		sideways(sidewaysSpeed);
 	}
+
+	/*
+	 * Ido was here
+	 */
 
 	public void fixedForward(double speed) {
 		if (Math.abs(getLeft() - getRight()) > RobotMap.FIXED_TOLARANCE) {
@@ -145,6 +147,22 @@ public class DriveTrain extends Subsystem {
 
 	public double getYAcceleration() {
 		return accelerometer.getY();
+	}
+
+	public double getLeftSpeed() {
+		return left.get();
+	}
+
+	public double getRightSpeed() {
+		return right.get();
+	}
+
+	public double getFrontSpeed() {
+		return front.get();
+	}
+
+	public double getRearSpeed() {
+		return rear.get();
 	}
 
 	// Put methods for controlling this subsystem

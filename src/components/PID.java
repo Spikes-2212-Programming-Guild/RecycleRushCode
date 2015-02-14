@@ -27,6 +27,10 @@ public class PID {
 	}
 
 	public double doPID(double in) {
+		/*
+		 * When i wrote this code, only me and god knew what is written here.
+		 * Now only Tzoor knows
+		 */
 		prevError = error;
 		error = destination - in;
 		p = kp * error;

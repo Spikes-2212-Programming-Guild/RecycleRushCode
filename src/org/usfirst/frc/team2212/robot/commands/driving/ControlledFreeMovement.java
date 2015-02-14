@@ -7,15 +7,18 @@ package org.usfirst.frc.team2212.robot.commands.driving;
 
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
+
+import org.usfirst.frc.team2212.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class Turn extends Command {
+public class ControlledFreeMovement extends Command {
 
-	public Turn() {
+	public ControlledFreeMovement() {
 		requires(driveTrain);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -29,7 +32,28 @@ public class Turn extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.turn(oi.getDriverTwist());
+		// driveTrain.freeMovement(oi.getDriverY(),
+		// oi.getDriverX(),oi.getDriverTwist());
+		double joyX = oi.getDriverX(), joyY = oi.getDriverY();
+		double expectedAccelerationY = joyY - driveTrain.getRightSpeed();
+		double expectedAccelerationX = joyX - driveTrain.getFrontSpeed();
+		double dirAccX = Math.signum(expectedAccelerationX);
+		double dirAccY = Math.signum(expectedAccelerationY);
+
+		double Xspeed = 0, Yspeed = 0;
+
+		if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
+			Yspeed = driveTrain.getRightSpeed() + dirAccY * RobotMap.MAX_ACCY;
+		} else {
+			Yspeed = joyY;
+		}
+
+		if (Math.abs(expectedAccelerationX) > RobotMap.MAX_ACCX) {
+			Xspeed = driveTrain.getFrontSpeed() + dirAccX * RobotMap.MAX_ACCX;
+		} else {
+			Xspeed = joyX;
+		}
+		driveTrain.freeMovement(Yspeed, Xspeed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -41,7 +65,7 @@ public class Turn extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		driveTrain.turn(0);
+		driveTrain.freeMovement(0, 0, 0);
 	}
 
 	// Called when another command which requires one or more of the same

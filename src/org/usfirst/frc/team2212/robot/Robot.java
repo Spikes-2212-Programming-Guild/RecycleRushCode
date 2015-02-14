@@ -34,8 +34,8 @@ public class Robot extends IterativeRobot {
 			RobotMap.WHEEL_DIAMETER);
 
 	/**
-     *
-     */
+	 *
+	 */
 	public static final Lifter lifter = new Lifter(RobotMap.LIFTER_TALON_1_ID,
 			RobotMap.LIFTER_TALON_2_ID, RobotMap.LIFTER_UP_DI_PORT,
 			RobotMap.LIFTER_DOWN_DI_PORT, RobotMap.LIFTER_ENCODER_PORT1,
@@ -73,17 +73,17 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		// try {
-		// autonomousCommand = putData.getSelectedAutoCommand();
-		// if (autonomousCommand != null) {
-		// autonomousCommand.start();
-		// }
-		// if (!putData.isRunning()) {
-		// putData.start();
-		// }
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
+		try {
+			autonomousCommand = putData.getSelectedAutoCommand();
+			if (autonomousCommand != null) {
+				autonomousCommand.start();
+			}
+			if (!putData.isRunning()) {
+				putData.start();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		autonomousCommand = new StupidAutoCommand();
 		autonomousCommand.start();
 	}
@@ -94,6 +94,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+
 	}
 
 	@Override
@@ -102,6 +103,7 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+
 		try {
 			if (autonomousCommand != null) {
 				autonomousCommand.cancel();

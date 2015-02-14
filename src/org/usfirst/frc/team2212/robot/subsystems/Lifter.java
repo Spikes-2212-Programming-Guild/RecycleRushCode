@@ -63,9 +63,8 @@ public class Lifter extends Subsystem {
 	}
 
 	public double get() {
-		return encoder.get()
-				/ (double) RobotMap.LIFTER_ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+		return encoder.get() / RobotMap.LIFTER_ENCODER_TICKS_IN_FULL_TURN
+				* Math.PI * wheelDiameter;
 	}
 
 	public void reset() {
@@ -106,7 +105,7 @@ public class Lifter extends Subsystem {
 			this.resetLevel();
 		}
 		if (up != null && up.get()) {
-			this.setLevel(RobotMap.MAX_LIFTER_LEVEL);
+			this.setLevel(RobotMap.LIFTER_MAX_LEVEL);
 		}
 	}
 
