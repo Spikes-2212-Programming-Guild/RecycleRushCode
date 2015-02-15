@@ -5,10 +5,11 @@
  */
 package org.usfirst.frc.team2212.robot.subsystems;
 
+import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.RobotMap.ENCODER_TICKS_IN_FULL_TURN;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
-import org.usfirst.frc.team2212.robot.commands.driving.ControlledFreeMovement;
+import org.usfirst.frc.team2212.robot.commands.driving.FreeMovement;
 
 import components.Gearbox;
 
@@ -60,28 +61,72 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void forward(double speed) {
-		left.set(-speed);
-		right.set(speed);
+		double expectedAccelerationY = speed - getRightSpeed();
+		double dirAccY = Math.signum(expectedAccelerationY);
+		double newSpeed = 0;
+		if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
+			newSpeed = driveTrain.getRightSpeed() + dirAccY * RobotMap.MAX_ACCY;
+		} else {
+			newSpeed = speed;
+		}
+		left.set(-newSpeed);
+		right.set(newSpeed);
 	}
 
 	public void turn(double speed) {
 		speed = speed * RobotMap.MAX_TURN_SPEED;
-		left.set(speed);
-		right.set(speed);
+		double expectedAcceleration = speed - getRightSpeed();
+		double dirAcc = Math.signum(expectedAcceleration);
+		double newSpeed = 0;
+		if (Math.abs(expectedAcceleration) > RobotMap.MAX_ACCY) {
+			newSpeed = driveTrain.getRightSpeed() + dirAcc * RobotMap.MAX_ACCY;
+		} else {
+			newSpeed = speed;
+		}
+		left.set(newSpeed);
+		right.set(newSpeed);
 		// omni turn inculded
-		front.set(speed);
-		rear.set(speed);
+		front.set(newSpeed);
+		rear.set(newSpeed);
 	}
 
 	public void sideways(double speed) {
 		// positive to go right
-		front.set(speed);
-		rear.set(-speed);
+		double expectedAcceleration = speed - getFrontSpeed();
+		double dirAccX = Math.signum(expectedAcceleration);
+		double newSpeed = 0;
+		if (Math.abs(expectedAcceleration) > RobotMap.MAX_ACCX) {
+			newSpeed = driveTrain.getFrontSpeed() + dirAccX * RobotMap.MAX_ACCX;
+		} else {
+			newSpeed = speed;
+		}
+		front.set(newSpeed);
+		rear.set(-newSpeed);
 	}
 
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
-		forward(forwardSpeed);
-		sideways(sidewaysSpeed);
+		double expectedAccelerationY = forwardSpeed
+				- driveTrain.getRightSpeed();
+		double expectedAccelerationX = sidewaysSpeed
+				- driveTrain.getFrontSpeed();
+		double dirAccX = Math.signum(expectedAccelerationX);
+		double dirAccY = Math.signum(expectedAccelerationY);
+
+		double Xspeed = 0, Yspeed = 0;
+
+		if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
+			Yspeed = driveTrain.getRightSpeed() + dirAccY * RobotMap.MAX_ACCY;
+		} else {
+			Yspeed = forwardSpeed;
+		}
+
+		if (Math.abs(expectedAccelerationX) > RobotMap.MAX_ACCX) {
+			Xspeed = driveTrain.getFrontSpeed() + dirAccX * RobotMap.MAX_ACCX;
+		} else {
+			Xspeed = sidewaysSpeed;
+		}
+		forward(Yspeed);
+		sideways(Xspeed);
 	}
 
 	/*
@@ -174,6 +219,6 @@ public class DriveTrain extends Subsystem {
 	// here. Call these from Commands.
 	@Override
 	public void initDefaultCommand() {
-		setDefaultCommand(new ControlledFreeMovement());
+		setDefaultCommand(new FreeMovement());
 	}
 }

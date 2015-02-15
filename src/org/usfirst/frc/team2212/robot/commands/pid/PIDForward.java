@@ -37,7 +37,7 @@ public class PIDForward extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.fixedForward(pid.doPID(driveTrain.getLeft()));
+		driveTrain.forward(pid.doPID(driveTrain.getLeft()));
 		pid.waitForPID();
 		SmartDashboard.putBoolean("arrived", pid.hasArrived());
 		SmartDashboard.putNumber("pid", pid.getPID());
