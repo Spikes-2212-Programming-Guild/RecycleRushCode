@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
-import org.usfirst.frc.team2212.robot.commands.StupidAutoCommand;
 import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
@@ -76,14 +75,14 @@ public class Robot extends IterativeRobot {
 		driveTrain.reset();
 		lifter.reset();
 		autonomousCommand = new PIDForward(RobotMap.AUTO_FORWARD_DEST,
-				SmartDashboard.getNumber("kp-f", 0),
-				SmartDashboard.getNumber("ki-f", 0) / 10000,
+				SmartDashboard.getNumber("kp-f", 0), SmartDashboard.getNumber(
+						"ki-f", 0) / 10000,
 				SmartDashboard.getNumber("kd-f", 0), RobotMap.AUTO_FORWARD_DT,
 				SmartDashboard.getNumber("threshold-f"));
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
-		
+
 	}
 
 	/**
