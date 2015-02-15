@@ -1,25 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.usfirst.frc.team2212.robot.commands.driving;
 
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
-import static org.usfirst.frc.team2212.robot.Robot.oi;
-
-import org.usfirst.frc.team2212.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
- * @author ThinkRedstone
  */
-public class FreeMovement extends Command {
+public class ChangeMode extends Command {
 
-	public FreeMovement() {
-		requires(driveTrain);
+	public ChangeMode() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
@@ -32,32 +21,23 @@ public class FreeMovement extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		// driveTrain.freeMovement(oi.getDriverY(),
-		// oi.getDriverX(),oi.getDriverTwist());
-		if (driveTrain.isSoft())
-			driveTrain.freeMovement(oi.getDriverY()
-					/ RobotMap.SOFT_DRIVE_FACTOR, oi.getDriverX()
-					/ RobotMap.SOFT_DRIVE_FACTOR);
-		else
-			driveTrain.freeMovement(oi.getDriverY(), oi.getDriverX());
+		driveTrain.changeMode();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		driveTrain.freeMovement(0, 0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		end();
 	}
 }

@@ -16,9 +16,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
-public class FreeMovement extends Command {
+public class SoftFreeMovement extends Command {
 
-	public FreeMovement() {
+	public SoftFreeMovement() {
 		requires(driveTrain);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -34,12 +34,8 @@ public class FreeMovement extends Command {
 	protected void execute() {
 		// driveTrain.freeMovement(oi.getDriverY(),
 		// oi.getDriverX(),oi.getDriverTwist());
-		if (driveTrain.isSoft())
-			driveTrain.freeMovement(oi.getDriverY()
-					/ RobotMap.SOFT_DRIVE_FACTOR, oi.getDriverX()
-					/ RobotMap.SOFT_DRIVE_FACTOR);
-		else
-			driveTrain.freeMovement(oi.getDriverY(), oi.getDriverX());
+		driveTrain.freeMovement(oi.getDriverY() / RobotMap.SOFT_DRIVE_FACTOR,
+				oi.getDriverX() / RobotMap.SOFT_DRIVE_FACTOR);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

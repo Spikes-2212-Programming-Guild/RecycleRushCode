@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2212.robot;
 
+import org.usfirst.frc.team2212.robot.commands.driving.ChangeMode;
 import org.usfirst.frc.team2212.robot.commands.driving.Forward;
 import org.usfirst.frc.team2212.robot.commands.driving.Sideways;
 import org.usfirst.frc.team2212.robot.commands.driving.Turn;
@@ -22,6 +23,8 @@ public class OI /* GEVALD */extends JoystickMap {
 		FORWARD_BUTTON.whileHeld(new Forward());
 		SIDEWAYS_BUTTON.whileHeld(new Sideways());
 		TURN_BUTTON.whileHeld(new Turn());
+		SOFT_DRIVING_BUTTON.whenPressed(new ChangeMode());
+		;
 	}
 
 	public double getDriverY() {

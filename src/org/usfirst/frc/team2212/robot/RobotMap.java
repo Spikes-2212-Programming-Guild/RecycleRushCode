@@ -30,6 +30,7 @@ public class RobotMap {
 	public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
 	public static final double MAX_ACCY = 0.1;
 	public static final double MAX_ACCX = 0.1;
+	public static final double SOFT_DRIVE_FACTOR = 0.5;
 
 	public static final int FORK_TALON_ID = 3;
 	public static final int FORK_OPEN_DI_1_PORT = 7;

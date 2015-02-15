@@ -9,6 +9,7 @@ import static org.usfirst.frc.team2212.robot.RobotMap.ENCODER_TICKS_IN_FULL_TURN
 
 import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.driving.FreeMovement;
+import org.usfirst.frc.team2212.robot.commands.driving.SoftFreeMovement;
 
 import components.Gearbox;
 
@@ -28,6 +29,7 @@ public class DriveTrain extends Subsystem {
 	private final double wheelDiameter;
 	private final BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
 	private final Encoder leftE, rightE, frontE, rearE;
+	private boolean softDriving = false;
 
 	public DriveTrain(Gearbox left, Gearbox right, VictorSP front,
 			VictorSP rear, Encoder leftE, Encoder rightE, Encoder frontE,
@@ -89,7 +91,7 @@ public class DriveTrain extends Subsystem {
 	 */
 
 	public void fixedForward(double speed) {
-		if (Math.abs(getLeft() - getRight()) > RobotMap.FIXED_TOLARANCE) {
+		if ((Math.abs(getLeft()) - Math.abs(getRight())) > RobotMap.FIXED_TOLARANCE) {
 			if (getLeft() > getRight()) {
 				front.set(-speed * (getRight() / getLeft()));
 				rear.set(-speed);
@@ -165,10 +167,21 @@ public class DriveTrain extends Subsystem {
 		return rear.get();
 	}
 
+	public void changeMode() {
+		softDriving = !softDriving;
+	}
+
+	public boolean isSoft() {
+		return softDriving;
+	}
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	@Override
 	public void initDefaultCommand() {
-		setDefaultCommand(new FreeMovement());
+		if (softDriving)
+			setDefaultCommand(new SoftFreeMovement());
+		else
+			setDefaultCommand(new FreeMovement());
 	}
 }
