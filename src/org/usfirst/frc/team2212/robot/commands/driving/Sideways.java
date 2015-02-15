@@ -38,9 +38,9 @@ public class Sideways extends Command {
 	@Override
 	protected void execute() {
 		if (speed != 0)
-			driveTrain.sideways(oi.getDriverX());
-		else {
 			driveTrain.sideways(speed);
+		else {
+			driveTrain.sideways(oi.getDriverX());
 		}
 	}
 

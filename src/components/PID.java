@@ -46,6 +46,10 @@ public class PID {
 		// prevTime = System.currentTimeMillis();
 
 	}
+	
+	public double getPID() {
+		return p + i + d;
+	}
 
 	public void waitForPID() {
 		long prevTime = System.currentTimeMillis();
@@ -55,9 +59,7 @@ public class PID {
 	}
 
 	public boolean hasArrived() {
-		boolean arrived = Math.abs(error) < threshold;
-		SmartDashboard.putBoolean("arrived", arrived);
-		return arrived;
+		return Math.abs(error) < threshold;
 	}
 
 	public void reset() {
@@ -66,6 +68,10 @@ public class PID {
 		d = 0;
 		error = destination;
 		prevError = error;
+	}
+	
+	public double speed(){
+		return (prevError - error)/dt;
 	}
 
 }

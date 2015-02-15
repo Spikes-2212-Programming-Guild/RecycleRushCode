@@ -70,24 +70,20 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		// schedule the autonomous command (example)
-		SmartDashboard.putNumber("pid-p", SmartDashboard.getNumber("kp-f"));
-		SmartDashboard.putNumber("pid-i", SmartDashboard.getNumber("kp-f"));
-		SmartDashboard.putNumber("pid-d", SmartDashboard.getNumber("kp-f"));
+		if (!putData.isRunning()) {
+			putData.start();
+		}
 		driveTrain.reset();
 		lifter.reset();
 		autonomousCommand = new PIDForward(RobotMap.AUTO_FORWARD_DEST,
 				SmartDashboard.getNumber("kp-f"),
 				SmartDashboard.getNumber("ki-f"),
 				SmartDashboard.getNumber("kd-f"), RobotMap.AUTO_FORWARD_DT,
-				RobotMap.AUTO_FORWARD_THRESHOLD);
-		SmartDashboard.putString("PID", "PID!!!");
+				SmartDashboard.getNumber("threshold-f"));
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
-		if (!putData.isRunning()) {
-			putData.start();
-		}
+		
 	}
 
 	/**

@@ -35,6 +35,7 @@ public class PutData extends Command {
 		SmartDashboard.putNumber("kp-f", SmartDashboard.getNumber("kp-f", 0));
 		SmartDashboard.putNumber("ki-f", SmartDashboard.getNumber("ki-f", 0));
 		SmartDashboard.putNumber("kd-f", SmartDashboard.getNumber("kd-f", 0));
+		SmartDashboard.putNumber("threshold-f", SmartDashboard.getNumber("threshold-f", 1));
 	}
 
 	@Override

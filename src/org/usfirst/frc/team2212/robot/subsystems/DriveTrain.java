@@ -113,6 +113,11 @@ public class DriveTrain extends Subsystem {
 		}
 	}
 
+	public void setTwoSides(double left, double right ){
+		this.left.set(-left);
+		this.right.set(right);
+	}
+	
 	public void reset() {
 		rightE.reset();
 		leftE.reset();
