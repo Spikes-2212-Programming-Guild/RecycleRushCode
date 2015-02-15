@@ -13,18 +13,18 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
-public class Forward extends Command {
+public class FixedForward extends Command {
 
 	private double speed;
 
-	public Forward() {
+	public FixedForward() {
 		requires(driveTrain);
 		speed = 0;
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
 
-	public Forward(double speed) {
+	public FixedForward(double speed) {
 		this();
 		this.speed = speed;
 	}
@@ -38,9 +38,9 @@ public class Forward extends Command {
 	@Override
 	protected void execute() {
 		if (speed != 0)
-			driveTrain.forward(speed);
+			driveTrain.fixedForward(speed);
 		else {
-			driveTrain.forward(oi.getDriverY());
+			driveTrain.fixedForward(oi.getDriverY());
 		}
 	}
 
