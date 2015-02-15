@@ -8,7 +8,7 @@ package org.usfirst.frc.team2212.robot.subsystems;
 import static org.usfirst.frc.team2212.robot.RobotMap.ENCODER_TICKS_IN_FULL_TURN;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
-import org.usfirst.frc.team2212.robot.commands.driving.FreeMovement;
+import org.usfirst.frc.team2212.robot.commands.driving.ControlledFreeMovement;
 
 import components.Gearbox;
 
@@ -174,6 +174,6 @@ public class DriveTrain extends Subsystem {
 	// here. Call these from Commands.
 	@Override
 	public void initDefaultCommand() {
-		setDefaultCommand(new FreeMovement());
+		setDefaultCommand(new ControlledFreeMovement());
 	}
 }
