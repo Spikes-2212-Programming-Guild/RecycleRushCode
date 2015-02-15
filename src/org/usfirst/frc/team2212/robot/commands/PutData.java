@@ -3,6 +3,10 @@ package org.usfirst.frc.team2212.robot.commands;
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.fork;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
+
+import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -18,8 +22,12 @@ public class PutData extends Command {
 	@Override
 	protected void initialize() {
 		autoChooser.addObject("Full Auto", new AutonomousCommand());
-		autoChooser.addDefault("Stupid Auto", new StupidAutoCommand());
+		autoChooser.addObject("Stupid Auto", new StupidAutoCommand());
 		autoChooser.addObject("No Auto", null);
+		autoChooser.addDefault("PID", new PIDForward(
+				RobotMap.AUTO_FORWARD_DEST, RobotMap.AUTO_FORWARD_KP,
+				RobotMap.AUTO_FORWARD_KI, RobotMap.AUTO_FORWARD_KD,
+				RobotMap.AUTO_FORWARD_DT, RobotMap.AUTO_FORWARD_THRESHOLD));
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 	}
 

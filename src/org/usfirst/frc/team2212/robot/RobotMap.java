@@ -55,12 +55,12 @@ public class RobotMap {
 	public static final int LIFTER_MAX_LEVEL = 6;
 	public static final double LIFTER_ENCODER_TICKS_IN_FULL_TURN = 1;
 
-	public static final double AUTO_FORWARD_DEST = -(8 * 12 + 11);
+	public static final double AUTO_FORWARD_DEST = -60;
 	public static final double AUTO_FORWARD_TOTE_SIZE = 16.9;
-	public static final double AUTO_FORWARD_KP = 0;
+	public static final double AUTO_FORWARD_KP = 0.1;
 	public static final double AUTO_FORWARD_KI = 0;
 	public static final double AUTO_FORWARD_KD = 0;
-	public static final long AUTO_FORWARD_DT = 0;
+	public static final long AUTO_FORWARD_DT = 5;
 	public static final double AUTO_FORWARD_THRESHOLD = 0;
 
 	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2);

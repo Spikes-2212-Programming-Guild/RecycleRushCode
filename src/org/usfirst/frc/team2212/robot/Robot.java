@@ -2,6 +2,7 @@ package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
 import org.usfirst.frc.team2212.robot.commands.StupidAutoCommand;
+import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -74,7 +76,11 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
 		try {
-			autonomousCommand = putData.getSelectedAutoCommand();
+			autonomousCommand = new PIDForward(
+					RobotMap.AUTO_FORWARD_DEST, RobotMap.AUTO_FORWARD_KP,
+					RobotMap.AUTO_FORWARD_KI, RobotMap.AUTO_FORWARD_KD,
+					RobotMap.AUTO_FORWARD_DT, RobotMap.AUTO_FORWARD_THRESHOLD);
+			SmartDashboard.putString("PID", "PID!!!");
 			if (autonomousCommand != null) {
 				autonomousCommand.start();
 			}
@@ -84,8 +90,6 @@ public class Robot extends IterativeRobot {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		autonomousCommand = new StupidAutoCommand();
-		autonomousCommand.start();
 	}
 
 	/**
