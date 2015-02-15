@@ -90,7 +90,7 @@ public class DriveTrain extends Subsystem {
 
 	public void fixedForward(double speed) {
 		if (Math.abs(Math.abs(getLeft()) - Math.abs(getRight())) > RobotMap.FIXED_TOLARANCE) {
-			if (getLeft() > getRight()) {
+			if (Math.abs(getLeft()) > Math.abs(getRight())) {
 				front.set(-speed * (getRight() / getLeft()));
 				rear.set(-speed);
 			} else {
