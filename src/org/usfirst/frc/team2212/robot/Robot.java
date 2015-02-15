@@ -57,14 +57,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// instantiate the command used for the autonomous period
-		try {
-			putData = new PutData();
-			driveTrain.reset();
-			lifter.reset();
-			putData.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		putData = new PutData();
+		driveTrain.reset();
+		lifter.reset();
+		putData.start();
 	}
 
 	@Override
@@ -75,20 +71,22 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		try {
-			autonomousCommand = new PIDForward(
-					RobotMap.AUTO_FORWARD_DEST, RobotMap.AUTO_FORWARD_KP,
-					RobotMap.AUTO_FORWARD_KI, RobotMap.AUTO_FORWARD_KD,
-					RobotMap.AUTO_FORWARD_DT, RobotMap.AUTO_FORWARD_THRESHOLD);
-			SmartDashboard.putString("PID", "PID!!!");
-			if (autonomousCommand != null) {
-				autonomousCommand.start();
-			}
-			if (!putData.isRunning()) {
-				putData.start();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		SmartDashboard.putNumber("pid-p", SmartDashboard.getNumber("kp-f"));
+		SmartDashboard.putNumber("pid-i", SmartDashboard.getNumber("kp-f"));
+		SmartDashboard.putNumber("pid-d", SmartDashboard.getNumber("kp-f"));
+		driveTrain.reset();
+		lifter.reset();
+		autonomousCommand = new PIDForward(RobotMap.AUTO_FORWARD_DEST,
+				SmartDashboard.getNumber("kp-f"),
+				SmartDashboard.getNumber("ki-f"),
+				SmartDashboard.getNumber("kd-f"), RobotMap.AUTO_FORWARD_DT,
+				RobotMap.AUTO_FORWARD_THRESHOLD);
+		SmartDashboard.putString("PID", "PID!!!");
+		if (autonomousCommand != null) {
+			autonomousCommand.start();
+		}
+		if (!putData.isRunning()) {
+			putData.start();
 		}
 	}
 
@@ -108,18 +106,15 @@ public class Robot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 
-		try {
-			if (autonomousCommand != null) {
-				autonomousCommand.cancel();
-			}
-			if (!putData.isRunning()) {
-				putData.start();
-			}
-			driveTrain.reset();
-			lifter.reset();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (autonomousCommand != null) {
+			autonomousCommand.cancel();
 		}
+		if (!putData.isRunning()) {
+			putData.start();
+		}
+		driveTrain.reset();
+		lifter.reset();
+
 	}
 
 	/**

@@ -5,6 +5,8 @@
  */
 package components;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  * @author ThinkRedstone
@@ -18,6 +20,7 @@ public class PID {
 	public PID(double destination, double kp, double ki, double kd, long dt,
 			double threshold) {
 		this.destination = destination;
+		error = destination;
 		this.kp = kp;
 		this.ki = ki;
 		this.kd = kd;
@@ -28,10 +31,11 @@ public class PID {
 
 	public double doPID(double in) {
 		/*
-		 * When i wrote this code, only me and god knew what is written here.
+		 * When i wrote this code, only I and god knew what is written here.
 		 * Now only Tzoor knows
 		 */
 		prevError = error;
+		SmartDashboard.putNumber("error", error);
 		error = destination - in;
 		p = kp * error;
 		i += ki * dt * error;
@@ -46,12 +50,14 @@ public class PID {
 	public void waitForPID() {
 		long prevTime = System.currentTimeMillis();
 		while (System.currentTimeMillis() - prevTime < dt) {
-			prevTime = System.currentTimeMillis();
+			
 		}
 	}
 
 	public boolean hasArrived() {
-		return Math.abs(error) < threshold;
+		boolean arrived = Math.abs(error) < threshold;
+		SmartDashboard.putBoolean("arrived", arrived);
+		return arrived;
 	}
 
 	public void reset() {

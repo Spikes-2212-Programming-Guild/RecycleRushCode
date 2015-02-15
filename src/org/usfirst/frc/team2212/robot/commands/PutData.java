@@ -29,6 +29,12 @@ public class PutData extends Command {
 				RobotMap.AUTO_FORWARD_KI, RobotMap.AUTO_FORWARD_KD,
 				RobotMap.AUTO_FORWARD_DT, RobotMap.AUTO_FORWARD_THRESHOLD));
 		SmartDashboard.putData("Auto Chooser", autoChooser);
+		/*
+		 * Initializing the constants if not already initialized
+		 */
+		SmartDashboard.putNumber("kp-f", SmartDashboard.getNumber("kp-f", 0));
+		SmartDashboard.putNumber("ki-f", SmartDashboard.getNumber("ki-f", 0));
+		SmartDashboard.putNumber("kd-f", SmartDashboard.getNumber("kd-f", 0));
 	}
 
 	@Override

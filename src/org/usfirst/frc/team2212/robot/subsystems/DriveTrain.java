@@ -137,7 +137,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public double getRight() {
-		return rightE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
+		return -rightE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
 				* wheelDiameter;
 	}
 

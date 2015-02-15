@@ -27,7 +27,7 @@ public class RobotMap {
 	public static final double WHEEL_DIAMETER = 6; // inches
 	public static final double FIXED_TOLARANCE = 0;
 	public static final double TURN_TOLERANCE = 0.01;
-	public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
+	public static final int ENCODER_TICKS_IN_FULL_TURN = 360;
 	public static final double MAX_ACCY = 0.1;
 	public static final double MAX_ACCX = 0.1;
 
@@ -60,8 +60,8 @@ public class RobotMap {
 	public static final double AUTO_FORWARD_KP = 0.1;
 	public static final double AUTO_FORWARD_KI = 0;
 	public static final double AUTO_FORWARD_KD = 0;
-	public static final long AUTO_FORWARD_DT = 5;
-	public static final double AUTO_FORWARD_THRESHOLD = 0;
+	public static final long AUTO_FORWARD_DT = 50;
+	public static final double AUTO_FORWARD_THRESHOLD = 1;
 
 	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2);
 	public static final double FULL_COURT_SIDEWAYS_DEST = 0;
