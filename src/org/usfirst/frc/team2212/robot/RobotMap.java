@@ -7,7 +7,7 @@ package org.usfirst.frc.team2212.robot;
  * floating around.
  */
 public class RobotMap {
-	//rbjgkreivjr
+	// rbjgkreivjr
 
 	public static final int LEFT_FORWARD_VICTOR_PORT = 0;
 	public static final int LEFT_BACKWARDS_VICTOR_PORT = 1;
@@ -64,7 +64,7 @@ public class RobotMap {
 	public static final long AUTO_FORWARD_DT = 50;
 	public static final double AUTO_FORWARD_THRESHOLD = 1;
 
-	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2);
+	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2); // 2*12+9+26.9/2
 	public static final double FULL_COURT_SIDEWAYS_DEST = 0;
 	public static final double AUTO_SIDEWAYS_KP = 0;
 	public static final double AUTO_SIDEWAYS_KI = 0;
