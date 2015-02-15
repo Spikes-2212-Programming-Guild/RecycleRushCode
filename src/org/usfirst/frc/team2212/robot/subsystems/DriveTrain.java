@@ -89,7 +89,7 @@ public class DriveTrain extends Subsystem {
 	 */
 
 	public void fixedForward(double speed) {
-		if (Math.abs(getLeft() - getRight()) > RobotMap.FIXED_TOLARANCE) {
+		if (Math.abs(Math.abs(getLeft()) - Math.abs(getRight())) > RobotMap.FIXED_TOLARANCE) {
 			if (getLeft() > getRight()) {
 				front.set(-speed * (getRight() / getLeft()));
 				rear.set(-speed);
@@ -113,11 +113,11 @@ public class DriveTrain extends Subsystem {
 		}
 	}
 
-	public void setTwoSides(double left, double right ){
+	public void setTwoSides(double left, double right) {
 		this.left.set(-left);
 		this.right.set(right);
 	}
-	
+
 	public void reset() {
 		rightE.reset();
 		leftE.reset();
