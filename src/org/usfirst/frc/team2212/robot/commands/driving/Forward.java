@@ -38,9 +38,9 @@ public class Forward extends Command {
 	@Override
 	protected void execute() {
 		if (speed != 0)
-			driveTrain.forward(speed);
+			driveTrain.fixedForward(speed);
 		else {
-			driveTrain.forward(oi.getDriverY());
+			driveTrain.fixedForward(oi.getDriverY());
 		}
 	}
 

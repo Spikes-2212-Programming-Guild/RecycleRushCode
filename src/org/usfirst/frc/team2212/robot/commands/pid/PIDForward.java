@@ -17,41 +17,36 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author ThinkRedstone
  */
 public class PIDForward extends Command {
-	private PID pidLeft, pidRight;
+	private PID pid;
 
 	public PIDForward(double dest, double KP, double KI, double KD, long DT,
 			double threshold) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(driveTrain);
-		pidLeft = new PID(dest, KP, KI, KD, DT, threshold);
-		pidRight = new PID(dest, KP, KI, KD, DT, threshold);
+		pid = new PID(dest, KP, KI, KD, DT, threshold);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		driveTrain.reset();
-		pidLeft.reset();
+		pid.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.setTwoSides(pidLeft.doPID(driveTrain.getLeft()),
-				pidRight.doPID(driveTrain.getRight()));
-		pidLeft.waitForPID();
-		SmartDashboard.putBoolean("left arrived", pidLeft.hasArrived());
-		SmartDashboard.putBoolean("right arrived", pidRight.hasArrived());
-		SmartDashboard.putNumber("left pid", pidLeft.getPID());
-		SmartDashboard.putNumber("right pid", pidRight.getPID());
-		SmartDashboard.putNumber("stia", pidLeft.speed() / pidRight.speed());
+		driveTrain.fixedForward(pid.doPID(driveTrain.getLeft()));
+		pid.waitForPID();
+		SmartDashboard.putBoolean("arrived", pid.hasArrived());
+		SmartDashboard.putNumber("pid", pid.getPID());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return pidLeft.hasArrived() && pidRight.hasArrived();
+		return pid.hasArrived();
 	}
 
 	// Called once after isFinished returns true
