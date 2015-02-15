@@ -7,9 +7,8 @@ package org.usfirst.frc.team2212.robot.commands.pid;
 
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 
-import java.util.Date;
-
 import components.PID;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
