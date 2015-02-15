@@ -39,7 +39,8 @@ public class PIDForward extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.setTwoSides(pidLeft.doPID(driveTrain.getLeft()), pidRight.doPID(driveTrain.getRight()));
+		driveTrain.setTwoSides(pidLeft.doPID(driveTrain.getLeft()),
+				pidRight.doPID(driveTrain.getRight()));
 		pidLeft.waitForPID();
 		SmartDashboard.putBoolean("left arrived", pidLeft.hasArrived());
 		SmartDashboard.putBoolean("right arrived", pidRight.hasArrived());
