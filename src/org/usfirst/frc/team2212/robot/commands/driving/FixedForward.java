@@ -54,6 +54,7 @@ public class FixedForward extends Command {
 	@Override
 	protected void end() {
 		driveTrain.fixedForward(0);
+		driveTrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same

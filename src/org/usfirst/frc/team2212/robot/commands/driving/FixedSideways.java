@@ -45,6 +45,7 @@ public class FixedSideways extends Command {
 	@Override
 	protected void end() {
 		driveTrain.fixedSideways(0);
+		driveTrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same
