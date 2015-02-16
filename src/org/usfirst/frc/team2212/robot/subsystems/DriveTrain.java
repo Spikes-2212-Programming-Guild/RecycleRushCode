@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -169,18 +170,20 @@ public class DriveTrain extends Subsystem {
 
 	private double limitForward(double speed) {
 		return Math.signum(speed)
-				* (forwardSensitive ? 1.0 : RobotMap.FORWARD_SENSITIVE_FACTOR)
+				* (!forwardSensitive ? 1.0 : SmartDashboard.getNumber(
+						"forward factor", RobotMap.FORWARD_SENSITIVE_FACTOR))
 				* Math.min(1, Math.abs(speed));
 	}
 
 	private double limitSideways(double speed) {
-		return Math.signum(speed) * Math.min(1, Math.abs(speed));
+		return Math.signum(speed)
+				* (!forwardSensitive ? 1.0 : SmartDashboard.getNumber(
+						"forward factor", RobotMap.FORWARD_SENSITIVE_FACTOR))
+				* Math.min(1, Math.abs(speed));
 	}
 
 	private double limitTurn(double speed) {
-		return Math.signum(speed)
-				* (turnSensitive ? 1.0 : RobotMap.TURN_SENSITIVE_FACTOR)
-				* Math.min(1, Math.abs(speed));
+		return Math.signum(speed) * Math.min(1, Math.abs(speed));
 	}
 
 	public void reset() {

@@ -35,11 +35,16 @@ public class PutData extends Command {
 		SmartDashboard.putNumber("kp-f", SmartDashboard.getNumber("kp-f", 0));
 		SmartDashboard.putNumber("ki-f", SmartDashboard.getNumber("ki-f", 0));
 		SmartDashboard.putNumber("kd-f", SmartDashboard.getNumber("kd-f", 0));
-		SmartDashboard.putNumber("threshold-f", SmartDashboard.getNumber("threshold-f", 1));
+		SmartDashboard.putNumber("threshold-f",
+				SmartDashboard.getNumber("threshold-f", 1));
+		SmartDashboard.putNumber("forward factor",
+				RobotMap.FORWARD_SENSITIVE_FACTOR);
 	}
 
 	@Override
 	protected void execute() {
+		SmartDashboard.putBoolean("Forward Sensitive",
+				driveTrain.isForwardSensitive());
 		SmartDashboard.putNumber("Left Encoder", driveTrain.getLeft());
 		SmartDashboard.putNumber("Right Encoder", driveTrain.getRight());
 		SmartDashboard.putNumber("Front Encoder", driveTrain.getFront());

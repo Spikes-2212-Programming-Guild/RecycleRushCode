@@ -83,7 +83,7 @@ public class RobotMap {
 
 	public static final double STUPID_AUTO_TIMEOUT = 4;
 	public static final double STUPID_AUTO_SPEED = 0.6;
-	public static final double FORWARD_SENSITIVE_FACTOR = 0.5;
+	public static final double FORWARD_SENSITIVE_FACTOR = 0.8;
 	public static final double TURN_SENSITIVE_FACTOR = 0.5;
 
 }
