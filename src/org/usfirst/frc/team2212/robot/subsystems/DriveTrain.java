@@ -110,9 +110,10 @@ public class DriveTrain extends Subsystem {
 		rear.set(-newSpeed);
 	}
 
-	private void freeMovement(double forwardSpeed, double sidewaysSpeed) {
-		fixedForward(forwardSpeed);
-		fixedSideways(sidewaysSpeed);
+	@Deprecated
+	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
+		forward(forwardSpeed);
+		sideways(sidewaysSpeed);
 	}
 
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed,
