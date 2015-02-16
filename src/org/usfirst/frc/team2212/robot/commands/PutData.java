@@ -32,13 +32,16 @@ public class PutData extends Command {
 		/*
 		 * Initializing the constants if not already initialized
 		 */
-		SmartDashboard.putNumber("kp-f", SmartDashboard.getNumber("kp-f", 0));
-		SmartDashboard.putNumber("ki-f", SmartDashboard.getNumber("ki-f", 0));
-		SmartDashboard.putNumber("kd-f", SmartDashboard.getNumber("kd-f", 0));
-		SmartDashboard.putNumber("threshold-f",
-				SmartDashboard.getNumber("threshold-f", 1));
-		SmartDashboard.putNumber("forward factor",
-				RobotMap.FREE_SENSITIVE_FACTOR);
+		// SmartDashboard.putNumber("kp-f", SmartDashboard.getNumber("kp-f",
+		// 0));
+		// SmartDashboard.putNumber("ki-f", SmartDashboard.getNumber("ki-f",
+		// 0));
+		// SmartDashboard.putNumber("kd-f", SmartDashboard.getNumber("kd-f",
+		// 0));
+		// SmartDashboard.putNumber("threshold-f",
+		// SmartDashboard.getNumber("threshold-f", 1));
+		// SmartDashboard.putNumber("forward factor",
+		// RobotMap.FREE_SENSITIVE_FACTOR);
 	}
 
 	@Override
