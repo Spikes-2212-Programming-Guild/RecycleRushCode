@@ -111,8 +111,8 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
-		fixedForward(forwardSpeed);
-		fixedSideways(sidewaysSpeed);
+		forward(forwardSpeed);
+		sideways(sidewaysSpeed);
 	}
 
 	public void fixedSideways(double speed) {
