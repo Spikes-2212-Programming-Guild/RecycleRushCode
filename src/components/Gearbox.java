@@ -44,7 +44,7 @@ public class Gearbox implements SpeedController {
 		return forward.get();
 	}
 
-	@SuppressWarnings("deprecation")
+	@Deprecated
 	@Override
 	public void set(double speed, byte syncGroup) {
 		forward.set(speed, syncGroup);

@@ -31,8 +31,8 @@ public class PID {
 
 	public double doPID(double in) {
 		/*
-		 * When i wrote this code, only I and god knew what is written here.
-		 * Now only Tzoor knows
+		 * When I wrote this code, only Tzoor and I understood it. Now, Tzoor
+		 * only knows
 		 */
 		prevError = error;
 		SmartDashboard.putNumber("error", error);
@@ -40,13 +40,13 @@ public class PID {
 		p = kp * error;
 		i += ki * dt * error;
 		d = kd * (prevError - error) / dt;
-		return (p + i + d);
+		return p + i + d;
 		// long prevTime = System.currentTimeMillis();
 		// while (System.currentTimeMillis() - prevTime < DT)
 		// prevTime = System.currentTimeMillis();
 
 	}
-	
+
 	public double getPID() {
 		return p + i + d;
 	}
@@ -54,7 +54,7 @@ public class PID {
 	public void waitForPID() {
 		long prevTime = System.currentTimeMillis();
 		while (System.currentTimeMillis() - prevTime < dt) {
-			
+
 		}
 	}
 
@@ -69,9 +69,9 @@ public class PID {
 		error = destination;
 		prevError = error;
 	}
-	
-	public double speed(){
-		return (prevError - error)/dt;
+
+	public double speed() {
+		return (prevError - error) / dt;
 	}
 
 }

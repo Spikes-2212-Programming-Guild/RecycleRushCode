@@ -73,9 +73,7 @@ public class PutData extends Command {
 	}
 
 	public Command getSelectedAutoCommand() {
-		if (autoChooser != null)
-			return (Command) autoChooser.getSelected();
-		return null;
+		return autoChooser != null ? (Command) autoChooser.getSelected() : null;
 	}
 
 }
