@@ -58,7 +58,7 @@ public class RobotMap {
 
 	public static final double AUTO_FORWARD_DEST = -60;
 	public static final double AUTO_FORWARD_TOTE_SIZE = 16.9;
-	public static final double AUTO_FORWARD_KP = 0.1;
+	public static final double AUTO_FORWARD_KP = 0.25;
 	public static final double AUTO_FORWARD_KI = 0;
 	public static final double AUTO_FORWARD_KD = 0;
 	public static final long AUTO_FORWARD_DT = 50;
@@ -69,8 +69,8 @@ public class RobotMap {
 	public static final double AUTO_SIDEWAYS_KP = 0;
 	public static final double AUTO_SIDEWAYS_KI = 0;
 	public static final double AUTO_SIDEWAYS_KD = 0;
-	public static final long AUTO_SIDEWAYS_DT = 0;
-	public static final double AUTO_SIDEWAYS_THRESHOLD = 0;
+	public static final long AUTO_SIDEWAYS_DT = 50;
+	public static final double AUTO_SIDEWAYS_THRESHOLD = 1;
 
 	public static final double ONE_TOTE_DEST = 12.1;
 	public static final double ONE_TOTE_KP = 0;
