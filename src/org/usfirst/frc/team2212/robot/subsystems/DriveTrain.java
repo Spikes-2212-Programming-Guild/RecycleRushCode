@@ -65,7 +65,6 @@ public class DriveTrain extends Subsystem {
 
 	public void forward(double speed) {
 		speed = limitForward(speed);
-
 		double expectedAccelerationY = speed - getRightSpeed();
 		double dirAccY = Math.signum(expectedAccelerationY);
 		double newSpeed = 0;
@@ -112,43 +111,31 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
-		forwardSpeed = limitForward(forwardSpeed);
-		sidewaysSpeed = limitSideways(sidewaysSpeed);
-		double expectedAccelerationY = forwardSpeed
-				- driveTrain.getRightSpeed();
-		double expectedAccelerationX = sidewaysSpeed
-				- driveTrain.getFrontSpeed();
-		double dirAccX = Math.signum(expectedAccelerationX);
-		double dirAccY = Math.signum(expectedAccelerationY);
-
-		double Xspeed = 0, Yspeed = 0;
-
-		if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
-			Yspeed = driveTrain.getRightSpeed() + dirAccY * RobotMap.MAX_ACCY;
-		} else {
-			Yspeed = forwardSpeed;
-		}
-
-		if (Math.abs(expectedAccelerationX) > RobotMap.MAX_ACCX) {
-			Xspeed = driveTrain.getFrontSpeed() + dirAccX * RobotMap.MAX_ACCX;
-		} else {
-			Xspeed = sidewaysSpeed;
-		}
-		fixedForward(Yspeed);
-		fixedSideways(Xspeed);
+		fixedForward(forwardSpeed);
+		fixedSideways(sidewaysSpeed);
 	}
 
 	public void fixedSideways(double speed) {
-		speed = limitSideways(speed);
 		if (Math.abs(Math.abs(getFront()) - Math.abs(getRear())) > RobotMap.FIXED_TOLARANCE) {
-			if (Math.abs(getFront()) > Math.abs(getRear())) {
-				front.set(-speed * (getFront() / getRear()));
-				rear.set(-speed);
+			speed = limitSideways(speed);
+			double expectedAcceleration = speed - getFrontSpeed();
+			double dirAccX = Math.signum(expectedAcceleration);
+			double newSpeed = 0;
+			if (Math.abs(expectedAcceleration) > RobotMap.MAX_ACCX) {
+				newSpeed = driveTrain.getFrontSpeed() + dirAccX
+						* RobotMap.MAX_ACCX;
 			} else {
-				front.set(-speed);
-				rear.set(-speed * (getFront() / getRear()));
+				newSpeed = speed;
 			}
-		}
+			if (Math.abs(getFront()) > Math.abs(getRear())) {
+				front.set(newSpeed * (getFront() / getRear()));
+				rear.set(-newSpeed);
+			} else {
+				front.set(newSpeed);
+				rear.set(-(newSpeed * (getFront() / getRear())));
+			}
+		} else
+			sideways(speed);
 		reset();
 	}
 
@@ -157,16 +144,26 @@ public class DriveTrain extends Subsystem {
 	 */
 
 	public void fixedForward(double speed) {
-		speed = limitForward(speed);
 		if (Math.abs(Math.abs(getLeft()) - Math.abs(getRight())) > RobotMap.FIXED_TOLARANCE) {
-			if (Math.abs(getLeft()) > Math.abs(getRight())) {
-				left.set(-speed * (getRight() / getLeft()));
-				right.set(-speed);
+			speed = limitForward(speed);
+			double expectedAccelerationY = speed - getRightSpeed();
+			double dirAccY = Math.signum(expectedAccelerationY);
+			double newSpeed = 0;
+			if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
+				newSpeed = driveTrain.getRightSpeed() + dirAccY
+						* RobotMap.MAX_ACCY;
 			} else {
-				left.set(-speed);
-				right.set(-speed * (getLeft() / getRight()));
+				newSpeed = speed;
 			}
-		}
+			if (Math.abs(getLeft()) > Math.abs(getRight())) {
+				left.set(-(newSpeed * (getRight() / getLeft())));
+				right.set(newSpeed);
+			} else {
+				left.set(-newSpeed);
+				right.set(newSpeed * (getLeft() / getRight()));
+			}
+		} else
+			forward(speed);
 		reset();
 	}
 
@@ -197,7 +194,9 @@ public class DriveTrain extends Subsystem {
 	}
 
 	private double limitTurn(double speed) {
-		return Math.signum(speed) * Math.min(1, Math.abs(speed));
+		return Math.signum(speed)
+				* (!turnSensitive ? 1.0 : RobotMap.TURN_SENSITIVE_FACTOR
+						* Math.min(1, Math.abs(speed)));
 	}
 
 	public void reset() {
