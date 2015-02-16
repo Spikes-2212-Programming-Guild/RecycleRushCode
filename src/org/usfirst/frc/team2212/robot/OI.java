@@ -27,17 +27,13 @@ public class OI /* GEVALD */extends JoystickMap {
 		SIDEWAYS_BUTTON.whileHeld(new Sideways());
 		TURN_BUTTON.whileHeld(new Turn());
 		SLOWNESS.whenPressed(new Command() {
-
 			@Override
 			protected boolean isFinished() {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
 			protected void interrupted() {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
@@ -47,14 +43,10 @@ public class OI /* GEVALD */extends JoystickMap {
 
 			@Override
 			protected void execute() {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			protected void end() {
-				// TODO Auto-generated method stub
-
 			}
 		});
 	}
