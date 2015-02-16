@@ -118,10 +118,30 @@ public class DriveTrain extends Subsystem {
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed,
 			double turnSpeed) {
 		if (Math.abs(turnSpeed) > RobotMap.TURN_TOLERANCE) {
-			front.set(sidewaysSpeed + turnSpeed);
-			rear.set(-sidewaysSpeed + turnSpeed);
-			left.set(forwardSpeed + turnSpeed);
-			right.set(-forwardSpeed + turnSpeed);
+			forwardSpeed = limitFree(forwardSpeed);
+			sidewaysSpeed = limitFree(sidewaysSpeed);
+			turnSpeed = limitTurn(turnSpeed);
+			double expectedAccelerationY = forwardSpeed - getRightSpeed();
+			double expectedAccelerationX = sidewaysSpeed - getFrontSpeed();
+			double dirAccY = Math.signum(expectedAccelerationY);
+			double dirAccX = Math.signum(expectedAccelerationX);
+			double newForwardSpeed, newSidewaysSpeed;
+			if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
+				newForwardSpeed = driveTrain.getRightSpeed() + dirAccY
+						* RobotMap.MAX_ACCY;
+			} else {
+				newForwardSpeed = forwardSpeed;
+			}
+			if (Math.abs(expectedAccelerationX) > RobotMap.MAX_ACCX) {
+				newSidewaysSpeed = driveTrain.getFrontSpeed() + dirAccX
+						* RobotMap.MAX_ACCX;
+			} else {
+				newSidewaysSpeed = sidewaysSpeed;
+			}
+			front.set(newSidewaysSpeed + turnSpeed);
+			rear.set(-newSidewaysSpeed + turnSpeed);
+			left.set(newForwardSpeed + turnSpeed);
+			right.set(-newForwardSpeed + turnSpeed);
 		} else {
 			freeMovement(forwardSpeed, sidewaysSpeed);
 		}
