@@ -10,6 +10,7 @@ import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import components.PID;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -38,6 +39,8 @@ public class PIDForward extends Command {
 	protected void execute() {
 		driveTrain.forward(pid.doPID(driveTrain.getLeft()));
 		pid.waitForPID();
+		SmartDashboard.putBoolean("arrived", pid.hasArrived());
+		SmartDashboard.putNumber("pid", pid.getPID());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

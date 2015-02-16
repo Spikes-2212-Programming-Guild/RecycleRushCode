@@ -7,6 +7,7 @@ package org.usfirst.frc.team2212.robot;
  * floating around.
  */
 public class RobotMap {
+	// rbjgkreivjr
 
 	public static final int LEFT_FORWARD_VICTOR_PORT = 0;
 	public static final int LEFT_BACKWARDS_VICTOR_PORT = 1;
@@ -23,14 +24,13 @@ public class RobotMap {
 	public static final int REAR_ENCODER_1_PORT = 4;
 	public static final int REAR_ENCODER_2_PORT = 5;
 
-	public static final double MAX_TURN_SPEED = 0.2;
+	public static final double MAX_TURN_SPEED = 0.3;
 	public static final double WHEEL_DIAMETER = 6; // inches
-	public static final double FIXED_TOLARANCE = 0;
+	public static final double FIXED_TOLARANCE = 0.5;
 	public static final double TURN_TOLERANCE = 0.01;
-	public static final int ENCODER_TICKS_IN_FULL_TURN = 1;
+	public static final int ENCODER_TICKS_IN_FULL_TURN = 360;
 	public static final double MAX_ACCY = 0.1;
 	public static final double MAX_ACCX = 0.1;
-	public static final double SOFT_DRIVE_FACTOR = 0.5;
 
 	public static final int FORK_TALON_ID = 3;
 	public static final int FORK_OPEN_DI_1_PORT = 7;
@@ -56,21 +56,21 @@ public class RobotMap {
 	public static final int LIFTER_MAX_LEVEL = 6;
 	public static final double LIFTER_ENCODER_TICKS_IN_FULL_TURN = 1;
 
-	public static final double AUTO_FORWARD_DEST = -(8 * 12 + 11);
+	public static final double AUTO_FORWARD_DEST = -60;
 	public static final double AUTO_FORWARD_TOTE_SIZE = 16.9;
-	public static final double AUTO_FORWARD_KP = 0;
+	public static final double AUTO_FORWARD_KP = 0.25;
 	public static final double AUTO_FORWARD_KI = 0;
 	public static final double AUTO_FORWARD_KD = 0;
-	public static final long AUTO_FORWARD_DT = 0;
-	public static final double AUTO_FORWARD_THRESHOLD = 0;
+	public static final long AUTO_FORWARD_DT = 50;
+	public static final double AUTO_FORWARD_THRESHOLD = 1;
 
-	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2);
+	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2); // 2*12+9+26.9/2
 	public static final double FULL_COURT_SIDEWAYS_DEST = 0;
 	public static final double AUTO_SIDEWAYS_KP = 0;
 	public static final double AUTO_SIDEWAYS_KI = 0;
 	public static final double AUTO_SIDEWAYS_KD = 0;
-	public static final long AUTO_SIDEWAYS_DT = 0;
-	public static final double AUTO_SIDEWAYS_THRESHOLD = 0;
+	public static final long AUTO_SIDEWAYS_DT = 50;
+	public static final double AUTO_SIDEWAYS_THRESHOLD = 1;
 
 	public static final double ONE_TOTE_DEST = 12.1;
 	public static final double ONE_TOTE_KP = 0;
@@ -83,5 +83,7 @@ public class RobotMap {
 
 	public static final double STUPID_AUTO_TIMEOUT = 4;
 	public static final double STUPID_AUTO_SPEED = 0.6;
+
+	public static final double FREE_SENSITIVE_FACTOR = 0.5;
 
 }

@@ -7,9 +7,6 @@ package org.usfirst.frc.team2212.robot.commands.driving;
 
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
-
-import org.usfirst.frc.team2212.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -34,12 +31,7 @@ public class FreeMovement extends Command {
 	protected void execute() {
 		// driveTrain.freeMovement(oi.getDriverY(),
 		// oi.getDriverX(),oi.getDriverTwist());
-		if (driveTrain.isSoft())
-			driveTrain.freeMovement(oi.getDriverY()
-					/ RobotMap.SOFT_DRIVE_FACTOR, oi.getDriverX()
-					/ RobotMap.SOFT_DRIVE_FACTOR);
-		else
-			driveTrain.freeMovement(oi.getDriverY(), oi.getDriverX());
+		driveTrain.freeMovement(oi.getDriverY(), oi.getDriverX());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -52,6 +44,7 @@ public class FreeMovement extends Command {
 	@Override
 	protected void end() {
 		driveTrain.freeMovement(0, 0, 0);
+		driveTrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same

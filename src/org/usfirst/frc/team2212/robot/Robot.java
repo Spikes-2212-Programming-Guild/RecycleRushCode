@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
-import org.usfirst.frc.team2212.robot.commands.StupidAutoCommand;
+import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -55,14 +56,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// instantiate the command used for the autonomous period
-		try {
-			putData = new PutData();
-			driveTrain.reset();
-			lifter.reset();
-			putData.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		putData = new PutData();
+		driveTrain.reset();
+		lifter.reset();
+		putData.start();
 	}
 
 	@Override
@@ -72,20 +69,20 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		// schedule the autonomous command (example)
-		try {
-			autonomousCommand = putData.getSelectedAutoCommand();
-			if (autonomousCommand != null) {
-				autonomousCommand.start();
-			}
-			if (!putData.isRunning()) {
-				putData.start();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (!putData.isRunning()) {
+			putData.start();
 		}
-		autonomousCommand = new StupidAutoCommand();
-		autonomousCommand.start();
+		driveTrain.reset();
+		lifter.reset();
+		autonomousCommand = new PIDForward(RobotMap.AUTO_FORWARD_DEST,
+				SmartDashboard.getNumber("kp-f", 0), SmartDashboard.getNumber(
+						"ki-f", 0) / 10000,
+				SmartDashboard.getNumber("kd-f", 0), RobotMap.AUTO_FORWARD_DT,
+				SmartDashboard.getNumber("threshold-f", 1));
+		if (autonomousCommand != null) {
+			autonomousCommand.start();
+		}
+
 	}
 
 	/**
@@ -104,18 +101,15 @@ public class Robot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 
-		try {
-			if (autonomousCommand != null) {
-				autonomousCommand.cancel();
-			}
-			if (!putData.isRunning()) {
-				putData.start();
-			}
-			driveTrain.reset();
-			lifter.reset();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (autonomousCommand != null) {
+			autonomousCommand.cancel();
 		}
+		if (!putData.isRunning()) {
+			putData.start();
+		}
+		driveTrain.reset();
+		lifter.reset();
+
 	}
 
 	/**
@@ -127,6 +121,7 @@ public class Robot extends IterativeRobot {
 		try {
 			putData.cancel();
 			driveTrain.reset();
+
 			lifter.reset();
 		} catch (Exception e) {
 			e.printStackTrace();

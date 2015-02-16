@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
+
 public class Sideways extends Command {
 
 	private double speed;
@@ -38,9 +39,9 @@ public class Sideways extends Command {
 	@Override
 	protected void execute() {
 		if (speed != 0)
-			driveTrain.sideways(oi.getDriverX());
-		else {
 			driveTrain.sideways(speed);
+		else {
+			driveTrain.sideways(oi.getDriverX());
 		}
 	}
 
@@ -54,6 +55,7 @@ public class Sideways extends Command {
 	@Override
 	protected void end() {
 		driveTrain.sideways(0);
+		driveTrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same
