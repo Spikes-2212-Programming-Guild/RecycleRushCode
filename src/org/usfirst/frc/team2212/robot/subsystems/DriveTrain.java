@@ -110,9 +110,21 @@ public class DriveTrain extends Subsystem {
 		rear.set(-newSpeed);
 	}
 
-	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
+	private void freeMovement(double forwardSpeed, double sidewaysSpeed) {
 		fixedForward(forwardSpeed);
 		fixedSideways(sidewaysSpeed);
+	}
+
+	public void freeMovement(double forwardSpeed, double sidewaysSpeed,
+			double turnSpeed) {
+		if (Math.abs(turnSpeed) > RobotMap.TURN_TOLERANCE) {
+			front.set(sidewaysSpeed + turnSpeed);
+			rear.set(-sidewaysSpeed + turnSpeed);
+			left.set(forwardSpeed + turnSpeed);
+			right.set(-forwardSpeed + turnSpeed);
+		} else {
+			freeMovement(forwardSpeed, sidewaysSpeed);
+		}
 	}
 
 	public void fixedSideways(double speed) {
@@ -164,18 +176,6 @@ public class DriveTrain extends Subsystem {
 			}
 		} else {
 			forward(speed);
-		}
-	}
-
-	public void freeMovement(double forwardSpeed, double sidewaysSpeed,
-			double turnSpeed) {
-		if (Math.abs(turnSpeed) > RobotMap.TURN_TOLERANCE) {
-			front.set(turnSpeed);
-			rear.set(turnSpeed);
-			left.set(forwardSpeed + turnSpeed);
-			right.set(-forwardSpeed + turnSpeed);
-		} else {
-			freeMovement(forwardSpeed, sidewaysSpeed);
 		}
 	}
 
