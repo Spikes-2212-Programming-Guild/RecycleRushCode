@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class JoystickMap {
 
 	protected Joystick driverJoystick = new Joystick(0);
+
 	protected Joystick navJoystick = new Joystick(1);
 
 	protected Button UP_BUTTON = new JoystickButton(navJoystick, 3);
@@ -23,9 +24,11 @@ public class JoystickMap {
 	protected Button OPEN_BUTTON = new JoystickButton(navJoystick, 7);
 	protected Button CLOSE_BUTTON = new JoystickButton(navJoystick, 6);
 
-	protected Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 2);
+	protected Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 9);
 	protected Button FIXED_FORWARD_BUTTON = new JoystickButton(driverJoystick,
-			9);
+			2);
+	protected Button SLOWNESS = new JoystickButton(driverJoystick, 7);
+	protected Button NORMAL = new JoystickButton(driverJoystick, 8);
 	protected Button SIDEWAYS_BUTTON = new JoystickButton(driverJoystick, 10);
 	protected Button TURN_BUTTON = new JoystickButton(driverJoystick, 1);
 

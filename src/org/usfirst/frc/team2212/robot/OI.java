@@ -9,6 +9,8 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Up;
 
+import edu.wpi.first.wpilibj.command.Command;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -24,6 +26,37 @@ public class OI /* GEVALD */extends JoystickMap {
 		FIXED_FORWARD_BUTTON.whileHeld(new FixedForward());
 		SIDEWAYS_BUTTON.whileHeld(new Sideways());
 		TURN_BUTTON.whileHeld(new Turn());
+		SLOWNESS.whenPressed(new Command() {
+
+			@Override
+			protected boolean isFinished() {
+				// TODO Auto-generated method stub
+				return true;
+			}
+
+			@Override
+			protected void interrupted() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			protected void initialize() {
+				Robot.driveTrain.changeForwardSensitivity();
+			}
+
+			@Override
+			protected void execute() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			protected void end() {
+				// TODO Auto-generated method stub
+
+			}
+		});
 	}
 
 	public double getDriverY() {

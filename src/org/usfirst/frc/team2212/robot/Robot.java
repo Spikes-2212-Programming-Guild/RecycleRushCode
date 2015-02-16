@@ -121,6 +121,7 @@ public class Robot extends IterativeRobot {
 		try {
 			putData.cancel();
 			driveTrain.reset();
+
 			lifter.reset();
 		} catch (Exception e) {
 			e.printStackTrace();

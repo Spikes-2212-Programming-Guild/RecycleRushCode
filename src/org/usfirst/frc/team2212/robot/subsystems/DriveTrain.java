@@ -24,6 +24,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 
+	boolean turnSensitive, forwardSensitive;
+
 	private final Gearbox left, right;
 	private final VictorSP front, rear;
 	private final double wheelDiameter;
@@ -61,6 +63,8 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void forward(double speed) {
+		speed = limitForward(speed);
+
 		double expectedAccelerationY = speed - getRightSpeed();
 		double dirAccY = Math.signum(expectedAccelerationY);
 		double newSpeed = 0;
@@ -74,6 +78,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turn(double speed) {
+		speed = limitTurn(speed);
 		speed = speed * RobotMap.MAX_TURN_SPEED;
 		double expectedAcceleration = speed - getRightSpeed();
 		double dirAcc = Math.signum(expectedAcceleration);
@@ -92,6 +97,7 @@ public class DriveTrain extends Subsystem {
 
 	public void sideways(double speed) {
 		// positive to go right
+		speed = limitSideways(speed);
 		double expectedAcceleration = speed - getFrontSpeed();
 		double dirAccX = Math.signum(expectedAcceleration);
 		double newSpeed = 0;
@@ -105,6 +111,8 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
+		forwardSpeed = limitForward(forwardSpeed);
+		sidewaysSpeed = limitSideways(sidewaysSpeed);
 		double expectedAccelerationY = forwardSpeed
 				- driveTrain.getRightSpeed();
 		double expectedAccelerationX = sidewaysSpeed
@@ -130,10 +138,11 @@ public class DriveTrain extends Subsystem {
 	}
 
 	/*
-	 * Ido was here
+	 * Ido was here . Gurny too
 	 */
 
 	public void fixedForward(double speed) {
+		speed = limitForward(speed);
 		if (Math.abs(Math.abs(getLeft()) - Math.abs(getRight())) > RobotMap.FIXED_TOLARANCE) {
 			if (Math.abs(getLeft()) > Math.abs(getRight())) {
 				front.set(-speed * (getRight() / getLeft()));
@@ -158,9 +167,20 @@ public class DriveTrain extends Subsystem {
 		}
 	}
 
-	public void setTwoSides(double left, double right) {
-		this.left.set(-left);
-		this.right.set(right);
+	private double limitForward(double speed) {
+		return Math.signum(speed)
+				* (forwardSensitive ? 1.0 : RobotMap.FORWARD_SENSITIVE_FACTOR)
+				* Math.min(1, Math.abs(speed));
+	}
+
+	private double limitSideways(double speed) {
+		return Math.signum(speed) * Math.min(1, Math.abs(speed));
+	}
+
+	private double limitTurn(double speed) {
+		return Math.signum(speed)
+				* (turnSensitive ? 1.0 : RobotMap.TURN_SENSITIVE_FACTOR)
+				* Math.min(1, Math.abs(speed));
 	}
 
 	public void reset() {
@@ -220,5 +240,21 @@ public class DriveTrain extends Subsystem {
 	@Override
 	public void initDefaultCommand() {
 		setDefaultCommand(new FreeMovement());
+	}
+
+	public void changeForwardSensitivity() {
+		forwardSensitive = !forwardSensitive;
+	}
+
+	public void changeTurnSensitivity() {
+		turnSensitive = !turnSensitive;
+	}
+
+	public boolean isTurnSensitive() {
+		return turnSensitive;
+	}
+
+	public boolean isForwardSensitive() {
+		return forwardSensitive;
 	}
 }
