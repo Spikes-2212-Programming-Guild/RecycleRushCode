@@ -63,6 +63,7 @@ public class DriveTrain extends Subsystem {
 				wheelDiameter);
 	}
 
+	@Deprecated
 	public void forward(double speed) {
 		speed = limitFree(speed);
 		double expectedAccelerationY = speed - getRightSpeed();
@@ -79,7 +80,6 @@ public class DriveTrain extends Subsystem {
 
 	public void turn(double speed) {
 		speed = limitTurn(speed);
-		speed = speed * RobotMap.MAX_TURN_SPEED;
 		double expectedAcceleration = speed - getRightSpeed();
 		double dirAcc = Math.signum(expectedAcceleration);
 		double newSpeed = 0;
@@ -95,6 +95,7 @@ public class DriveTrain extends Subsystem {
 		rear.set(newSpeed);
 	}
 
+	@Deprecated
 	public void sideways(double speed) {
 		// positive to go right
 		speed = limitFree(speed);
@@ -111,8 +112,8 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
-		forward(forwardSpeed);
-		sideways(sidewaysSpeed);
+		fixedForward(forwardSpeed);
+		fixedSideways(sidewaysSpeed);
 	}
 
 	public void fixedSideways(double speed) {
@@ -187,9 +188,8 @@ public class DriveTrain extends Subsystem {
 	}
 
 	private double limitTurn(double speed) {
-		return Math.signum(speed)
-				* (!turnSensitive ? 1.0 : RobotMap.TURN_SENSITIVE_FACTOR
-						* Math.min(1, Math.abs(speed)));
+		return Math.signum(speed) * RobotMap.MAX_TURN_SPEED
+				* Math.min(1, Math.abs(speed));
 	}
 
 	public void reset() {
