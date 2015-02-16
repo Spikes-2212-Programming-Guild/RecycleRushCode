@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2212.robot;
 
-import org.usfirst.frc.team2212.robot.commands.driving.FixedForward;
-import org.usfirst.frc.team2212.robot.commands.driving.FixedSideways;
+import org.usfirst.frc.team2212.robot.commands.driving.Forward;
+import org.usfirst.frc.team2212.robot.commands.driving.Sideways;
 import org.usfirst.frc.team2212.robot.commands.driving.Turn;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
@@ -21,8 +21,8 @@ public class OI /* GEVALD */extends JoystickMap {
 		DOWN_BUTTON.whileHeld(new Down());
 		OPEN_BUTTON.whileHeld(new Open());
 		CLOSE_BUTTON.whileHeld(new Close());
-		FORWARD_BUTTON.whileHeld(new FixedForward());
-		SIDEWAYS_BUTTON.whileHeld(new FixedSideways());
+		FORWARD_BUTTON.whileHeld(new Forward());
+		SIDEWAYS_BUTTON.whileHeld(new Sideways());
 		TURN_BUTTON.whileHeld(new Turn());
 		SLOWNESS.whenPressed(new Command() {
 			@Override

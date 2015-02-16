@@ -62,7 +62,6 @@ public class DriveTrain extends Subsystem {
 				wheelDiameter);
 	}
 
-	@Deprecated
 	public void forward(double speed) {
 		speed = limitFree(speed);
 		double expectedAccelerationY = speed - getRightSpeed();
@@ -94,7 +93,6 @@ public class DriveTrain extends Subsystem {
 		rear.set(newSpeed);
 	}
 
-	@Deprecated
 	public void sideways(double speed) {
 		// positive to go right
 		speed = limitFree(speed);
@@ -110,7 +108,6 @@ public class DriveTrain extends Subsystem {
 		rear.set(-newSpeed);
 	}
 
-	@Deprecated
 	public void freeMovement(double forwardSpeed, double sidewaysSpeed) {
 		forward(forwardSpeed);
 		sideways(sidewaysSpeed);
@@ -148,6 +145,7 @@ public class DriveTrain extends Subsystem {
 		}
 	}
 
+	@Deprecated
 	public void fixedSideways(double speed) {
 		if (Math.abs(getFront() - getRear()) > RobotMap.FIXED_TOLARANCE) {
 			speed = limitFree(speed);
@@ -176,6 +174,7 @@ public class DriveTrain extends Subsystem {
 	 * Ido was here . Gurny too
 	 */
 
+	@Deprecated
 	public void fixedForward(double speed) {
 		if (Math.abs(getLeft() - getRight()) > RobotMap.FIXED_TOLARANCE) {
 			speed = limitFree(speed);

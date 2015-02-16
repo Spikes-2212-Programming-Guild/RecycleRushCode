@@ -36,7 +36,7 @@ public class PIDSideways extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.fixedSideways(pid.doPID(driveTrain.getFront()));
+		driveTrain.sideways(pid.doPID(driveTrain.getFront()));
 		pid.waitForPID();
 	}
 
@@ -49,7 +49,7 @@ public class PIDSideways extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		driveTrain.fixedSideways(0);
+		driveTrain.sideways(0);
 	}
 
 	// Called when another command which requires one or more of the same

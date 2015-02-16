@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
+@Deprecated
 public class FixedForward extends Command {
 
 	private double speed;

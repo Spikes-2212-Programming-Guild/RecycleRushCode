@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
-@Deprecated
+
 public class Sideways extends Command {
 
 	private double speed;
