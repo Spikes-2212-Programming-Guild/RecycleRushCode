@@ -24,7 +24,7 @@ public class RobotMap {
 	public static final int REAR_ENCODER_1_PORT = 4;
 	public static final int REAR_ENCODER_2_PORT = 5;
 
-	public static final double MAX_TURN_SPEED = 0.2;
+	public static final double MAX_TURN_SPEED = 0.3;
 	public static final double WHEEL_DIAMETER = 6; // inches
 	public static final double FIXED_TOLARANCE = 0.5;
 	public static final double TURN_TOLERANCE = 0.01;
