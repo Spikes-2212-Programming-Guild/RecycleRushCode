@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -182,8 +181,7 @@ public class DriveTrain extends Subsystem {
 
 	private double limitFree(double speed) {
 		return Math.signum(speed)
-				* (!forwardSensitive ? 1.0 : SmartDashboard.getNumber(
-						"forward factor", RobotMap.FREE_SENSITIVE_FACTOR))
+				* (!forwardSensitive ? 1.0 : RobotMap.FREE_SENSITIVE_FACTOR)
 				* Math.min(1, Math.abs(speed));
 	}
 
