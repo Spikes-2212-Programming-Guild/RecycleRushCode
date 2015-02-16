@@ -52,9 +52,7 @@ public class Fork extends Subsystem {
 	}
 
 	public boolean isClosed() {
-		if (close != null)
-			return close.get();
-		return false;
+		return close != null && close.get();
 	}
 
 	public boolean isOpen() {

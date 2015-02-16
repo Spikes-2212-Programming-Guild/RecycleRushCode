@@ -31,7 +31,7 @@ public class MoveUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        lifter.set(pid.doPID(lifter.get()));
+        lifter.set(pid.doPID(lifter.getHeight()));
         pid.waitForPID();
     }
 

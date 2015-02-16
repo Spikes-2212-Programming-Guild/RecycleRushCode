@@ -45,7 +45,7 @@ public class MoveToLevel extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (!cantOperate) {
-            lifter.set(pid.doPID(lifter.get()));
+            lifter.set(pid.doPID(lifter.getHeight()));
             pid.waitForPID();
         }
     }

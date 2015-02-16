@@ -29,11 +29,10 @@ public class Move extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		if ((oi.getNavY() > 0/* for going up */&& lifter.isUp())
-				|| (oi.getNavY() < 0 && lifter.isDown())) {
-			return;
+		double y = oi.getNavY();
+		if (!((y > 0 && lifter.isUp()) || (y < 0 && lifter.isDown()))) {
+			lifter.set(oi.getNavY());
 		}
-		lifter.set(oi.getNavY());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

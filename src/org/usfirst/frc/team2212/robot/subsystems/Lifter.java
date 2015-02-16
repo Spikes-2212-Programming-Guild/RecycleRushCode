@@ -62,7 +62,7 @@ public class Lifter extends Subsystem {
 		return false;
 	}
 
-	public double get() {
+	public double getHeight() {
 		return encoder.get() / RobotMap.LIFTER_ENCODER_TICKS_IN_FULL_TURN
 				* Math.PI * wheelDiameter;
 	}

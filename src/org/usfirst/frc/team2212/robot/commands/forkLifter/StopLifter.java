@@ -5,42 +5,47 @@
  */
 package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
-import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  * @author ThinkRedstone
  */
 public class StopLifter extends Command {
-    
-    public StopLifter() {
-        requires(lifter);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public StopLifter() {
+		requires(lifter);
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() {
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return true;
-    }
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-        lifter.set(0);
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
+	protected boolean isFinished() {
+		return true;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    end();
-    }
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+		lifter.set(0);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+		end();
+	}
 }
