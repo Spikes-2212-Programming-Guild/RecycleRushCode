@@ -26,7 +26,7 @@ public class RobotMap {
 
 	public static final double MAX_TURN_SPEED = 0.2;
 	public static final double WHEEL_DIAMETER = 6; // inches
-	public static final double FIXED_TOLARANCE = 0;
+	public static final double FIXED_TOLARANCE = 0.5;
 	public static final double TURN_TOLERANCE = 0.01;
 	public static final int ENCODER_TICKS_IN_FULL_TURN = 360;
 	public static final double MAX_ACCY = 0.1;
@@ -83,7 +83,7 @@ public class RobotMap {
 
 	public static final double STUPID_AUTO_TIMEOUT = 4;
 	public static final double STUPID_AUTO_SPEED = 0.6;
-	public static final double FORWARD_SENSITIVE_FACTOR = 0.5;
+	public static final double FREE_SENSITIVE_FACTOR = 0.5;
 	public static final double TURN_SENSITIVE_FACTOR = 0.5;
 
 }

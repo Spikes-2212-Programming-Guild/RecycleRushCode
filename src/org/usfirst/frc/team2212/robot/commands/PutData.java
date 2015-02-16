@@ -38,7 +38,7 @@ public class PutData extends Command {
 		SmartDashboard.putNumber("threshold-f",
 				SmartDashboard.getNumber("threshold-f", 1));
 		SmartDashboard.putNumber("forward factor",
-				RobotMap.FORWARD_SENSITIVE_FACTOR);
+				RobotMap.FREE_SENSITIVE_FACTOR);
 	}
 
 	@Override
