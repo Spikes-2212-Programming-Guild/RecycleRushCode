@@ -134,8 +134,22 @@ public class DriveTrain extends Subsystem {
 		} else {
 			Xspeed = sidewaysSpeed;
 		}
-		forward(Yspeed);
-		sideways(Xspeed);
+		fixedForward(Yspeed);
+		fixedSideways(Xspeed);
+	}
+
+	public void fixedSideways(double speed) {
+		speed = limitSideways(speed);
+		if (Math.abs(Math.abs(getFront()) - Math.abs(getRear())) > RobotMap.FIXED_TOLARANCE) {
+			if (Math.abs(getFront()) > Math.abs(getRear())) {
+				front.set(-speed * (getFront() / getRear()));
+				rear.set(-speed);
+			} else {
+				front.set(-speed);
+				rear.set(-speed * (getFront() / getRear()));
+			}
+		}
+		reset();
 	}
 
 	/*
@@ -146,11 +160,11 @@ public class DriveTrain extends Subsystem {
 		speed = limitForward(speed);
 		if (Math.abs(Math.abs(getLeft()) - Math.abs(getRight())) > RobotMap.FIXED_TOLARANCE) {
 			if (Math.abs(getLeft()) > Math.abs(getRight())) {
-				front.set(-speed * (getRight() / getLeft()));
-				rear.set(-speed);
+				left.set(-speed * (getRight() / getLeft()));
+				right.set(-speed);
 			} else {
-				front.set(-speed);
-				rear.set(-speed * (getLeft() / getRight()));
+				left.set(-speed);
+				right.set(-speed * (getLeft() / getRight()));
 			}
 		}
 		reset();
