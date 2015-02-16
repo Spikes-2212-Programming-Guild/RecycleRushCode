@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 
-	boolean turnSensitive, forwardSensitive;
+	boolean freeSensitive;
 
 	private final Gearbox left, right;
 	private final VictorSP front, rear;
@@ -181,7 +181,7 @@ public class DriveTrain extends Subsystem {
 
 	private double limitFree(double speed) {
 		return Math.signum(speed)
-				* (!forwardSensitive ? 1.0 : RobotMap.FREE_SENSITIVE_FACTOR)
+				* (!freeSensitive ? 1.0 : RobotMap.FREE_SENSITIVE_FACTOR)
 				* Math.min(1, Math.abs(speed));
 	}
 
@@ -250,18 +250,10 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void changeForwardSensitivity() {
-		forwardSensitive = !forwardSensitive;
-	}
-
-	public void changeTurnSensitivity() {
-		turnSensitive = !turnSensitive;
-	}
-
-	public boolean isTurnSensitive() {
-		return turnSensitive;
+		freeSensitive = !freeSensitive;
 	}
 
 	public boolean isForwardSensitive() {
-		return forwardSensitive;
+		return freeSensitive;
 	}
 }
