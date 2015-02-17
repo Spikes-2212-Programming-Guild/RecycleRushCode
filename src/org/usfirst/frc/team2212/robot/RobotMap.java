@@ -56,7 +56,7 @@ public class RobotMap {
 	public static final int LIFTER_MAX_LEVEL = 6;
 	public static final double LIFTER_ENCODER_TICKS_IN_FULL_TURN = 360;
 
-	public static final double AUTO_FORWARD_DEST = -60;
+	public static final double AUTO_FORWARD_DEST = 60;
 	public static final double AUTO_FORWARD_TOTE_SIZE = 16.9;
 	public static final double AUTO_FORWARD_KP = 0.25;
 	public static final double AUTO_FORWARD_KI = 0;
