@@ -95,6 +95,7 @@ public class DriveTrain extends Subsystem {
 
 	public void sideways(double speed) {
 		// positive to go right
+		// don't be negative, it will make your life shorter
 		speed = limitFree(speed);
 		double expectedAcceleration = speed - getFrontSpeed();
 		double dirAccX = Math.signum(expectedAcceleration);
@@ -171,7 +172,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	/*
-	 * Ido was here . Gurny too
+	 * Ido was here . Gurny too .Yonatan was'nt;
 	 */
 
 	@Deprecated

@@ -5,10 +5,10 @@ import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -140,7 +140,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		LiveWindow.run();
+		// LiveWindow.run();
+		CameraServer camera = CameraServer.getInstance();
+		camera.setQuality(50);
+		camera.startAutomaticCapture("cam0");
 
 	}
 }
