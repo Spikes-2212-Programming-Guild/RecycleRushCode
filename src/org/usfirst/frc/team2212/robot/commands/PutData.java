@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.vision.USBCamera;
 
 public class PutData extends Command {
 
@@ -47,7 +46,7 @@ public class PutData extends Command {
 		// SmartDashboard.putNumber("forward factor",
 		// RobotMap.FREE_SENSITIVE_FACTOR);
 		camera.setQuality(50);
-		camera.startAutomaticCapture(new USBCamera("cam0"));
+		camera.startAutomaticCapture("cam0");
 	}
 
 	@Override
