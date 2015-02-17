@@ -49,8 +49,8 @@ public class RobotMap {
 
 	public static final double LIFTER_UP_SPEED = 0.6;
 	public static final double LIFTER_DOWN_SPEED = -0.142;
-	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0.5;
-	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0.6;
+	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0.2;
+	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0.4;
 	public static final double LIFTER_STAY_SPEED = 0.15;
 	public static final double LIFTER_WHEEL_DIAMETER = 4;
 	public static final int LIFTER_MAX_LEVEL = 6;
@@ -73,11 +73,12 @@ public class RobotMap {
 	public static final double AUTO_SIDEWAYS_THRESHOLD = 1;
 
 	public static final double ONE_TOTE_DEST = 12.1;
-	public static final double ONE_TOTE_KP = 1 / Math.E;
+	public static final double ONE_TOTE_KP = 0.25;// 1 / Math.E;
 	public static final double ONE_TOTE_KI = 0;
 	public static final double ONE_TOTE_KD = 0;
 	public static final long ONE_TOTE_DT = 50;
 	public static final double ONE_TOTE_THRESHOLD = 0.125;
+	public static final int ONE_TOTE_TIMEOUT = 2;
 
 	public static final double AUTONOMOUS_CLOSE_TIMEOUT = 0.5;
 

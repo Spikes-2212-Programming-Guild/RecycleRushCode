@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
+import org.usfirst.frc.team2212.robot.commands.pid.MoveToLevelWithTimeout;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -77,7 +78,9 @@ public class Robot extends IterativeRobot {
 		// "ki-f", 0) / 10000,
 		// SmartDashboard.getNumber("kd-f", 0), RobotMap.AUTO_FORWARD_DT,
 		// SmartDashboard.getNumber("threshold-f", 1));
-		autonomousCommand = putData.getSelectedAutoCommand();
+
+		// autonomousCommand = putData.getSelectedAutoCommand();
+		autonomousCommand = new MoveToLevelWithTimeout(1);
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
