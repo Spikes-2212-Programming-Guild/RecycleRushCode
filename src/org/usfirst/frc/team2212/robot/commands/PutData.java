@@ -17,7 +17,7 @@ public class PutData extends Command {
 
 	private SendableChooser autoChooser;
 	private CameraServer camera;
-	
+
 	public PutData() {
 		autoChooser = new SendableChooser();
 		camera = CameraServer.getInstance();
