@@ -39,21 +39,12 @@ public class RobotMap {
 	public static final int LIFTER_ENCODER_PORT1 = 3;
 	public static final int LIFTER_ENCODER_PORT2 = 17;
 
-	public static final double LIFTER_UP_SPEED = 0.6;
-	public static final double LIFTER_DOWN_SPEED = -0.142;
-	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0.2;
-	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0.4;
-	public static final double LIFTER_STAY_SPEED = 0.15;
-	public static final double LIFTER_WHEEL_DIAMETER = 4;
-	public static final int LIFTER_MAX_LEVEL = 6;
-	public static final double LIFTER_ENCODER_TICKS_IN_FULL_TURN = 360;
 
 	public static final double AUTO_FORWARD_DEST = 60;
 	public static final double AUTO_FORWARD_TOTE_SIZE = 16.9;
 	public static final double AUTO_FORWARD_KP = 0.25;
 	public static final double AUTO_FORWARD_KI = 0;
 	public static final double AUTO_FORWARD_KD = 0;
-	public static final long AUTO_FORWARD_DT = 50;
 	public static final double AUTO_FORWARD_THRESHOLD = 1;
 
 	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2); // 2*12+9+26.9/2
@@ -61,7 +52,6 @@ public class RobotMap {
 	public static final double AUTO_SIDEWAYS_KP = 0.25;
 	public static final double AUTO_SIDEWAYS_KI = 0;
 	public static final double AUTO_SIDEWAYS_KD = 0;
-	public static final long AUTO_SIDEWAYS_DT = 50;
 	public static final double AUTO_SIDEWAYS_THRESHOLD = 1;
 
 	public static final double ONE_TOTE_DEST = 12.1;
@@ -77,6 +67,5 @@ public class RobotMap {
 	public static final double STUPID_AUTO_TIMEOUT = 4;
 	public static final double STUPID_AUTO_SPEED = 0.6;
 
-	public static final double FREE_SENSITIVE_FACTOR = 0.5;
 
 }

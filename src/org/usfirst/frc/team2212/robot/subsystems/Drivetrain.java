@@ -30,6 +30,8 @@ public class Drivetrain extends Subsystem {
 	public static final double MAX_ACCX = 0.1;
 	public static final double DISTANCE_PER_PULSE = WHEEL_DIAMETER * Math.PI / ENCODER_TICKS_IN_FULL_TURN;
 	
+	public static final double FREE_SENSITIVE_FACTOR = 0.5;
+	
 	public static final boolean FRONT_REVERSED = false;
 	public static final boolean REAR_REVERSED = true;
 	public static final boolean LEFT_REVERSED = false;
@@ -209,7 +211,7 @@ public class Drivetrain extends Subsystem {
 
 	private double limitFree(double speed) {
 		return Math.signum(speed)
-				* (!freeSensitive ? 1.0 : RobotMap.FREE_SENSITIVE_FACTOR)
+				* (!freeSensitive ? 1.0 : FREE_SENSITIVE_FACTOR)
 				* Math.min(1, Math.abs(speed));
 	}
 

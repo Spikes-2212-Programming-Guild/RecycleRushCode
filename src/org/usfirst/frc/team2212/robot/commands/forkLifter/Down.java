@@ -7,7 +7,7 @@ package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 
-import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.subsystems.Lifter;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -32,7 +32,7 @@ public class Down extends Command {
 	@Override
 	protected void execute() {
 		if (!isFinished())
-			lifter.set(RobotMap.LIFTER_DOWN_SPEED);
+			lifter.set(Lifter.DOWN_SPEED);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
