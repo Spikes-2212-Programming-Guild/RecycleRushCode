@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2212.robot.commands;
 
 import org.usfirst.frc.team2212.robot.Commands;
-import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.driving.Forward;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 
