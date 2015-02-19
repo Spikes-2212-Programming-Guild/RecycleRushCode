@@ -36,7 +36,7 @@ public class PutData extends Command {
 	@Override
 	protected void execute() {
 		SmartDashboard.putBoolean("Forward Sensitive",
-				driveTrain.isForwardSensitive());
+				driveTrain.isSensitive());
 		SmartDashboard.putNumber("Left Encoder", driveTrain.getLeft());
 		SmartDashboard.putNumber("Right Encoder", driveTrain.getRight());
 		SmartDashboard.putNumber("Front Encoder", driveTrain.getFront());

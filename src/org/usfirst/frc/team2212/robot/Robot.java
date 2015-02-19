@@ -19,22 +19,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain driveTrain = new DriveTrain(
-			RobotMap.LEFT_FORWARD_VICTOR_PORT,
-			RobotMap.LEFT_BACKWARDS_VICTOR_PORT,
-			RobotMap.RIGHT_FORWARD_VICTOR_PORT,
-			RobotMap.RIGHT_BACKWARDS_VICTOR_PORT,
-			RobotMap.MIDDLE_FRONT_VICTOR_PORT,
-			RobotMap.MIDDLE_BACKWARDS_VICTOR_PORT,
-			RobotMap.LEFT_ENCODER_1_PORT, RobotMap.LEFT_ENCODER_2_PORT,
-			RobotMap.RIGHT_ENCODER_1_PORT, RobotMap.RIGHT_ENCODER_2_PORT,
-			RobotMap.FRONT_ENCODER_1_PORT, RobotMap.FRONT_ENCODER_2_PORT,
-			RobotMap.REAR_ENCODER_1_PORT, RobotMap.REAR_ENCODER_2_PORT,
-			RobotMap.WHEEL_DIAMETER);
-
-	/**
-	 *
-	 */
+	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Lifter lifter = new Lifter();
 	public static final Fork fork = new Fork();
 	public static final OI oi = new OI();

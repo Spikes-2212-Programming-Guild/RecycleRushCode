@@ -24,40 +24,26 @@ public class DriveTrain extends Subsystem {
 
 	boolean freeSensitive;
 
-	private final Gearbox left, right;
-	private final VictorSP front, rear;
-	private final double wheelDiameter;
-	private final BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
-	private final Encoder leftE, rightE, frontE, rearE;
+	Gearbox left, right;
+	VictorSP front, rear;
+	BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
+	Encoder leftE, rightE, frontE, rearE;
 
-	public DriveTrain(Gearbox left, Gearbox right, VictorSP front,
-			VictorSP rear, Encoder leftE, Encoder rightE, Encoder frontE,
-			Encoder rearE, double wheelDiameter) {
-		this.left = left;
-		this.right = right;
-		this.front = front;
-		this.rear = rear;
-		this.frontE = frontE;
-		this.rearE = rearE;
-		this.leftE = leftE;
-		this.rightE = rightE;
-		this.wheelDiameter = wheelDiameter;
-	}
-
-	public DriveTrain(int leftForward, int leftBackwards, int rightForward,
-			int rightBackwards, int middleFront, int middleRear,
-			int leftEncoderPort1, int leftEncoderPort2, int rightEncoderPort1,
-			int rightEncoderPort2, int frontEncoderPort1,
-			int frontEncoderPort2, int rearEncoderPort1, int rearEncoderPort2,
-			double wheelDiameter) {
-		this(new Gearbox(leftForward, leftBackwards), new Gearbox(rightForward,
-				rightBackwards), new VictorSP(middleFront), new VictorSP(
-				middleRear), new Encoder(leftEncoderPort1, leftEncoderPort2),
-				new Encoder(rightEncoderPort1, rightEncoderPort2), new Encoder(
-						frontEncoderPort1, frontEncoderPort2),
-				rearEncoderPort1 == -1 || rearEncoderPort2 == -1 ? null
-						: new Encoder(rearEncoderPort1, rearEncoderPort2),
-				wheelDiameter);
+	public DriveTrain() {
+		this.left = new Gearbox(RobotMap.LEFT_FORWARD_VICTOR_PORT,
+				RobotMap.LEFT_BACKWARDS_VICTOR_PORT);
+		this.right = new Gearbox(RobotMap.RIGHT_FORWARD_VICTOR_PORT,
+				RobotMap.RIGHT_BACKWARDS_VICTOR_PORT);
+		this.front = new VictorSP(RobotMap.MIDDLE_FRONT_VICTOR_PORT);
+		this.rear = new VictorSP(RobotMap.MIDDLE_BACKWARDS_VICTOR_PORT);
+		this.frontE = new Encoder(RobotMap.FRONT_ENCODER_1_PORT,
+				RobotMap.FRONT_ENCODER_2_PORT);
+		this.rearE = new Encoder(RobotMap.REAR_ENCODER_1_PORT,
+				RobotMap.REAR_ENCODER_2_PORT);
+		this.leftE = new Encoder(RobotMap.LEFT_ENCODER_1_PORT,
+				RobotMap.LEFT_ENCODER_2_PORT);
+		this.rightE = new Encoder(RobotMap.RIGHT_ENCODER_1_PORT,
+				RobotMap.RIGHT_ENCODER_2_PORT);
 	}
 
 	public void forward(double speed) {
@@ -218,23 +204,23 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public double getRear() {
-		return rearE == null ? 0 : -rearE.get()
-				/ (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI * wheelDiameter;
+		return -rearE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
+				* RobotMap.WHEEL_DIAMETER;
 	}
 
 	public double getLeft() {
 		return leftE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+				* RobotMap.WHEEL_DIAMETER;
 	}
 
 	public double getFront() {
 		return frontE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+				* RobotMap.WHEEL_DIAMETER;
 	}
 
 	public double getRight() {
 		return -rightE.get() / (double) ENCODER_TICKS_IN_FULL_TURN * Math.PI
-				* wheelDiameter;
+				* RobotMap.WHEEL_DIAMETER;
 	}
 
 	public double getXAcceleration() {
@@ -272,7 +258,7 @@ public class DriveTrain extends Subsystem {
 		freeSensitive = !freeSensitive;
 	}
 
-	public boolean isForwardSensitive() {
+	public boolean isSensitive() {
 		return freeSensitive;
 	}
 }
