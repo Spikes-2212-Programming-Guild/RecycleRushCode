@@ -27,7 +27,8 @@ public class PutData extends Command {
 		autoChooser.addObject("Full Auto", new AutonomousCommand());
 		autoChooser.addObject("Stupid Auto", new StupidAutoCommand());
 		autoChooser.addObject("No Auto", null);
-		autoChooser.addDefault("PID Auto", new PIDForward(Commands.AUTO_FORWARD_DEST));
+		autoChooser.addDefault("PID Auto", new PIDForward(
+				Commands.AUTO_FORWARD_DEST));
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 		camera.setQuality(50);
 		camera.startAutomaticCapture("cam0");
@@ -35,8 +36,8 @@ public class PutData extends Command {
 
 	@Override
 	protected void execute() {
-		SmartDashboard.putBoolean("Forward Sensitive",
-				drivetrain.isSensitive());
+		SmartDashboard
+				.putBoolean("Forward Sensitive", drivetrain.isSensitive());
 		SmartDashboard.putNumber("Left Encoder", drivetrain.getLeft());
 		SmartDashboard.putNumber("Right Encoder", drivetrain.getRight());
 		SmartDashboard.putNumber("Front Encoder", drivetrain.getFront());

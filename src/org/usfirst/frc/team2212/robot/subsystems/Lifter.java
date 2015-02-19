@@ -27,7 +27,8 @@ public class Lifter extends PIDSubsystem {
 	public static final double WHEEL_DIAMETER = 4;
 	public static final int LIFTER_MAX_LEVEL = 6;
 	public static final double ENCODER_TICKS_IN_FULL_TURN = 360;
-	public static final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER / ENCODER_TICKS_IN_FULL_TURN;
+	public static final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER
+			/ ENCODER_TICKS_IN_FULL_TURN;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.

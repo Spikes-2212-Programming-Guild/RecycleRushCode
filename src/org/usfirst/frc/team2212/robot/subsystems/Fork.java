@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Fork extends Subsystem {
 
 	public static final double SPEED = 0.6;
-	
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	CANTalon lock;
