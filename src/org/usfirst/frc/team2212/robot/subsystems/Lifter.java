@@ -24,6 +24,17 @@ public class Lifter extends PIDSubsystem {
 	public static final double D = 0;
 	public static final double TOLERANCE = 0.125;
 
+	public static final double UP_SPEED = 0.6;
+	public static final double DOWN_SPEED = -0.142;
+	public static final double LIFT_A_LITTLE_TIMEOUT = 0.2;
+	public static final double LIFT_A_LITTLE_SPEED = 0.4;
+	public static final double STAY_SPEED = 0.15;
+	public static final double WHEEL_DIAMETER = 4;
+	public static final int MAX_LEVEL = 6;
+	public static final double ENCODER_TICKS_IN_FULL_TURN = 360;
+	public static final double DISTANCE_PER_PULSE = WHEEL_DIAMETER * Math.PI
+			/ ENCODER_TICKS_IN_FULL_TURN;
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	CANTalon elevator1, elevator2;
@@ -41,6 +52,7 @@ public class Lifter extends PIDSubsystem {
 		this.down = new DigitalInput(RobotMap.LIFTER_DOWN_DI_PORT);
 		this.encoder = new Encoder(RobotMap.LIFTER_ENCODER_PORT1,
 				RobotMap.LIFTER_ENCODER_PORT2);
+		this.encoder.setDistancePerPulse(DISTANCE_PER_PULSE);
 	}
 
 	public void set(double s) {
@@ -57,8 +69,7 @@ public class Lifter extends PIDSubsystem {
 	}
 
 	public double getHeight() {
-		return encoder.get() / RobotMap.LIFTER_ENCODER_TICKS_IN_FULL_TURN
-				* RobotMap.LIFTER_WHEEL_DIAMETER * Math.PI;
+		return encoder.getDistance();
 	}
 
 	public void reset() {
@@ -95,11 +106,11 @@ public class Lifter extends PIDSubsystem {
 	}
 
 	public void verifyLevel() {
-		if (down != null && down.get()) {
+		if (down.get()) {
 			this.resetLevel();
 		}
-		if (up != null && up.get()) {
-			this.setLevel(RobotMap.LIFTER_MAX_LEVEL);
+		if (up.get()) {
+			this.setLevel(MAX_LEVEL);
 		}
 	}
 

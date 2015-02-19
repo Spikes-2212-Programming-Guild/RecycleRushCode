@@ -26,7 +26,6 @@ public class Sideways extends Command {
 	}
 
 	public Sideways(double speed) {
-		this();
 		this.speed = speed;
 	}
 
