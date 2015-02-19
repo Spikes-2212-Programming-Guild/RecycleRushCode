@@ -26,7 +26,6 @@ public class Forward extends Command {
 	}
 
 	public Forward(double speed) {
-		this();
 		this.speed = speed;
 	}
 

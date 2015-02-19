@@ -15,11 +15,12 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
-public class MoveDown extends Command {
+public class PIDMoveDown extends Command {
 
-	public MoveDown() {
+	public PIDMoveDown() {
 		requires(lifter);
 		lifter.setSetpoint(-Commands.ONE_TOTE_DEST);
+		lifter.enable();
 	}
 
 	// Called just before this Command runs the first time
@@ -39,6 +40,7 @@ public class MoveDown extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		lifter.disable();
 		lifter.levelDown();
 		lifter.set(0);
 		lifter.verifyLevel();

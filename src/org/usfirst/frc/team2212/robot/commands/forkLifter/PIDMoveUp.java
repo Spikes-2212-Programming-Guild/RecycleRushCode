@@ -15,11 +15,12 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
-public class MoveUp extends Command {
+public class PIDMoveUp extends Command {
 
-	public MoveUp() {
+	public PIDMoveUp() {
 		requires(lifter);
 		lifter.setSetpoint(Commands.ONE_TOTE_DEST);
+		lifter.enable();
 	}
 
 	// Called just before this Command runs the first time
@@ -39,6 +40,7 @@ public class MoveUp extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		lifter.disable();
 		lifter.levelUp();
 		lifter.set(0);
 		lifter.verifyLevel();
