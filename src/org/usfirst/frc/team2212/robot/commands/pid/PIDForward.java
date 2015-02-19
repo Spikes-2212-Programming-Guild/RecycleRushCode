@@ -5,7 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot.commands.pid;
 
-import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
 
@@ -23,7 +23,7 @@ public class PIDForward extends PIDCommand {
 
 	public PIDForward(double distance) {
 		super(P, I, D);
-		requires(driveTrain);
+		requires(drivetrain);
 		setInputRange(-1, 1);
 		setSetpoint(distance);
 	}
@@ -31,7 +31,7 @@ public class PIDForward extends PIDCommand {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		driveTrain.reset();
+		drivetrain.reset();
 		
 	}
 
@@ -50,7 +50,7 @@ public class PIDForward extends PIDCommand {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		driveTrain.forward(0);
+		drivetrain.forward(0);
 	}
 
 	// Called when another command which requires one or more of the same
@@ -62,11 +62,11 @@ public class PIDForward extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
-		return driveTrain.getLeftSpeed();
+		return drivetrain.getLeftSpeed();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		driveTrain.forward(output);
+		drivetrain.forward(output);
 	}
 }

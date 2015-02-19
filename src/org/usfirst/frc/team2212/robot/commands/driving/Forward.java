@@ -5,7 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot.commands.driving;
 
-import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -19,7 +19,7 @@ public class Forward extends Command {
 	private double speed;
 
 	public Forward() {
-		requires(driveTrain);
+		requires(drivetrain);
 		speed = 0;
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -39,9 +39,9 @@ public class Forward extends Command {
 	@Override
 	protected void execute() {
 		if (speed != 0)
-			driveTrain.forward(speed);
+			drivetrain.forward(speed);
 		else {
-			driveTrain.forward(oi.driver.getY());
+			drivetrain.forward(oi.driver.getY());
 		}
 	}
 
@@ -54,8 +54,8 @@ public class Forward extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		driveTrain.forward(0);
-		driveTrain.reset();
+		drivetrain.forward(0);
+		drivetrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same

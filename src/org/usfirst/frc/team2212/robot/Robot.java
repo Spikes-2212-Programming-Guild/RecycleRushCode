@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
-import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
 
@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final Lifter lifter = new Lifter();
 	public static final Fork fork = new Fork();
 	public static final OI oi = new OI();
@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		// instantiate the command used for the autonomous period
 		putData = new PutData();
-		driveTrain.reset();
+		drivetrain.reset();
 		lifter.reset();
 		putData.start();
 	}
@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
 		if (!putData.isRunning()) {
 			putData.start();
 		}
-		driveTrain.reset();
+		drivetrain.reset();
 		lifter.reset();
 		// autonomousCommand = new PIDForward(RobotMap.AUTO_FORWARD_DEST,
 		// SmartDashboard.getNumber("kp-f", 0), SmartDashboard.getNumber(
@@ -86,7 +86,7 @@ public class Robot extends IterativeRobot {
 		if (!putData.isRunning()) {
 			putData.start();
 		}
-		driveTrain.reset();
+		drivetrain.reset();
 		lifter.reset();
 
 	}
@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledInit() {
 		putData.cancel();
-		driveTrain.reset();
+		drivetrain.reset();
 		lifter.reset();
 	}
 

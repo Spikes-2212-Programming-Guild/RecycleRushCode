@@ -5,7 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot.subsystems;
 
-import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 import static org.usfirst.frc.team2212.robot.RobotMap.ENCODER_TICKS_IN_FULL_TURN;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  * @author ThinkRedstone
  */
-public class DriveTrain extends Subsystem {
+public class Drivetrain extends Subsystem {
 
 	boolean freeSensitive;
 
@@ -29,7 +29,7 @@ public class DriveTrain extends Subsystem {
 	BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
 	Encoder leftE, rightE, frontE, rearE;
 
-	public DriveTrain() {
+	public Drivetrain() {
 		this.left = new Gearbox(RobotMap.LEFT_FORWARD_VICTOR_PORT,
 				RobotMap.LEFT_BACKWARDS_VICTOR_PORT);
 		this.right = new Gearbox(RobotMap.RIGHT_FORWARD_VICTOR_PORT,
@@ -52,7 +52,7 @@ public class DriveTrain extends Subsystem {
 		double dirAccY = Math.signum(expectedAccelerationY);
 		double newSpeed = 0;
 		if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
-			newSpeed = driveTrain.getRightSpeed() + dirAccY * RobotMap.MAX_ACCY;
+			newSpeed = drivetrain.getRightSpeed() + dirAccY * RobotMap.MAX_ACCY;
 		} else {
 			newSpeed = speed;
 		}
@@ -66,7 +66,7 @@ public class DriveTrain extends Subsystem {
 		double dirAcc = Math.signum(expectedAcceleration);
 		double newSpeed = 0;
 		if (Math.abs(expectedAcceleration) > RobotMap.MAX_ACCY) {
-			newSpeed = driveTrain.getRightSpeed() + dirAcc * RobotMap.MAX_ACCY;
+			newSpeed = drivetrain.getRightSpeed() + dirAcc * RobotMap.MAX_ACCY;
 		} else {
 			newSpeed = speed;
 		}
@@ -85,7 +85,7 @@ public class DriveTrain extends Subsystem {
 		double dirAccX = Math.signum(expectedAcceleration);
 		double newSpeed = 0;
 		if (Math.abs(expectedAcceleration) > RobotMap.MAX_ACCX) {
-			newSpeed = driveTrain.getFrontSpeed() + dirAccX * RobotMap.MAX_ACCX;
+			newSpeed = drivetrain.getFrontSpeed() + dirAccX * RobotMap.MAX_ACCX;
 		} else {
 			newSpeed = speed;
 		}
@@ -110,13 +110,13 @@ public class DriveTrain extends Subsystem {
 			double dirAccX = Math.signum(expectedAccelerationX);
 			double newForwardSpeed, newSidewaysSpeed;
 			if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
-				newForwardSpeed = driveTrain.getRightSpeed() + dirAccY
+				newForwardSpeed = drivetrain.getRightSpeed() + dirAccY
 						* RobotMap.MAX_ACCY;
 			} else {
 				newForwardSpeed = forwardSpeed;
 			}
 			if (Math.abs(expectedAccelerationX) > RobotMap.MAX_ACCX) {
-				newSidewaysSpeed = driveTrain.getFrontSpeed() + dirAccX
+				newSidewaysSpeed = drivetrain.getFrontSpeed() + dirAccX
 						* RobotMap.MAX_ACCX;
 			} else {
 				newSidewaysSpeed = sidewaysSpeed;
@@ -138,7 +138,7 @@ public class DriveTrain extends Subsystem {
 			double dirAccX = Math.signum(expectedAccelerationX);
 			double newSpeed;
 			if (Math.abs(expectedAccelerationX) > RobotMap.MAX_ACCX) {
-				newSpeed = driveTrain.getFrontSpeed() + dirAccX
+				newSpeed = drivetrain.getFrontSpeed() + dirAccX
 						* RobotMap.MAX_ACCX;
 			} else {
 				newSpeed = speed;
@@ -167,7 +167,7 @@ public class DriveTrain extends Subsystem {
 			double dirAccY = Math.signum(expectedAccelerationY);
 			double newSpeed;
 			if (Math.abs(expectedAccelerationY) > RobotMap.MAX_ACCY) {
-				newSpeed = driveTrain.getRightSpeed() + dirAccY
+				newSpeed = drivetrain.getRightSpeed() + dirAccY
 						* RobotMap.MAX_ACCY;
 			} else {
 				newSpeed = speed;

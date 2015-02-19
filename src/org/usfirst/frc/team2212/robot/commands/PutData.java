@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2212.robot.commands;
 
-import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 import static org.usfirst.frc.team2212.robot.Robot.fork;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 
@@ -36,11 +36,11 @@ public class PutData extends Command {
 	@Override
 	protected void execute() {
 		SmartDashboard.putBoolean("Forward Sensitive",
-				driveTrain.isSensitive());
-		SmartDashboard.putNumber("Left Encoder", driveTrain.getLeft());
-		SmartDashboard.putNumber("Right Encoder", driveTrain.getRight());
-		SmartDashboard.putNumber("Front Encoder", driveTrain.getFront());
-		SmartDashboard.putNumber("Rear Encoder", driveTrain.getRear());
+				drivetrain.isSensitive());
+		SmartDashboard.putNumber("Left Encoder", drivetrain.getLeft());
+		SmartDashboard.putNumber("Right Encoder", drivetrain.getRight());
+		SmartDashboard.putNumber("Front Encoder", drivetrain.getFront());
+		SmartDashboard.putNumber("Rear Encoder", drivetrain.getRear());
 		SmartDashboard.putNumber("Lifter Encoder", lifter.getHeight());
 		SmartDashboard.putBoolean("Lifter Up", lifter.isUp());
 		SmartDashboard.putBoolean("Lifter Down", lifter.isDown());

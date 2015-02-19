@@ -5,7 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot.commands.pid;
 
-import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
+import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
 
@@ -23,7 +23,7 @@ public class PIDSideways extends PIDCommand {
 
 	public PIDSideways(double distance) {
 		super(P, I, D);
-		requires(driveTrain);
+		requires(drivetrain);
 		setInputRange(-1, 1);
 		setSetpoint(distance);
 	}
@@ -31,7 +31,7 @@ public class PIDSideways extends PIDCommand {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		driveTrain.reset();
+		drivetrain.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -49,7 +49,7 @@ public class PIDSideways extends PIDCommand {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		driveTrain.sideways(0);
+		drivetrain.sideways(0);
 	}
 
 	// Called when another command which requires one or more of the same
@@ -61,11 +61,11 @@ public class PIDSideways extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
-		return driveTrain.getFrontSpeed();
+		return drivetrain.getFrontSpeed();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		driveTrain.sideways(output);
+		drivetrain.sideways(output);
 	}
 }
