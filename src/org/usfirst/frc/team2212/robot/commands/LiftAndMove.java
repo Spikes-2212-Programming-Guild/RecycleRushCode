@@ -5,7 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot.commands;
 
-import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.Commands;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.LiftALittle;
 import org.usfirst.frc.team2212.robot.commands.pid.MoveToLevelWithTimeout;
 import org.usfirst.frc.team2212.robot.commands.pid.PIDSideways;
@@ -21,7 +21,7 @@ public class LiftAndMove extends CommandGroup {
 	public LiftAndMove() {
 		addSequential(new LiftALittle());
 		addParallel(new MoveToLevelWithTimeout(1));
-		addSequential(new PIDSideways(RobotMap.AUTO_SIDEWAYS_DEST));
+		addSequential(new PIDSideways(Commands.AUTO_SIDEWAYS_DEST));
 	}
 
 }

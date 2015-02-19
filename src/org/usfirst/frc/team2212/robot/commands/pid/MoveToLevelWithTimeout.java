@@ -3,7 +3,6 @@ package org.usfirst.frc.team2212.robot.commands.pid;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 
 import org.usfirst.frc.team2212.robot.Commands;
-import org.usfirst.frc.team2212.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,7 +20,7 @@ public class MoveToLevelWithTimeout extends Command {
 	@Override
 	protected void initialize() {
 		lifter.reset();
-		setTimeout(level * RobotMap.ONE_TOTE_TIMEOUT);
+		setTimeout(level * Commands.ONE_TOTE_TIMEOUT);
 	}
 
 	@Override

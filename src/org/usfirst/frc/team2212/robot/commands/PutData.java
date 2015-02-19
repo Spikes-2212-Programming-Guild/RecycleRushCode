@@ -4,7 +4,7 @@ import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 import static org.usfirst.frc.team2212.robot.Robot.fork;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 
-import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.Commands;
 import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -27,7 +27,7 @@ public class PutData extends Command {
 		autoChooser.addObject("Full Auto", new AutonomousCommand());
 		autoChooser.addObject("Stupid Auto", new StupidAutoCommand());
 		autoChooser.addObject("No Auto", null);
-		autoChooser.addDefault("PID Auto", new PIDForward(RobotMap.AUTO_FORWARD_DEST));
+		autoChooser.addDefault("PID Auto", new PIDForward(Commands.AUTO_FORWARD_DEST));
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 		camera.setQuality(50);
 		camera.startAutomaticCapture("cam0");

@@ -7,7 +7,7 @@ package org.usfirst.frc.team2212.robot.commands.pid;
 
 import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 
-import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
 
@@ -43,7 +43,7 @@ public class PIDSideways extends PIDCommand {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return Math.abs(getPosition() - getSetpoint()) < RobotMap.AUTO_FORWARD_THRESHOLD;
+		return Math.abs(getPosition() - getSetpoint()) < Commands.AUTO_FORWARD_THRESHOLD;
 	}
 
 	// Called once after isFinished returns true

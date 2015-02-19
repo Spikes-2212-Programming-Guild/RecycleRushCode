@@ -7,7 +7,7 @@ package org.usfirst.frc.team2212.robot.commands.pid;
 
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 
-import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -26,7 +26,7 @@ public class MoveToLevel extends Command {
 		// Same as up, only the other direction
 		if (lifter.getLevel() != -1) {
 			lifter.setSetpoint(level - lifter.getLevel()
-					* RobotMap.ONE_TOTE_DEST);
+					* Commands.ONE_TOTE_DEST);
 			lifter.enable();
 			enabled = true;
 		}

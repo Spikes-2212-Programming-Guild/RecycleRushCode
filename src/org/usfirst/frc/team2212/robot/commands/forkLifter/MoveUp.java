@@ -6,7 +6,9 @@
 package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
-import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_DEST;
+
+import org.usfirst.frc.team2212.robot.Commands;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -17,7 +19,7 @@ public class MoveUp extends Command {
 
 	public MoveUp() {
 		requires(lifter);
-		lifter.setSetpoint(ONE_TOTE_DEST);
+		lifter.setSetpoint(Commands.ONE_TOTE_DEST);
 	}
 
 	// Called just before this Command runs the first time

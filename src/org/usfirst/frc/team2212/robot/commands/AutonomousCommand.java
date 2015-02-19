@@ -5,7 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot.commands;
 
-import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.Commands;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.AddToteToStack;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
@@ -21,7 +21,7 @@ public class AutonomousCommand extends CommandGroup {
 
 	public AutonomousCommand() {
 		// close the fork to hold the first tote
-		addSequential(new Close(), RobotMap.AUTONOMOUS_CLOSE_TIMEOUT);
+		addSequential(new Close(), Commands.AUTONOMOUS_CLOSE_TIMEOUT);
 		// lift and move to the first tote
 		addSequential(new LiftAndMove());
 		// add the second tote to the stack
@@ -31,10 +31,10 @@ public class AutonomousCommand extends CommandGroup {
 		// add the third tote
 		addSequential(new AddToteToStack());
 		// move to autonomous area
-		addSequential(new PIDForward(RobotMap.AUTO_FORWARD_DEST));
+		addSequential(new PIDForward(Commands.AUTO_FORWARD_DEST));
 		// release the stack
 		addSequential(new Open());
 		// go back a little
-		addSequential(new PIDForward(RobotMap.AUTO_FORWARD_TOTE_SIZE));
+		addSequential(new PIDForward(Commands.AUTO_FORWARD_TOTE_SIZE));
 	}
 }

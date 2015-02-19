@@ -5,7 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
-import org.usfirst.frc.team2212.robot.RobotMap;
+import org.usfirst.frc.team2212.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -19,7 +19,7 @@ public class AddToteToStack extends CommandGroup {
 		// Robot is holding stack right above box
 		addSequential(new Open());
 		addSequential(new Down());
-		addSequential(new Close(), RobotMap.AUTONOMOUS_CLOSE_TIMEOUT);
+		addSequential(new Close(), Commands.AUTONOMOUS_CLOSE_TIMEOUT);
 		addSequential(new LiftALittle());
 	}
 }
