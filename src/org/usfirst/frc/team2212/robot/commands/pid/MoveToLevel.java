@@ -56,12 +56,13 @@ public class MoveToLevel extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		lifter.setLevel(level);
-		lifter.set(0);
-		lifter.verifyLevel();
 		if (enabled) {
 			lifter.disable();
 		}
+		lifter.setLevel(level);
+		lifter.set(0);
+		lifter.verifyLevel();
+
 	}
 
 	// Called when another command which requires one or more of the same

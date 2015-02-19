@@ -7,7 +7,7 @@ package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 
-import org.usfirst.frc.team2212.robot.subsystems.Lifter;
+import org.usfirst.frc.team2212.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -25,12 +25,12 @@ public class LiftALittle extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        setTimeout(Lifter.LIFT_A_LITTLE_TIMEOUT);
+        setTimeout(Commands.LIFT_A_LITTLE_TIMEOUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        lifter.set(Lifter.LIFT_A_LITTLE_SPEED);
+        lifter.set(Commands.LIFT_A_LITTLE_SPEED);
     }
 
     // Make this return true when this Command no longer needs to run execute()

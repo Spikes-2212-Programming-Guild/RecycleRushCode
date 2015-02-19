@@ -6,49 +6,46 @@
 package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
+import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_DEST;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class Stay extends Command {
+public class MoveUp extends Command {
 
-	public Stay() {
+	public MoveUp() {
 		requires(lifter);
-		lifter.setSetpoint(lifter.getHeight());
-		lifter.enable();
+		lifter.setSetpoint(ONE_TOTE_DEST);
 	}
 
 	// Called just before this Command runs the first time
-	@Override
 	protected void initialize() {
 		lifter.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
-	@Override
 	protected void execute() {
 
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
-	@Override
 	protected boolean isFinished() {
-		return false;
+		return lifter.onTarget() || lifter.isDown() || lifter.isUp();
 	}
 
 	// Called once after isFinished returns true
-	@Override
 	protected void end() {
+		lifter.levelUp();
 		lifter.set(0);
-		lifter.disable();
+		lifter.verifyLevel();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
-	@Override
 	protected void interrupted() {
-		end();
+		lifter.set(0);
+		lifter.corruptLevel();
 	}
 }

@@ -6,7 +6,7 @@
 package org.usfirst.frc.team2212.robot.subsystems;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
-import org.usfirst.frc.team2212.robot.commands.forkLifter.Stay;
+import org.usfirst.frc.team2212.robot.commands.pid.Stay;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -23,11 +23,6 @@ public class Lifter extends PIDSubsystem {
 	public static final double I = 0;
 	public static final double D = 0;
 	public static final double TOLERANCE = 0.125;
-	
-	public static final double UP_SPEED = 0.6;
-	public static final double DOWN_SPEED = -0.142;
-	public static final double LIFT_A_LITTLE_TIMEOUT = 0.2;
-	public static final double LIFT_A_LITTLE_SPEED = 0.4;
 	// public static final double STAY_SPEED = 0.15;
 	public static final double WHEEL_DIAMETER = 4;
 	public static final int LIFTER_MAX_LEVEL = 6;

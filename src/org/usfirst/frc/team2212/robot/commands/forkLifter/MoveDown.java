@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.usfirst.frc.team2212.robot.commands.pid;
+package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_DEST;
@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
-public class MoveUp extends Command {
+public class MoveDown extends Command {
 
-	public MoveUp() {
+	public MoveDown() {
 		requires(lifter);
-		lifter.setSetpoint(ONE_TOTE_DEST);
+		lifter.setSetpoint(-ONE_TOTE_DEST);
 	}
 
 	// Called just before this Command runs the first time
@@ -37,7 +37,7 @@ public class MoveUp extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		lifter.levelUp();
+		lifter.levelDown();
 		lifter.set(0);
 		lifter.verifyLevel();
 	}
