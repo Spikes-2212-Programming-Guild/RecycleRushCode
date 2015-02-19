@@ -21,10 +21,6 @@ public class Commands {
 	public static final double AUTO_SIDEWAYS_THRESHOLD = 1;
 
 	public static final double ONE_TOTE_DEST = 12.1;
-	public static final double ONE_TOTE_KP = 0.25;// 1 / Math.E;
-	public static final double ONE_TOTE_KI = 0;
-	public static final double ONE_TOTE_KD = 0;
-	public static final long ONE_TOTE_DT = 50;
 	public static final double ONE_TOTE_THRESHOLD = 0.125;
 	public static final int ONE_TOTE_TIMEOUT = 2;
 

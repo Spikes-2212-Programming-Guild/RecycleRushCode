@@ -6,9 +6,9 @@
 package org.usfirst.frc.team2212.robot.commands;
 
 import org.usfirst.frc.team2212.robot.Commands;
+import org.usfirst.frc.team2212.robot.commands.driving.PIDSideways;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.LiftALittle;
-import org.usfirst.frc.team2212.robot.commands.pid.MoveToLevelWithTimeout;
-import org.usfirst.frc.team2212.robot.commands.pid.PIDSideways;
+import org.usfirst.frc.team2212.robot.commands.forkLifter.MoveToLevelWithTimeout;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

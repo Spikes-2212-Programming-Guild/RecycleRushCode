@@ -5,7 +5,7 @@ import static org.usfirst.frc.team2212.robot.Robot.fork;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 
 import org.usfirst.frc.team2212.robot.Commands;
-import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
+import org.usfirst.frc.team2212.robot.commands.driving.PIDForward;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;

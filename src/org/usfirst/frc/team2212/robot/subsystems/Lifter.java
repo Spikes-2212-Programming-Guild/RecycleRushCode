@@ -6,7 +6,7 @@
 package org.usfirst.frc.team2212.robot.subsystems;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
-import org.usfirst.frc.team2212.robot.commands.pid.Stay;
+import org.usfirst.frc.team2212.robot.commands.forkLifter.PIDStay;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -111,7 +111,7 @@ public class Lifter extends PIDSubsystem {
 
 	@Override
 	public void initDefaultCommand() {
-		setDefaultCommand(new Stay());
+		setDefaultCommand(new PIDStay());
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
