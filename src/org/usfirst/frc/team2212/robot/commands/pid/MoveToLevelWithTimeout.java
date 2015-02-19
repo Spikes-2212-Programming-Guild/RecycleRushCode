@@ -26,7 +26,7 @@ public class MoveToLevelWithTimeout extends Command {
 	@Override
 	protected void execute() {
 		if (!cantOperate) {
-			lifter.set(Commands.UP_SPEED);
+			lifter.set(Commands.LIFTER_UP_SPEED);
 		}
 	}
 

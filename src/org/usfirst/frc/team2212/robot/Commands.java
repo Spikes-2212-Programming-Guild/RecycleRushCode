@@ -1,8 +1,8 @@
 package org.usfirst.frc.team2212.robot;
 
 public class Commands {
-	public static final double UP_SPEED = 0.6;
-	public static final double DOWN_SPEED = -0.142;
+	public static final double LIFTER_UP_SPEED = 0.6;
+	public static final double LIFTER_DOWN_SPEED = -0.142;
 	public static final double LIFT_A_LITTLE_TIMEOUT = 0.2;
 	public static final double LIFT_A_LITTLE_SPEED = 0.4;
 
