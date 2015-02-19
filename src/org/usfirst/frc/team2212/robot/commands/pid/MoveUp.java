@@ -5,10 +5,9 @@
  */
 package org.usfirst.frc.team2212.robot.commands.pid;
 
-import components.PID;
-import edu.wpi.first.wpilibj.command.Command;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
-import static org.usfirst.frc.team2212.robot.RobotMap.*;
+import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_DEST;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
@@ -16,41 +15,37 @@ import static org.usfirst.frc.team2212.robot.RobotMap.*;
  */
 public class MoveUp extends Command {
 
-    private PID pid;
+	public MoveUp() {
+		requires(lifter);
+		lifter.setSetpoint(ONE_TOTE_DEST);
+	}
 
-    public MoveUp() {
-        requires(lifter);
-        pid = new PID(ONE_TOTE_DEST, ONE_TOTE_KP, ONE_TOTE_KI, ONE_TOTE_KD, ONE_TOTE_DT, ONE_TOTE_THRESHOLD);
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		lifter.reset();
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-        pid.reset();
-        lifter.reset();
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        lifter.set(pid.doPID(lifter.getHeight()));
-        pid.waitForPID();
-    }
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return pid.hasArrived() || lifter.isDown() || lifter.isUp();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return lifter.onTarget() || lifter.isDown() || lifter.isUp();
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-        lifter.levelUp();
-        lifter.set(0);
-        lifter.verifyLevel();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		lifter.levelUp();
+		lifter.set(0);
+		lifter.verifyLevel();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-        lifter.set(0);
-        lifter.corruptLevel();
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		lifter.set(0);
+		lifter.corruptLevel();
+	}
 }

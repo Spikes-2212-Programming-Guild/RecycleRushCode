@@ -8,23 +8,38 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Up;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI /* GEVALD */extends JoystickMap {
+public class OI {
+
+	public final Joystick driver = new Joystick(0);
+	public final Joystick navigator = new Joystick(1);
+
+	Button up = new JoystickButton(navigator, 3);
+	Button down = new JoystickButton(navigator, 2);
+	Button open = new JoystickButton(navigator, 7);
+	Button close = new JoystickButton(navigator, 6);
+	Button forward = new JoystickButton(driver, 9);
+	Button sideways = new JoystickButton(driver, 10);
+	Button turn = new JoystickButton(driver, 1);
+	Button slowness = new JoystickButton(driver, 7);
 
 	public OI() {
-		UP_BUTTON.whileHeld(new Up());
-		DOWN_BUTTON.whileHeld(new Down());
-		OPEN_BUTTON.whileHeld(new Open());
-		CLOSE_BUTTON.whileHeld(new Close());
-		FORWARD_BUTTON.whileHeld(new Forward());
-		SIDEWAYS_BUTTON.whileHeld(new Sideways());
-		TURN_BUTTON.whileHeld(new Turn());
-		SLOWNESS.whenPressed(new Command() {
+		up.whileHeld(new Up());
+		down.whileHeld(new Down());
+		open.whileHeld(new Open());
+		close.whileHeld(new Close());
+		forward.whileHeld(new Forward());
+		sideways.whileHeld(new Sideways());
+		turn.whileHeld(new Turn());
+		slowness.whenPressed(new Command() {
 			@Override
 			protected boolean isFinished() {
 				return true;
@@ -47,26 +62,6 @@ public class OI /* GEVALD */extends JoystickMap {
 			protected void end() {
 			}
 		});
-	}
-
-	public double getDriverY() {
-		return driverJoystick.getY();
-	}
-
-	public double getDriverX() {
-		return driverJoystick.getX();
-	}
-
-	public double getDriverTwist() {
-		return driverJoystick.getTwist();
-	}
-
-	public double getNavY() {
-		return navJoystick.getY();
-	}
-
-	public double getNavX() {
-		return navJoystick.getX();
 	}
 
 }

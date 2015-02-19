@@ -8,30 +8,19 @@ package components;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 
-/**
- *
- * @author ThinkRedstone
- * 
- * 
- *         This code is working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
- */
 public class Gearbox implements SpeedController {
 
-	private VictorSP forward, backwards;
+	VictorSP front, rear;
 
-	public Gearbox(VictorSP forward, VictorSP backwards) {
-		this.forward = forward;
-		this.backwards = backwards;
-	}
-
-	public Gearbox(int forwardPort, int backwardsPort) {
-		this(new VictorSP(forwardPort), new VictorSP(backwardsPort));
+	public Gearbox(int frontChannel, int rearChannel) {
+		this.front = new VictorSP(frontChannel);
+		this.rear = new VictorSP(rearChannel);
 	}
 
 	@Override
 	public void set(double speed) {
-		forward.set(speed);
-		backwards.set(speed);
+		front.set(speed);
+		rear.set(speed);
 	}
 
 	@Override
@@ -41,21 +30,21 @@ public class Gearbox implements SpeedController {
 
 	@Override
 	public double get() {
-		return forward.get();
+		return front.get();
 	}
 
 	@Deprecated
 	@Override
 	public void set(double speed, byte syncGroup) {
-		forward.set(speed, syncGroup);
-		backwards.set(speed, syncGroup);
+		front.set(speed, syncGroup);
+		rear.set(speed, syncGroup);
 
 	}
 
 	@Override
 	public void disable() {
-		forward.disable();
-		backwards.disable();
+		front.disable();
+		rear.disable();
 	}
 
 }

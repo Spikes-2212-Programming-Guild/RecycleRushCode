@@ -35,14 +35,9 @@ public class Robot extends IterativeRobot {
 	/**
 	 *
 	 */
-	public static final Lifter lifter = new Lifter(RobotMap.LIFTER_TALON_1_ID,
-			RobotMap.LIFTER_TALON_2_ID, RobotMap.LIFTER_UP_DI_PORT,
-			RobotMap.LIFTER_DOWN_DI_PORT, RobotMap.LIFTER_ENCODER_PORT1,
-			RobotMap.LIFTER_ENCODER_PORT2, RobotMap.LIFTER_WHEEL_DIAMETER);
-	public static final Fork fork = new Fork(RobotMap.FORK_TALON_ID,
-			RobotMap.FORK_OPEN_DI_1_PORT, RobotMap.FORK_OPEN_DI_2_PORT,
-			RobotMap.FORK_CLOSE_DI_PORT);
-	public static OI oi = new OI();
+	public static final Lifter lifter = new Lifter();
+	public static final Fork fork = new Fork();
+	public static final OI oi = new OI();
 
 	Command autonomousCommand;
 	PutData putData;
@@ -117,14 +112,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		try {
-			putData.cancel();
-			driveTrain.reset();
-
-			lifter.reset();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		putData.cancel();
+		driveTrain.reset();
+		lifter.reset();
 	}
 
 	/**

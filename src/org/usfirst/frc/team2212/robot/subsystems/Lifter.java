@@ -11,38 +11,36 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Stay;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class Lifter extends Subsystem {
+public class Lifter extends PIDSubsystem {
+
+	public static final double P = 0.25;
+	public static final double I = 0;
+	public static final double D = 0;
+	public static final double TOLERANCE = 0.125;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private final CANTalon elevator1, elevator2;
-	private final DigitalInput up, down;
-	private final Encoder encoder;
-	private final double wheelDiameter;
-	private int currentLevel;
+	CANTalon elevator1, elevator2;
+	DigitalInput up, down;
+	Encoder encoder;
+	int currentLevel;
 
-	public Lifter(CANTalon elevator1, CANTalon elevator2, DigitalInput up,
-			DigitalInput down, Encoder encoder, double wheelDiameter) {
-		this.elevator1 = elevator1;
-		this.elevator2 = elevator2;
-		this.up = up;
-		this.down = down;
-		this.encoder = encoder;
-		this.wheelDiameter = wheelDiameter;
-	}
-
-	public Lifter(int talon1ID, int talon2ID, int upPort, int downPort,
-			int encoderPort1, int encoderPort2, double wheelDiameter) {
-		this(new CANTalon(talon1ID), new CANTalon(talon2ID),
-				upPort == -1 ? null : new DigitalInput(upPort),
-				downPort == -1 ? null : new DigitalInput(downPort),
-				new Encoder(encoderPort1, encoderPort2), wheelDiameter);
+	public Lifter() {
+		super(P, I, D);
+		setSetpoint(0);
+		setAbsoluteTolerance(TOLERANCE);
+		this.elevator1 = new CANTalon(RobotMap.LIFTER_TALON_1_ID);
+		this.elevator2 = new CANTalon(RobotMap.LIFTER_TALON_2_ID);
+		this.up = new DigitalInput(RobotMap.LIFTER_UP_DI_PORT);
+		this.down = new DigitalInput(RobotMap.LIFTER_DOWN_DI_PORT);
+		this.encoder = new Encoder(RobotMap.LIFTER_ENCODER_PORT1,
+				RobotMap.LIFTER_ENCODER_PORT2);
 	}
 
 	public void set(double s) {
@@ -51,20 +49,16 @@ public class Lifter extends Subsystem {
 	}
 
 	public boolean isUp() {
-		if (up != null)
-			return up.get();
-		return false;
+		return up.get();
 	}
 
 	public boolean isDown() {
-		if (down != null)
-			return down.get();
-		return false;
+		return down.get();
 	}
 
 	public double getHeight() {
 		return encoder.get() / RobotMap.LIFTER_ENCODER_TICKS_IN_FULL_TURN
-				* Math.PI * wheelDiameter;
+				* RobotMap.LIFTER_WHEEL_DIAMETER * Math.PI;
 	}
 
 	public void reset() {
@@ -114,5 +108,15 @@ public class Lifter extends Subsystem {
 		setDefaultCommand(new Stay());
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	}
+
+	@Override
+	public double returnPIDInput() {
+		return getHeight();
+	}
+
+	@Override
+	public void usePIDOutput(double output) {
+		set(output);
 	}
 }

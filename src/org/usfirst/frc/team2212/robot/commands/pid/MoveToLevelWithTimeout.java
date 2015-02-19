@@ -14,10 +14,7 @@ public class MoveToLevelWithTimeout extends Command {
 	public MoveToLevelWithTimeout(int level) {
 		requires(lifter);
 		this.level = level;
-		if (lifter.getLevel() == -1)
-			cantOperate = true;
-		else
-			cantOperate = false;
+		cantOperate = lifter.getLevel() == -1;
 	}
 
 	@Override

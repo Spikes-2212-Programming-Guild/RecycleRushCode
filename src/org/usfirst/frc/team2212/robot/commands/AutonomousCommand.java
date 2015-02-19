@@ -31,16 +31,10 @@ public class AutonomousCommand extends CommandGroup {
 		// add the third tote
 		addSequential(new AddToteToStack());
 		// move to autonomous area
-		addSequential(new PIDForward(RobotMap.AUTO_FORWARD_DEST,
-				RobotMap.AUTO_FORWARD_KP, RobotMap.AUTO_FORWARD_KI,
-				RobotMap.AUTO_FORWARD_KD, RobotMap.AUTO_FORWARD_DT,
-				RobotMap.AUTO_FORWARD_THRESHOLD));
+		addSequential(new PIDForward(RobotMap.AUTO_FORWARD_DEST));
 		// release the stack
 		addSequential(new Open());
 		// go back a little
-		addSequential(new PIDForward(RobotMap.AUTO_FORWARD_TOTE_SIZE,
-				RobotMap.AUTO_FORWARD_KP, RobotMap.AUTO_FORWARD_KI,
-				RobotMap.AUTO_FORWARD_KD, RobotMap.AUTO_FORWARD_DT,
-				RobotMap.AUTO_FORWARD_THRESHOLD));
+		addSequential(new PIDForward(RobotMap.AUTO_FORWARD_TOTE_SIZE));
 	}
 }

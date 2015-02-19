@@ -17,8 +17,6 @@ public class FreeMovement extends Command {
 
 	public FreeMovement() {
 		requires(driveTrain);
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 	}
 
 	// Called just before this Command runs the first time
@@ -29,9 +27,7 @@ public class FreeMovement extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		// driveTrain.freeMovement(oi.getDriverY(),
-		// oi.getDriverX(),oi.getDriverTwist());
-		driveTrain.freeMovement(oi.getDriverY(), oi.getDriverX());
+		driveTrain.freeMovement(oi.driver.getY(), oi.driver.getX());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

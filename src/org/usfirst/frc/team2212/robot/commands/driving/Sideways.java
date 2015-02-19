@@ -41,7 +41,7 @@ public class Sideways extends Command {
 		if (speed != 0)
 			driveTrain.sideways(speed);
 		else {
-			driveTrain.sideways(oi.getDriverX());
+			driveTrain.sideways(oi.driver.getX());
 		}
 	}
 

@@ -6,16 +6,6 @@
 package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
-import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_DT;
-import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_KD;
-import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_KI;
-import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_KP;
-import static org.usfirst.frc.team2212.robot.RobotMap.ONE_TOTE_THRESHOLD;
-
-import org.usfirst.frc.team2212.robot.RobotMap;
-
-import components.PID;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -24,28 +14,22 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Stay extends Command {
 
-	PID pid;
-
 	public Stay() {
 		requires(lifter);
-		pid = new PID(lifter.getHeight(), ONE_TOTE_KP, ONE_TOTE_KI,
-				ONE_TOTE_KD, ONE_TOTE_DT, ONE_TOTE_THRESHOLD);
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		lifter.setSetpoint(lifter.getHeight());
+		lifter.enable();
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		lifter.reset();
-		pid.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		lifter.set(RobotMap.LIFTER_STAY_SPEED + pid.doPID(lifter.getHeight()));
-		pid.waitForPID();
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -58,6 +42,7 @@ public class Stay extends Command {
 	@Override
 	protected void end() {
 		lifter.set(0);
+		lifter.disable();
 	}
 
 	// Called when another command which requires one or more of the same

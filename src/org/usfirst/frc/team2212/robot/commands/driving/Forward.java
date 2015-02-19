@@ -41,7 +41,7 @@ public class Forward extends Command {
 		if (speed != 0)
 			driveTrain.forward(speed);
 		else {
-			driveTrain.forward(oi.getDriverY());
+			driveTrain.forward(oi.driver.getY());
 		}
 	}
 

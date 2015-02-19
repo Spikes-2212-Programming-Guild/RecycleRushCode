@@ -7,43 +7,43 @@ package org.usfirst.frc.team2212.robot.commands.pid;
 
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 
-import components.PID;
+import org.usfirst.frc.team2212.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.PIDCommand;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class PIDSideways extends Command {
-	private PID pid;
+public class PIDSideways extends PIDCommand {
 
-	public PIDSideways(double dest, double KP, double KI, double KD, long DT,
-			double threshold) {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+	public static final double P = 0.25;
+	public static final double I = 0;
+	public static final double D = 0;
+
+	public PIDSideways(double distance) {
+		super(P, I, D);
 		requires(driveTrain);
-		pid = new PID(dest, KP, KI, KD, DT, threshold);
+		setInputRange(-1, 1);
+		setSetpoint(distance);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		driveTrain.reset();
-		pid.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.sideways(pid.doPID(driveTrain.getFront()));
-		pid.waitForPID();
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return pid.hasArrived();
+		return Math.abs(getPosition() - getSetpoint()) < RobotMap.AUTO_FORWARD_THRESHOLD;
 	}
 
 	// Called once after isFinished returns true
@@ -57,5 +57,15 @@ public class PIDSideways extends Command {
 	@Override
 	protected void interrupted() {
 		end();
+	}
+
+	@Override
+	protected double returnPIDInput() {
+		return driveTrain.getFrontSpeed();
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		driveTrain.sideways(output);
 	}
 }

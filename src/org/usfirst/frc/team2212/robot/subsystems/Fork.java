@@ -17,34 +17,28 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Fork extends Subsystem {
 
+	public static final double SPEED = 0.6;
+	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private final CANTalon lock;
-	private final DigitalInput open1, open2, close;
+	CANTalon lock;
+	DigitalInput open1, open2, close;
 
-	public Fork(CANTalon lock, DigitalInput open1, DigitalInput open2,
-			DigitalInput close) {
-		this.lock = lock;
-		this.open1 = open1;
-		this.open2 = open2;
-		this.close = close;
-	}
-
-	public Fork(int talonID, int open1Port, int open2Port, int closePort) {
-		this(new CANTalon(talonID), open1Port == -1 ? null : new DigitalInput(
-				open1Port), open2Port == -1 ? null
-				: new DigitalInput(open2Port), closePort == -1 ? null
-				: new DigitalInput(closePort));
+	public Fork() {
+		this.lock = new CANTalon(RobotMap.FORK_TALON_ID);
+		this.open1 = new DigitalInput(RobotMap.FORK_OPEN_DI_1_PORT);
+		this.open2 = new DigitalInput(RobotMap.FORK_OPEN_DI_2_PORT);
+		this.close = new DigitalInput(RobotMap.FORK_CLOSE_DI_PORT);
 	}
 
 	public void open() {
 		// assuming forward for open
-		lock.set(RobotMap.FORK_SPEED);
+		lock.set(SPEED);
 	}
 
 	public void close() {
 		// assuming forward for open
-		lock.set(-RobotMap.FORK_SPEED);
+		lock.set(-SPEED);
 	}
 
 	public void stop() {
@@ -52,14 +46,10 @@ public class Fork extends Subsystem {
 	}
 
 	public boolean isClosed() {
-		return close != null && close.get();
+		return close.get();
 	}
 
 	public boolean isOpen() {
-		if (open1 == null)
-			return !open2.get();
-		else if (open2 == null)
-			return !open1.get();
 		return !open1.get() || !open2.get();
 	}
 

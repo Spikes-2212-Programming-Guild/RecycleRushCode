@@ -21,10 +21,7 @@ public class LiftAndMove extends CommandGroup {
 	public LiftAndMove() {
 		addSequential(new LiftALittle());
 		addParallel(new MoveToLevelWithTimeout(1));
-		addSequential(new PIDSideways(RobotMap.AUTO_SIDEWAYS_DEST,
-				RobotMap.AUTO_SIDEWAYS_KP, RobotMap.AUTO_SIDEWAYS_KI,
-				RobotMap.AUTO_SIDEWAYS_KD, RobotMap.AUTO_SIDEWAYS_DT,
-				RobotMap.AUTO_SIDEWAYS_THRESHOLD));
+		addSequential(new PIDSideways(RobotMap.AUTO_SIDEWAYS_DEST));
 	}
 
 }
