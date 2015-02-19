@@ -7,7 +7,7 @@ package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
 
-import org.usfirst.frc.team2212.robot.subsystems.Lifter;
+import org.usfirst.frc.team2212.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -31,7 +31,8 @@ public class Down extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		lifter.set(Lifter.DOWN_SPEED);
+		if (!isFinished())
+			lifter.set(RobotMap.LIFTER_DOWN_SPEED);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

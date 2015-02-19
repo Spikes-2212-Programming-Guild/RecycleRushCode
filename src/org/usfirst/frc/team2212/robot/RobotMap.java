@@ -47,6 +47,15 @@ public class RobotMap {
 	public static final int LIFTER_ENCODER_PORT1 = 3;
 	public static final int LIFTER_ENCODER_PORT2 = 17;
 
+	public static final double LIFTER_UP_SPEED = 0.6;
+	public static final double LIFTER_DOWN_SPEED = -0.142;
+	public static final double LIFTER_LIFT_A_LITTLE_TIMEOUT = 0.2;
+	public static final double LIFTER_LIFT_A_LITTLE_SPEED = 0.4;
+	public static final double LIFTER_STAY_SPEED = 0.15;
+	public static final double LIFTER_WHEEL_DIAMETER = 4;
+	public static final int LIFTER_MAX_LEVEL = 6;
+	public static final double LIFTER_ENCODER_TICKS_IN_FULL_TURN = 360;
+
 	public static final double AUTO_FORWARD_DEST = 60;
 	public static final double AUTO_FORWARD_TOTE_SIZE = 16.9;
 	public static final double AUTO_FORWARD_KP = 0.25;
