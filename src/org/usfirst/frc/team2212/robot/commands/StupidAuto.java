@@ -6,9 +6,9 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class StupidAutoCommand extends CommandGroup {
+public class StupidAuto extends CommandGroup {
 
-	public StupidAutoCommand() {
+	public StupidAuto() {
 		addSequential(new Close(), Commands.AUTONOMOUS_CLOSE_TIMEOUT);
 		addSequential(new Forward(Commands.STUPID_AUTO_SPEED),
 				Commands.STUPID_AUTO_TIMEOUT);

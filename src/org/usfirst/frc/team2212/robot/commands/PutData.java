@@ -24,8 +24,8 @@ public class PutData extends Command {
 
 	@Override
 	protected void initialize() {
-		autoChooser.addObject("Full Auto", new AutonomousCommand());
-		autoChooser.addObject("Stupid Auto", new StupidAutoCommand());
+		autoChooser.addObject("Full Auto", new Autonomous());
+		autoChooser.addObject("Stupid Auto", new StupidAuto());
 		autoChooser.addObject("No Auto", null);
 		autoChooser.addDefault("PID Auto", new PIDForward(
 				Commands.AUTO_FORWARD_DEST));

@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * 
  * @author ThinkRedstone
  */
-public class AutonomousCommand extends CommandGroup {
+public class Autonomous extends CommandGroup {
 
-	public AutonomousCommand() {
+	public Autonomous() {
 		// close the fork to hold the first tote
 		addSequential(new Close(), Commands.AUTONOMOUS_CLOSE_TIMEOUT);
 		// lift and move to the first tote
