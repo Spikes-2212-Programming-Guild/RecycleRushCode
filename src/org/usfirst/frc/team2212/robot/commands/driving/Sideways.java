@@ -6,7 +6,6 @@
 package org.usfirst.frc.team2212.robot.commands.driving;
 
 import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
-import static org.usfirst.frc.team2212.robot.Robot.oi;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -16,17 +15,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Sideways extends Command {
 
-	private double speed;
-
-	public Sideways() {
-		requires(drivetrain);
-		speed = 0;
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-	}
+	double speed;
 
 	public Sideways(double speed) {
-		this();
+		requires(drivetrain);
 		this.speed = speed;
 	}
 
@@ -38,11 +30,7 @@ public class Sideways extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		if (speed != 0)
-			drivetrain.sideways(speed);
-		else {
-			drivetrain.sideways(oi.driver.getX());
-		}
+		drivetrain.sideways(speed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
