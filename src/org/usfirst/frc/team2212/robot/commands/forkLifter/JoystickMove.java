@@ -31,7 +31,7 @@ public class JoystickMove extends Command {
 	protected void execute() {
 		double y = oi.navigator.getY();
 		if (!((y > 0 && lifter.isUp()) || (y < 0 && lifter.isDown()))) {
-			lifter.set(oi.navigator.getY());
+			lifter.set(y);
 		}
 	}
 

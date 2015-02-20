@@ -102,10 +102,10 @@ public class Lifter extends PIDSubsystem {
 	}
 
 	public void verifyLevel() {
-		if (down != null && down.get()) {
+		if (down.get()) {
 			this.resetLevel();
 		}
-		if (up != null && up.get()) {
+		if (up.get()) {
 			this.setLevel(LIFTER_MAX_LEVEL);
 		}
 	}
@@ -113,8 +113,6 @@ public class Lifter extends PIDSubsystem {
 	@Override
 	public void initDefaultCommand() {
 		setDefaultCommand(new PIDStay());
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
 	}
 
 	@Override
