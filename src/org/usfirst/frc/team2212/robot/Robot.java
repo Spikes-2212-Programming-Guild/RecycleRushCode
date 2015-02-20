@@ -52,11 +52,6 @@ public class Robot extends IterativeRobot {
 		}
 		drivetrain.reset();
 		lifter.reset();
-		// autonomousCommand = new PIDForward(RobotMap.AUTO_FORWARD_DEST,
-		// SmartDashboard.getNumber("kp-f", 0), SmartDashboard.getNumber(
-		// "ki-f", 0) / 10000,
-		// SmartDashboard.getNumber("kd-f", 0), RobotMap.AUTO_FORWARD_DT,
-		// SmartDashboard.getNumber("threshold-f", 1));
 		autonomousCommand = putData.getSelectedAutoCommand();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();

@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class MoveToLevelWithTimeout extends Command {
 
-	private int level;
-	private boolean cantOperate;
+	int level;
+	boolean cantOperate;
 
 	public MoveToLevelWithTimeout(int level) {
 		requires(lifter);
