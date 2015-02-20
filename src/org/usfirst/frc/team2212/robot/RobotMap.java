@@ -8,34 +8,34 @@ package org.usfirst.frc.team2212.robot;
  */
 public class RobotMap {
 
-	public static final int LEFT_FORWARD_VICTOR_PORT = 0;
-	public static final int LEFT_BACKWARDS_VICTOR_PORT = 1;
-	public static final int RIGHT_FORWARD_VICTOR_PORT = 8;
-	public static final int RIGHT_BACKWARDS_VICTOR_PORT = 9;
-	public static final int MIDDLE_FRONT_VICTOR_PORT = 4;
-	public static final int MIDDLE_BACKWARDS_VICTOR_PORT = 5;
-	public static final int LEFT_ENCODER_1_PORT = 1;
-	public static final int LEFT_ENCODER_2_PORT = 19;
-	public static final int RIGHT_ENCODER_1_PORT = 0;
-	public static final int RIGHT_ENCODER_2_PORT = 20;
-	public static final int FRONT_ENCODER_1_PORT = 2;
-	public static final int FRONT_ENCODER_2_PORT = 18;
-	public static final int REAR_ENCODER_1_PORT = 4;
-	public static final int REAR_ENCODER_2_PORT = 5;
+	public static final int LEFT_FRONT_VICTOR = 0;
+	public static final int LEFT_REAR_VICTOR = 1;
+	public static final int RIGHT_FRONT_VICTOR = 8;
+	public static final int RIGHT_REAR_VICTOR = 9;
+	public static final int MIDDLE_FRONT_VICTOR = 4;
+	public static final int MIDDLE_REAR_VICTOR = 5;
+	public static final int LEFT_ENCODER_A = 1;
+	public static final int LEFT_ENCODER_B = 19;
+	public static final int RIGHT_ENCODER_A = 0;
+	public static final int RIGHT_ENCODER_B = 20;
+	public static final int FRONT_ENCODER_A = 2;
+	public static final int FRONT_ENCODER_B = 18;
+	public static final int REAR_ENCODER_A = 4;
+	public static final int REAR_ENCODER_B = 5;
 
 
-	public static final int FORK_TALON_ID = 3;
-	public static final int FORK_OPEN_DI_1_PORT = 7;
-	public static final int FORK_OPEN_DI_2_PORT = 9;
-	public static final int FORK_ENCODER_PORT1 = 10;
-	public static final int FORK_ENCODER_PORT2 = 11;
-	public static final int FORK_CLOSE_DI_PORT = 8;
+	public static final int FORK_TALON = 3;
+	public static final int FORK_OPEN_DI_1 = 7;
+	public static final int FORK_OPEN_DI_2 = 9;
+	public static final int FORK_ENCODER_A = 10;
+	public static final int FORK_ENCODER_B = 11;
+	public static final int FORK_CLOSE_DI = 8;
 
-	public static final int LIFTER_TALON_1_ID = 1;
-	public static final int LIFTER_TALON_2_ID = 2;
-	public static final int LIFTER_UP_DI_PORT = 6;
-	public static final int LIFTER_DOWN_DI_PORT = 23;
-	public static final int LIFTER_ENCODER_PORT1 = 3;
-	public static final int LIFTER_ENCODER_PORT2 = 17;
+	public static final int LIFTER_TALON_1 = 1;
+	public static final int LIFTER_TALON_2 = 2;
+	public static final int LIFTER_UP_DI = 6;
+	public static final int LIFTER_DOWN_DI = 23;
+	public static final int LIFTER_ENCODER_A = 3;
+	public static final int LIFTER_ENCODER_B = 17;
 
 }

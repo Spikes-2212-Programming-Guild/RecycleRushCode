@@ -25,10 +25,10 @@ public class Fork extends Subsystem {
 	DigitalInput open1, open2, close;
 
 	public Fork() {
-		this.lock = new CANTalon(RobotMap.FORK_TALON_ID);
-		this.open1 = new DigitalInput(RobotMap.FORK_OPEN_DI_1_PORT);
-		this.open2 = new DigitalInput(RobotMap.FORK_OPEN_DI_2_PORT);
-		this.close = new DigitalInput(RobotMap.FORK_CLOSE_DI_PORT);
+		this.lock = new CANTalon(RobotMap.FORK_TALON);
+		this.open1 = new DigitalInput(RobotMap.FORK_OPEN_DI_1);
+		this.open2 = new DigitalInput(RobotMap.FORK_OPEN_DI_2);
+		this.close = new DigitalInput(RobotMap.FORK_CLOSE_DI);
 	}
 
 	public void open() {

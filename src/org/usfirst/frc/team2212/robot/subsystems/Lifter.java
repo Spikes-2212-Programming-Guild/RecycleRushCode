@@ -42,12 +42,12 @@ public class Lifter extends PIDSubsystem {
 		setSetpoint(0);
 		setAbsoluteTolerance(TOLERANCE);
 		setOutputRange(-1, 1);
-		this.elevator1 = new CANTalon(RobotMap.LIFTER_TALON_1_ID);
-		this.elevator2 = new CANTalon(RobotMap.LIFTER_TALON_2_ID);
-		this.up = new DigitalInput(RobotMap.LIFTER_UP_DI_PORT);
-		this.down = new DigitalInput(RobotMap.LIFTER_DOWN_DI_PORT);
-		this.encoder = new Encoder(RobotMap.LIFTER_ENCODER_PORT1,
-				RobotMap.LIFTER_ENCODER_PORT2);
+		this.elevator1 = new CANTalon(RobotMap.LIFTER_TALON_1);
+		this.elevator2 = new CANTalon(RobotMap.LIFTER_TALON_2);
+		this.up = new DigitalInput(RobotMap.LIFTER_UP_DI);
+		this.down = new DigitalInput(RobotMap.LIFTER_DOWN_DI);
+		this.encoder = new Encoder(RobotMap.LIFTER_ENCODER_A,
+				RobotMap.LIFTER_ENCODER_B);
 		encoder.setDistancePerPulse(DISTANCE_PER_PULSE);
 	}
 

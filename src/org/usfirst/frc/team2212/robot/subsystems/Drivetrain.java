@@ -45,20 +45,20 @@ public class Drivetrain extends Subsystem {
 	Encoder leftE, rightE, frontE, rearE;
 
 	public Drivetrain() {
-		this.left = new Gearbox(RobotMap.LEFT_FORWARD_VICTOR_PORT,
-				RobotMap.LEFT_BACKWARDS_VICTOR_PORT);
-		this.right = new Gearbox(RobotMap.RIGHT_FORWARD_VICTOR_PORT,
-				RobotMap.RIGHT_BACKWARDS_VICTOR_PORT);
-		this.front = new VictorSP(RobotMap.MIDDLE_FRONT_VICTOR_PORT);
-		this.rear = new VictorSP(RobotMap.MIDDLE_BACKWARDS_VICTOR_PORT);
-		this.frontE = new Encoder(RobotMap.FRONT_ENCODER_1_PORT,
-				RobotMap.FRONT_ENCODER_2_PORT);
-		this.rearE = new Encoder(RobotMap.REAR_ENCODER_1_PORT,
-				RobotMap.REAR_ENCODER_2_PORT);
-		this.leftE = new Encoder(RobotMap.LEFT_ENCODER_1_PORT,
-				RobotMap.LEFT_ENCODER_2_PORT);
-		this.rightE = new Encoder(RobotMap.RIGHT_ENCODER_1_PORT,
-				RobotMap.RIGHT_ENCODER_2_PORT);
+		this.left = new Gearbox(RobotMap.LEFT_FRONT_VICTOR,
+				RobotMap.LEFT_REAR_VICTOR);
+		this.right = new Gearbox(RobotMap.RIGHT_FRONT_VICTOR,
+				RobotMap.RIGHT_REAR_VICTOR);
+		this.front = new VictorSP(RobotMap.MIDDLE_FRONT_VICTOR);
+		this.rear = new VictorSP(RobotMap.MIDDLE_REAR_VICTOR);
+		this.frontE = new Encoder(RobotMap.FRONT_ENCODER_A,
+				RobotMap.FRONT_ENCODER_B);
+		this.rearE = new Encoder(RobotMap.REAR_ENCODER_A,
+				RobotMap.REAR_ENCODER_B);
+		this.leftE = new Encoder(RobotMap.LEFT_ENCODER_A,
+				RobotMap.LEFT_ENCODER_B);
+		this.rightE = new Encoder(RobotMap.RIGHT_ENCODER_A,
+				RobotMap.RIGHT_ENCODER_B);
 
 		frontE.setDistancePerPulse(DISTANCE_PER_PULSE);
 		rearE.setDistancePerPulse(DISTANCE_PER_PULSE);
