@@ -54,6 +54,7 @@ public class PIDMoveDown extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		lifter.disable();
 		lifter.set(0);
 		lifter.corruptLevel();
 	}

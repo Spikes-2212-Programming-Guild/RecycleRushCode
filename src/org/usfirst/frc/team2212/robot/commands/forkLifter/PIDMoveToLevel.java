@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class PIDMoveToLevel extends Command {
 
-	private int level;
+	int level;
 	boolean enabled;
 
 	public PIDMoveToLevel(int level) {
@@ -69,10 +69,11 @@ public class PIDMoveToLevel extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		lifter.set(0);
-		lifter.corruptLevel();
 		if (enabled) {
 			lifter.disable();
 		}
+		lifter.set(0);
+		lifter.corruptLevel();
+
 	}
 }

@@ -41,6 +41,7 @@ public class Lifter extends PIDSubsystem {
 		super(P, I, D);
 		setSetpoint(0);
 		setAbsoluteTolerance(TOLERANCE);
+		setOutputRange(-1, 1);
 		this.elevator1 = new CANTalon(RobotMap.LIFTER_TALON_1_ID);
 		this.elevator2 = new CANTalon(RobotMap.LIFTER_TALON_2_ID);
 		this.up = new DigitalInput(RobotMap.LIFTER_UP_DI_PORT);
