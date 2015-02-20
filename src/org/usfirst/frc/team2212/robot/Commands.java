@@ -14,7 +14,7 @@ public class Commands {
 	public static final double AUTO_FORWARD_THRESHOLD = 1;
 
 	public static final double AUTO_SIDEWAYS_DEST = (2 * 12 + 9) + (26.9 / 2); // 2*12+9+26.9/2
-	public static final double FULL_COURT_SIDEWAYS_DEST = 0;
+	// public static final double FULL_COURT_SIDEWAYS_DEST = 0;
 	public static final double AUTO_SIDEWAYS_KP = 0.25;
 	public static final double AUTO_SIDEWAYS_KI = 0;
 	public static final double AUTO_SIDEWAYS_KD = 0;

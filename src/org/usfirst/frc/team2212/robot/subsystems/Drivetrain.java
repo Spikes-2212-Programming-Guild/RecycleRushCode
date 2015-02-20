@@ -214,7 +214,7 @@ public class Drivetrain extends Subsystem {
 				* Math.min(1, Math.abs(speed));
 	}
 
-	private double limitTurn(double speed) {
+	private static double limitTurn(double speed) {
 		return Math.signum(speed) * MAX_TURN_SPEED
 				* Math.min(1, Math.abs(speed));
 	}
