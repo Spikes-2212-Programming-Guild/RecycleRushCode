@@ -280,7 +280,7 @@ public class Drivetrain extends Subsystem {
 		setDefaultCommand(new FreeMovement());
 	}
 
-	public void changeForwardSensitivity() {
+	public void changeSensitivity() {
 		freeSensitive = !freeSensitive;
 	}
 

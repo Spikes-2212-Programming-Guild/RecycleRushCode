@@ -51,7 +51,7 @@ public class OI {
 
 			@Override
 			protected void initialize() {
-				Robot.drivetrain.changeForwardSensitivity();
+				Robot.drivetrain.changeSensitivity();
 			}
 
 			@Override
