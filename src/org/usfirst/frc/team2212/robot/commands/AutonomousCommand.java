@@ -14,7 +14,8 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * This is the main Autonomous Command that should be run in competition.
+ * 
  * @author ThinkRedstone
  */
 public class AutonomousCommand extends CommandGroup {
