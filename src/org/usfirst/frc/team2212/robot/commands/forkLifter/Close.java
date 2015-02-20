@@ -5,6 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot.commands.forkLifter;
 
+import static org.usfirst.frc.team2212.robot.Commands.CLOSE_TIMEOUT;
 import static org.usfirst.frc.team2212.robot.Robot.fork;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,7 +24,7 @@ public class Close extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		setTimeout(3);
+		setTimeout(CLOSE_TIMEOUT);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

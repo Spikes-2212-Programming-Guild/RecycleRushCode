@@ -25,6 +25,7 @@ public class Commands {
 	public static final int ONE_TOTE_TIMEOUT = 2;
 
 	public static final double AUTONOMOUS_CLOSE_TIMEOUT = 0.5;
+	public static final double CLOSE_TIMEOUT = 3;
 
 	public static final double STUPID_AUTO_TIMEOUT = 4;
 	public static final double STUPID_AUTO_SPEED = 0.6;
