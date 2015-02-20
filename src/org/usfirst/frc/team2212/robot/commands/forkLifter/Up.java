@@ -31,7 +31,9 @@ public class Up extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		lifter.set(Commands.LIFTER_UP_SPEED);
+		if (!isFinished()) {
+			lifter.set(Commands.LIFTER_UP_SPEED);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
