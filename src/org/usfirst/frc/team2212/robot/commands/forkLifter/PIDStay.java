@@ -21,7 +21,6 @@ public class PIDStay extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		lifter.reset();
 		lifter.setSetpoint(lifter.getHeight());
 		lifter.enable();
 	}

@@ -25,8 +25,7 @@ public class PIDMoveUp extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		lifter.reset();
-		lifter.setSetpoint(Commands.ONE_TOTE_DEST);
+		lifter.setSetpoint(lifter.getHeight() + Commands.ONE_TOTE_DEST);
 		lifter.enable();
 	}
 

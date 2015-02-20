@@ -19,7 +19,6 @@ public class MoveToLevelWithTimeout extends Command {
 
 	@Override
 	protected void initialize() {
-		lifter.reset();
 		setTimeout(level * Commands.ONE_TOTE_TIMEOUT);
 	}
 

@@ -32,9 +32,8 @@ public class PIDMoveToLevel extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		lifter.reset();
 		if (enabled) {
-			lifter.setSetpoint(level - lifter.getLevel()
+			lifter.setSetpoint(lifter.getHeight() + (level - lifter.getLevel())
 					* Commands.ONE_TOTE_DEST);
 			lifter.enable();
 		}
