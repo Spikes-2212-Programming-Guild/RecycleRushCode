@@ -2,7 +2,7 @@ package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.driving.JoystickForward;
 import org.usfirst.frc.team2212.robot.commands.driving.JoystickSideways;
-import org.usfirst.frc.team2212.robot.commands.driving.Turn;
+import org.usfirst.frc.team2212.robot.commands.driving.JoystickTurn;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
@@ -38,7 +38,7 @@ public class OI {
 		close.whileHeld(new Close());
 		forward.whileHeld(new JoystickForward());
 		sideways.whileHeld(new JoystickSideways());
-		turn.whileHeld(new Turn());
+		turn.whileHeld(new JoystickTurn());
 		slowness.whenPressed(new Command() {
 			@Override
 			protected boolean isFinished() {

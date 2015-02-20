@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
-public class Turn extends Command {
+public class JoystickTurn extends Command {
 
-	public Turn() {
+	public JoystickTurn() {
 		requires(drivetrain);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
