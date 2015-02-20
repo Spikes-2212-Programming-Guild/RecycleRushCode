@@ -32,7 +32,7 @@ public class MoveToLevelWithTimeout extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return isTimedOut() || level > 0 ? lifter.isUp() : lifter.isDown();
+		return isTimedOut() || level > 0 ? lifter.isUp() : lifter.isDown() || cantOperate;
 	}
 
 	@Override
