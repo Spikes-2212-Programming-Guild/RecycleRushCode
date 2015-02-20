@@ -41,7 +41,7 @@ public class JoystickTurn extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		drivetrain.turn(0);
+		drivetrain.stop();
 		drivetrain.reset();
 	}
 

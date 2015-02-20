@@ -50,7 +50,7 @@ public class PIDForward extends PIDCommand {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		drivetrain.forward(0);
+		drivetrain.stop();
 	}
 
 	// Called when another command which requires one or more of the same

@@ -10,7 +10,7 @@ import static org.usfirst.frc.team2212.robot.Robot.oi;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Drive freely
  * @author ThinkRedstone
  */
 public class FreeMovement extends Command {
@@ -39,7 +39,7 @@ public class FreeMovement extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		drivetrain.freeMovement(0, 0, 0);
+		drivetrain.stop();
 		drivetrain.reset();
 	}
 

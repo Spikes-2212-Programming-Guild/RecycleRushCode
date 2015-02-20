@@ -27,24 +27,6 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	PutData putData;
 
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
-	@Override
-	public void robotInit() {
-		// instantiate the command used for the autonomous period
-		putData = new PutData();
-		drivetrain.reset();
-		lifter.reset();
-		putData.start();
-	}
-
-	@Override
-	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
-	}
-
 	@Override
 	public void autonomousInit() {
 		if (!putData.isRunning()) {
@@ -68,6 +50,35 @@ public class Robot extends IterativeRobot {
 
 	}
 
+	/**
+	 * This function is called when the disabled button is hit. You can use it
+	 * to reset subsystems before shutting down.
+	 */
+	@Override
+	public void disabledInit() {
+		putData.cancel();
+		drivetrain.reset();
+		lifter.reset();
+	}
+
+	@Override
+	public void disabledPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
+	/**
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
+	 */
+	@Override
+	public void robotInit() {
+		// instantiate the command used for the autonomous period
+		putData = new PutData();
+		drivetrain.reset();
+		lifter.reset();
+		putData.start();
+	}
+
 	@Override
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
@@ -84,17 +95,6 @@ public class Robot extends IterativeRobot {
 		drivetrain.reset();
 		lifter.reset();
 
-	}
-
-	/**
-	 * This function is called when the disabled button is hit. You can use it
-	 * to reset subsystems before shutting down.
-	 */
-	@Override
-	public void disabledInit() {
-		putData.cancel();
-		drivetrain.reset();
-		lifter.reset();
 	}
 
 	/**

@@ -33,7 +33,7 @@ public class JoystickSideways extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		drivetrain.sideways(0);
+		drivetrain.stop();
 		drivetrain.reset();
 	}
 

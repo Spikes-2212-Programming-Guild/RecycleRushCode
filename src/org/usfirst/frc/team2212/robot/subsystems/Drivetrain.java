@@ -71,6 +71,13 @@ public class Drivetrain extends Subsystem {
 		rightE.setReverseDirection(RIGHT_REVERSED);
 
 	}
+	
+	public void stop() {
+		left.set(0);
+		right.set(0);
+		front.set(0);
+		rear.set(0);
+	}
 
 	public void forward(double speed) {
 		speed = limitFree(speed);

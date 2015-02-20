@@ -9,7 +9,7 @@ import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Drive forward in a given velocity
  * @author ThinkRedstone
  */
 
@@ -42,7 +42,7 @@ public class Forward extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		drivetrain.forward(0);
+		drivetrain.stop();
 		drivetrain.reset();
 	}
 

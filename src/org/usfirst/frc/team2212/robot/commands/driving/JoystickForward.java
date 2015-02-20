@@ -24,7 +24,7 @@ public class JoystickForward extends Command {
 
 	@Override
 	protected void end() {
-		drivetrain.forward(0);
+		drivetrain.stop();
 		drivetrain.reset();
 	}
 
