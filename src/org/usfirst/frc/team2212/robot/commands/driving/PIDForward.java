@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 
 /**
  *
+ * Drive forward to a destination using PID
+ *
  * @author ThinkRedstone
  */
 public class PIDForward extends PIDCommand {
@@ -32,7 +34,6 @@ public class PIDForward extends PIDCommand {
 	@Override
 	protected void initialize() {
 		drivetrain.reset();
-
 	}
 
 	// Called repeatedly when this Command is scheduled to run

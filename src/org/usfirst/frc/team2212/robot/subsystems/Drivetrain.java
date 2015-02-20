@@ -8,7 +8,7 @@ package org.usfirst.frc.team2212.robot.subsystems;
 import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 
 import org.usfirst.frc.team2212.robot.RobotMap;
-import org.usfirst.frc.team2212.robot.commands.driving.FreeMovement;
+import org.usfirst.frc.team2212.robot.commands.driving.JoystickFreeMovement;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
@@ -277,7 +277,7 @@ public class Drivetrain extends Subsystem {
 	// here. Call these from Commands.
 	@Override
 	public void initDefaultCommand() {
-		setDefaultCommand(new FreeMovement());
+		setDefaultCommand(new JoystickFreeMovement());
 	}
 
 	public void changeSensitivity() {

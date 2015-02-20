@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
+ * Drive sideways using joystick
+ *
  */
 public class JoystickSideways extends Command {
 

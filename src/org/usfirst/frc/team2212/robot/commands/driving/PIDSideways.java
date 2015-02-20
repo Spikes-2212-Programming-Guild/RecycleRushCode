@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 
 /**
  *
+ * Drive sideways to a destination using PID
+ *
  * @author ThinkRedstone
  */
 public class PIDSideways extends PIDCommand {

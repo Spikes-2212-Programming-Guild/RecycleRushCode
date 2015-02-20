@@ -4,6 +4,12 @@ import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * Drive forward using joystick
+ * 
+ * @author Alon
+ *
+ */
 public class JoystickForward extends Command {
 
 	@Override

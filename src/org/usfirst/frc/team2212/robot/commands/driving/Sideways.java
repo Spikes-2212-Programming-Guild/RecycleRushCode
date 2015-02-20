@@ -9,6 +9,7 @@ import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
+ * Drive sideways in a given speed
  *
  * @author ThinkRedstone
  */

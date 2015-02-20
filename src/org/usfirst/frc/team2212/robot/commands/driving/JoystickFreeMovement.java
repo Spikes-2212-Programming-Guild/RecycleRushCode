@@ -10,12 +10,13 @@ import static org.usfirst.frc.team2212.robot.Robot.oi;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Drive freely
+ * Drive freely using joystick
+ * 
  * @author ThinkRedstone
  */
-public class FreeMovement extends Command {
+public class JoystickFreeMovement extends Command {
 
-	public FreeMovement() {
+	public JoystickFreeMovement() {
 		requires(drivetrain);
 	}
 
