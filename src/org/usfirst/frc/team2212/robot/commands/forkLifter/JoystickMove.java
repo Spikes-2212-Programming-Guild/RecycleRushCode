@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  * @author ThinkRedstone
  */
-public class Move extends Command {
+public class JoystickMove extends Command {
 
-	public Move() {
+	public JoystickMove() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(lifter);
