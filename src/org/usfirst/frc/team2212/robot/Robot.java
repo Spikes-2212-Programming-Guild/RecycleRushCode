@@ -5,6 +5,7 @@ import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,9 +24,24 @@ public class Robot extends IterativeRobot {
 	public static final Lifter lifter = new Lifter();
 	public static final Fork fork = new Fork();
 	public static final OI oi = new OI();
+	public static final CameraServer camera = CameraServer.getInstance();
 
 	Command autonomousCommand;
 	PutData putData;
+	
+	/**
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
+	 */
+	@Override
+	public void robotInit() {
+		drivetrain.reset();
+		lifter.reset();
+		camera.setQuality(50);
+		camera.startAutomaticCapture("cam0");
+		putData = new PutData();
+		putData.start();
+	}
 
 	@Override
 	public void autonomousInit() {
@@ -66,18 +82,6 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
-	@Override
-	public void robotInit() {
-		// instantiate the command used for the autonomous period
-		putData = new PutData();
-		drivetrain.reset();
-		lifter.reset();
-		putData.start();
-	}
 
 	@Override
 	public void teleopInit() {

@@ -7,7 +7,6 @@ import static org.usfirst.frc.team2212.robot.Robot.lifter;
 import org.usfirst.frc.team2212.robot.Commands;
 import org.usfirst.frc.team2212.robot.commands.driving.PIDForward;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -15,11 +14,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PutData extends Command {
 
 	SendableChooser autoChooser;
-	CameraServer camera;
 
 	public PutData() {
 		autoChooser = new SendableChooser();
-		camera = CameraServer.getInstance();
 	}
 
 	@Override
@@ -30,8 +27,7 @@ public class PutData extends Command {
 		autoChooser.addDefault("PID Auto", new PIDForward(
 				Commands.AUTO_FORWARD_DEST));
 		SmartDashboard.putData("Auto Chooser", autoChooser);
-		camera.setQuality(50);
-		camera.startAutomaticCapture("cam0");
+
 	}
 
 	@Override
