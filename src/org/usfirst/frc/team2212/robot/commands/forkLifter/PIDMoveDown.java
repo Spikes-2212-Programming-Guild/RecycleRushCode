@@ -19,14 +19,15 @@ public class PIDMoveDown extends Command {
 
 	public PIDMoveDown() {
 		requires(lifter);
-		lifter.setSetpoint(-Commands.ONE_TOTE_DEST);
-		lifter.enable();
+
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		lifter.reset();
+		lifter.setSetpoint(-Commands.ONE_TOTE_DEST);
+		lifter.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -16,14 +16,14 @@ public class PIDStay extends Command {
 
 	public PIDStay() {
 		requires(lifter);
-		lifter.setSetpoint(lifter.getHeight());
-		lifter.enable();
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		lifter.reset();
+		lifter.setSetpoint(lifter.getHeight());
+		lifter.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

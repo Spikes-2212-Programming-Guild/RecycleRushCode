@@ -16,41 +16,43 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author ThinkRedstone
  */
 public class LiftALittle extends Command {
-    
-    public LiftALittle() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-        requires(lifter);
-    }
 
-    // Called just before this Command runs the first time
-    @Override
+	public LiftALittle() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(lifter);
+	}
+
+	// Called just before this Command runs the first time
+	@Override
 	protected void initialize() {
-        setTimeout(Commands.LIFT_A_LITTLE_TIMEOUT);
-    }
+		setTimeout(Commands.LIFT_A_LITTLE_TIMEOUT);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    @Override
+	// Called repeatedly when this Command is scheduled to run
+	@Override
 	protected void execute() {
-        lifter.set(Commands.LIFT_A_LITTLE_SPEED);
-    }
+		if (!isFinished()) {
+			lifter.set(Commands.LIFT_A_LITTLE_SPEED);
+		}
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    @Override
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
 	protected boolean isFinished() {
-        return isTimedOut() || lifter.isUp();
-    }
+		return isTimedOut() || lifter.isUp();
+	}
 
-    // Called once after isFinished returns true
-    @Override
+	// Called once after isFinished returns true
+	@Override
 	protected void end() {
-        lifter.set(0);
-    }
+		lifter.set(0);
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    @Override
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
 	protected void interrupted() {
-        end();
-    }
+		end();
+	}
 }

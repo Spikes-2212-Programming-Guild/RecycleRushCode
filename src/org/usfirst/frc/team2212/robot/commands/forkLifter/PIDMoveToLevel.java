@@ -24,12 +24,7 @@ public class PIDMoveToLevel extends Command {
 	public PIDMoveToLevel(int level) {
 		requires(lifter);
 		// Same as up, only the other direction
-		if (lifter.getLevel() != -1) {
-			lifter.setSetpoint(level - lifter.getLevel()
-					* Commands.ONE_TOTE_DEST);
-			lifter.enable();
-			enabled = true;
-		}
+		enabled = lifter.getLevel() != -1;
 		this.level = level;
 
 	}
@@ -38,6 +33,11 @@ public class PIDMoveToLevel extends Command {
 	@Override
 	protected void initialize() {
 		lifter.reset();
+		if (enabled) {
+			lifter.setSetpoint(level - lifter.getLevel()
+					* Commands.ONE_TOTE_DEST);
+			lifter.enable();
+		}
 	}
 
 	// Called repeatedly when this Command is scheduled to run
