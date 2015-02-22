@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.tables.ITable;
 
 /**
  *
@@ -29,6 +30,8 @@ public class Lifter extends PIDSubsystem {
 	public static final double ENCODER_TICKS_IN_FULL_TURN = 360;
 	public static final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER
 			/ ENCODER_TICKS_IN_FULL_TURN;
+	private static final double MIN_HEIGHT = 0;
+	private static final double MAX_HEIGHT = 0;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -123,5 +126,20 @@ public class Lifter extends PIDSubsystem {
 	@Override
 	public void usePIDOutput(double output) {
 		set(output);
+	}
+	
+	@Override
+	public String getSmartDashboardType() {
+		return "Lifter";
+	}
+	
+	@Override
+	public void initTable(ITable table) {
+		super.initTable(table);
+		table.putNumber("height", getHeight());
+		table.putNumber("minHeight", MIN_HEIGHT);
+		table.putNumber("maxHeight", MAX_HEIGHT);
+		table.putBoolean("up", isUp());
+		table.putBoolean("down", isDown());
 	}
 }
