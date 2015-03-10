@@ -6,7 +6,6 @@ import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -44,7 +43,7 @@ public class Robot extends IterativeRobot {
 			RobotMap.FORK_CLOSE_DI_PORT);
 	public static OI oi = new OI();
 
-	Command autonomousCommand;
+	// Command autonomousCommand;
 	PutData putData;
 
 	/**
@@ -77,10 +76,10 @@ public class Robot extends IterativeRobot {
 		// "ki-f", 0) / 10000,
 		// SmartDashboard.getNumber("kd-f", 0), RobotMap.AUTO_FORWARD_DT,
 		// SmartDashboard.getNumber("threshold-f", 1));
-		autonomousCommand = putData.getSelectedAutoCommand();
-		if (autonomousCommand != null) {
-			autonomousCommand.start();
-		}
+		// autonomousCommand = putData.getSelectedAutoCommand();
+		// if (autonomousCommand != null) {
+		// autonomousCommand.start();
+		// }
 
 	}
 
@@ -100,9 +99,9 @@ public class Robot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 
-		if (autonomousCommand != null) {
-			autonomousCommand.cancel();
-		}
+		// if (autonomousCommand != null) {
+		// autonomousCommand.cancel();
+		// }
 		if (!putData.isRunning()) {
 			putData.start();
 		}
