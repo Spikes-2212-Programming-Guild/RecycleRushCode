@@ -32,7 +32,8 @@ public class JoystickMap {
 	protected Button SLOWNESS = new JoystickButton(driverJoystick, 7);
 	protected Button NORMAL = new JoystickButton(driverJoystick, 8);
 
+	protected Button STOP_RECORDING = new JoystickButton(driverJoystick, 11);
 	protected Button RECORDING = new JoystickButtonForRecord(driverJoystick, 12);
-	protected Button PLAY = new JoystickButtonForRecord(driverJoystick, 11);
+	protected Button PLAY = new JoystickButtonForRecord(driverJoystick, 5);
 
 }
