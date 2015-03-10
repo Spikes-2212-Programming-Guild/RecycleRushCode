@@ -7,7 +7,6 @@ import static org.usfirst.frc.team2212.robot.Robot.lifter;
 import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -15,11 +14,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PutData extends Command {
 
 	private SendableChooser autoChooser;
-	private CameraServer camera;
+
+	// private CameraServer camera;
 
 	public PutData() {
 		autoChooser = new SendableChooser();
-		camera = CameraServer.getInstance();
+		// camera = CameraServer.getInstance();
 	}
 
 	@Override
@@ -45,8 +45,8 @@ public class PutData extends Command {
 		// SmartDashboard.getNumber("threshold-f", 1));
 		// SmartDashboard.putNumber("forward factor",
 		// RobotMap.FREE_SENSITIVE_FACTOR);
-		camera.setQuality(50);
-		camera.startAutomaticCapture("cam0");
+		// camera.setQuality(50);
+		// camera.startAutomaticCapture("cam0");
 	}
 
 	@Override
