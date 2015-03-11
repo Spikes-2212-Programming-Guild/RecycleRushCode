@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
-import org.usfirst.frc.team2212.robot.commands.StupidAutoCommand;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -59,7 +58,7 @@ public class Robot extends IterativeRobot {
 		driveTrain.reset();
 		lifter.reset();
 		putData.start();
-		autonomousCommand = new StupidAutoCommand();
+		autonomousCommand = null;// new StupidAutoCommand();// null;
 	}
 
 	@Override
