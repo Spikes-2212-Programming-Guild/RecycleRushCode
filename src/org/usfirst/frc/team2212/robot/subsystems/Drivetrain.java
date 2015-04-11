@@ -5,8 +5,6 @@
  */
 package org.usfirst.frc.team2212.robot.subsystems;
 
-import static org.usfirst.frc.team2212.robot.Robot.drivetrain;
-
 import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.driving.JoystickFreeMovement;
 
@@ -85,7 +83,7 @@ public class Drivetrain extends Subsystem {
 		double dirAccY = Math.signum(expectedAccelerationY);
 		double newSpeed = 0;
 		if (Math.abs(expectedAccelerationY) > MAX_ACCY) {
-			newSpeed = drivetrain.getRightSpeed() + dirAccY * MAX_ACCY;
+			newSpeed = getRightSpeed() + dirAccY * MAX_ACCY;
 		} else {
 			newSpeed = speed;
 		}
@@ -99,7 +97,7 @@ public class Drivetrain extends Subsystem {
 		double dirAcc = Math.signum(expectedAcceleration);
 		double newSpeed = 0;
 		if (Math.abs(expectedAcceleration) > MAX_ACCY) {
-			newSpeed = drivetrain.getRightSpeed() + dirAcc * MAX_ACCY;
+			newSpeed = getRightSpeed() + dirAcc * MAX_ACCY;
 		} else {
 			newSpeed = speed;
 		}
@@ -118,7 +116,7 @@ public class Drivetrain extends Subsystem {
 		double dirAccX = Math.signum(expectedAcceleration);
 		double newSpeed = 0;
 		if (Math.abs(expectedAcceleration) > MAX_ACCX) {
-			newSpeed = drivetrain.getFrontSpeed() + dirAccX * MAX_ACCX;
+			newSpeed = getFrontSpeed() + dirAccX * MAX_ACCX;
 		} else {
 			newSpeed = speed;
 		}
@@ -143,13 +141,13 @@ public class Drivetrain extends Subsystem {
 			double dirAccX = Math.signum(expectedAccelerationX);
 			double newForwardSpeed, newSidewaysSpeed;
 			if (Math.abs(expectedAccelerationY) > MAX_ACCY) {
-				newForwardSpeed = drivetrain.getRightSpeed() + dirAccY
+				newForwardSpeed = getRightSpeed() + dirAccY
 						* MAX_ACCY;
 			} else {
 				newForwardSpeed = forwardSpeed;
 			}
 			if (Math.abs(expectedAccelerationX) > MAX_ACCX) {
-				newSidewaysSpeed = drivetrain.getFrontSpeed() + dirAccX
+				newSidewaysSpeed = getFrontSpeed() + dirAccX
 						* MAX_ACCX;
 			} else {
 				newSidewaysSpeed = sidewaysSpeed;
@@ -171,7 +169,7 @@ public class Drivetrain extends Subsystem {
 			double dirAccX = Math.signum(expectedAccelerationX);
 			double newSpeed;
 			if (Math.abs(expectedAccelerationX) > MAX_ACCX) {
-				newSpeed = drivetrain.getFrontSpeed() + dirAccX * MAX_ACCX;
+				newSpeed = getFrontSpeed() + dirAccX * MAX_ACCX;
 			} else {
 				newSpeed = speed;
 			}
@@ -199,7 +197,7 @@ public class Drivetrain extends Subsystem {
 			double dirAccY = Math.signum(expectedAccelerationY);
 			double newSpeed;
 			if (Math.abs(expectedAccelerationY) > MAX_ACCY) {
-				newSpeed = drivetrain.getRightSpeed() + dirAccY * MAX_ACCY;
+				newSpeed = getRightSpeed() + dirAccY * MAX_ACCY;
 			} else {
 				newSpeed = speed;
 			}
