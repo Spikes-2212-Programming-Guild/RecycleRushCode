@@ -15,11 +15,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PutData extends Command {
 
 	private SendableChooser autoChooser;
-	private CameraServer camera;
 
 	public PutData() {
 		autoChooser = new SendableChooser();
-		camera = CameraServer.getInstance();
 	}
 
 	@Override
@@ -45,8 +43,6 @@ public class PutData extends Command {
 		// SmartDashboard.getNumber("threshold-f", 1));
 		// SmartDashboard.putNumber("forward factor",
 		// RobotMap.FREE_SENSITIVE_FACTOR);
-		camera.setQuality(50);
-		camera.startAutomaticCapture("cam0");
 	}
 
 	@Override
