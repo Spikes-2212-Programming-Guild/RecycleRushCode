@@ -1,15 +1,18 @@
 package org.usfirst.frc.team2212.robot;
 
-import org.usfirst.frc.team2212.robot.commands.PutData;
+import org.usfirst.frc.team2212.robot.commands.Autonomous;
+import org.usfirst.frc.team2212.robot.commands.StupidAuto;
+import org.usfirst.frc.team2212.robot.commands.driving.PIDForward;
 import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,11 +27,11 @@ public class Robot extends IterativeRobot {
 	public static final Lifter lifter = new Lifter();
 	public static final Fork fork = new Fork();
 	public static final OI oi = new OI();
-	public static final CameraServer camera = CameraServer.getInstance();
 
 	Command autonomousCommand;
-	PutData putData;
-	
+
+	final SendableChooser autoChooser = new SendableChooser();
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -37,20 +40,19 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		drivetrain.reset();
 		lifter.reset();
-		camera.setQuality(50);
-		camera.startAutomaticCapture("cam0");
-		putData = new PutData();
-		putData.start();
+		autoChooser.addObject("Full Auto", new Autonomous());
+		autoChooser.addObject("Stupid Auto", new StupidAuto());
+		autoChooser.addObject("No Auto", null);
+		autoChooser.addDefault("PID Auto", new PIDForward(
+				Commands.AUTO_FORWARD_DEST));
+		SmartDashboard.putData("Auto Chooser", autoChooser);
 	}
 
 	@Override
 	public void autonomousInit() {
-		if (!putData.isRunning()) {
-			putData.start();
-		}
 		drivetrain.reset();
 		lifter.reset();
-		autonomousCommand = putData.getSelectedAutoCommand();
+		autonomousCommand = (Command) autoChooser.getSelected();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
@@ -63,7 +65,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-
+		log();
 	}
 
 	/**
@@ -72,7 +74,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		putData.cancel();
 		drivetrain.reset();
 		lifter.reset();
 	}
@@ -80,8 +81,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		log();
 	}
-
 
 	@Override
 	public void teleopInit() {
@@ -92,9 +93,6 @@ public class Robot extends IterativeRobot {
 
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
-		}
-		if (!putData.isRunning()) {
-			putData.start();
 		}
 		drivetrain.reset();
 		lifter.reset();
@@ -107,6 +105,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		log();
 	}
 
 	/**
@@ -115,5 +114,18 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+
+	public void log() {
+
+		SmartDashboard.putNumber("Left Encoder", drivetrain.getLeft());
+		SmartDashboard.putNumber("Right Encoder", drivetrain.getRight());
+		SmartDashboard.putNumber("Front Encoder", drivetrain.getFront());
+		SmartDashboard.putNumber("Rear Encoder", drivetrain.getRear());
+		SmartDashboard.putNumber("Lifter Encoder", lifter.getHeight());
+		SmartDashboard.putBoolean("Lifter Up", lifter.isUp());
+		SmartDashboard.putBoolean("Lifter Down", lifter.isDown());
+		SmartDashboard.putBoolean("Fork Open", fork.isOpen());
+		SmartDashboard.putBoolean("Fork Closed", fork.isClosed());
 	}
 }

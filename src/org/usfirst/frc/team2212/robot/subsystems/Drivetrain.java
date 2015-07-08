@@ -141,14 +141,12 @@ public class Drivetrain extends Subsystem {
 			double dirAccX = Math.signum(expectedAccelerationX);
 			double newForwardSpeed, newSidewaysSpeed;
 			if (Math.abs(expectedAccelerationY) > MAX_ACCY) {
-				newForwardSpeed = getRightSpeed() + dirAccY
-						* MAX_ACCY;
+				newForwardSpeed = getRightSpeed() + dirAccY * MAX_ACCY;
 			} else {
 				newForwardSpeed = forwardSpeed;
 			}
 			if (Math.abs(expectedAccelerationX) > MAX_ACCX) {
-				newSidewaysSpeed = getFrontSpeed() + dirAccX
-						* MAX_ACCX;
+				newSidewaysSpeed = getFrontSpeed() + dirAccX * MAX_ACCX;
 			} else {
 				newSidewaysSpeed = sidewaysSpeed;
 			}
@@ -278,8 +276,8 @@ public class Drivetrain extends Subsystem {
 		setDefaultCommand(new JoystickFreeMovement());
 	}
 
-	public void changeSensitivity() {
-		freeSensitive = !freeSensitive;
+	public void setSensitive(boolean sensitive) {
+		freeSensitive = sensitive;
 	}
 
 	public boolean isSensitive() {

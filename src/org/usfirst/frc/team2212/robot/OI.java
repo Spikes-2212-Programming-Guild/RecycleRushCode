@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2212.robot;
 
-import org.usfirst.frc.team2212.robot.commands.ChangeSensitivity;
 import org.usfirst.frc.team2212.robot.commands.driving.JoystickForward;
 import org.usfirst.frc.team2212.robot.commands.driving.JoystickSideways;
 import org.usfirst.frc.team2212.robot.commands.driving.JoystickTurn;
@@ -29,7 +28,6 @@ public class OI {
 	Button forward = new JoystickButton(driver, 9);
 	Button sideways = new JoystickButton(driver, 10);
 	Button turn = new JoystickButton(driver, 1);
-	Button sensitive = new JoystickButton(driver, 7);
 
 	public OI() {
 		up.whileHeld(new Up());
@@ -39,7 +37,6 @@ public class OI {
 		forward.whileHeld(new JoystickForward());
 		sideways.whileHeld(new JoystickSideways());
 		turn.whileHeld(new JoystickTurn());
-		sensitive.whenPressed(new ChangeSensitivity());
 	}
 
 }

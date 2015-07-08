@@ -26,7 +26,6 @@ public class PIDForward extends PIDCommand {
 	public PIDForward(double distance) {
 		super(P, I, D);
 		requires(drivetrain);
-		setInputRange(-1, 1);
 		setSetpoint(distance);
 	}
 
@@ -52,6 +51,7 @@ public class PIDForward extends PIDCommand {
 	@Override
 	protected void end() {
 		drivetrain.stop();
+		drivetrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same

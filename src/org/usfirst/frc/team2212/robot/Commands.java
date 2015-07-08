@@ -22,7 +22,7 @@ public class Commands {
 
 	public static final double ONE_TOTE_DEST = 12.1;
 	public static final double ONE_TOTE_THRESHOLD = 0.125;
-	public static final int ONE_TOTE_TIMEOUT = 2;
+	public static final double ONE_TOTE_TIMEOUT = 2;
 
 	public static final double AUTONOMOUS_CLOSE_TIMEOUT = 0.5;
 	public static final double CLOSE_TIMEOUT = 3;
