@@ -18,7 +18,16 @@ import edu.wpi.first.wpilibj.command.Command;
 public class PIDSideways extends Command {
 	private PID pid;
 
-	public PIDSideways(double dest, double KP, double KI, double KD, long DT,
+    /**
+     *
+     * @param dest
+     * @param KP
+     * @param KI
+     * @param KD
+     * @param DT
+     * @param threshold
+     */
+    public PIDSideways(double dest, double KP, double KI, double KD, long DT,
 			double threshold) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

@@ -19,7 +19,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutonomousCommand extends CommandGroup {
 
-	public AutonomousCommand() {
+    /**
+     *
+     */
+    public AutonomousCommand() {
 		// close the fork to hold the first tote
 		addSequential(new Close(), RobotMap.AUTONOMOUS_CLOSE_TIMEOUT);
 		// lift and move to the first tote

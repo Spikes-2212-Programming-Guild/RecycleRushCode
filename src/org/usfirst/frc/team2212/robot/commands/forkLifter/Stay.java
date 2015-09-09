@@ -26,7 +26,10 @@ public class Stay extends Command {
 
 	PID pid;
 
-	public Stay() {
+    /**
+     * Makes the lifter stay at the same hight
+     */
+    public Stay() {
 		requires(lifter);
 		pid = new PID(lifter.getHeight(), ONE_TOTE_KP, ONE_TOTE_KI,
 				ONE_TOTE_KD, ONE_TOTE_DT, ONE_TOTE_THRESHOLD);
@@ -38,7 +41,6 @@ public class Stay extends Command {
 	@Override
 	protected void initialize() {
 		lifter.reset();
-		pid.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

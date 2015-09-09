@@ -29,7 +29,11 @@ public class MoveToLevel extends Command {
 	private int level;
 	private boolean cantOperate;
 
-	public MoveToLevel(int level) {
+    /**
+     *
+     * @param level 
+     */
+    public MoveToLevel(int level) {
 		requires(lifter);
 		// Same as up, only the other direction
 		if (lifter.getLevel() != -1) {

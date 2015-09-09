@@ -28,7 +28,11 @@ public class Record extends Command {
 	String macroName;
 	Macro macro;
 
-	public Record(String macroName) {
+    /**
+     *
+     * @param macroName - the name to be given to the recorded macro
+     */
+    public Record(String macroName) {
 		this.macroName = macroName;
 		// requires(lock);
 	}

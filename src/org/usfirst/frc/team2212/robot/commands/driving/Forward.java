@@ -18,14 +18,21 @@ public class Forward extends Command {
 
 	private double speed;
 
-	public Forward() {
+    /**
+     *
+     */
+    public Forward() {
 		requires(driveTrain);
 		speed = 0;
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
 
-	public Forward(double speed) {
+    /**
+     *
+     * @param speed
+     */
+    public Forward(double speed) {
 		this();
 		this.speed = speed;
 	}

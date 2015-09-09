@@ -14,7 +14,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class StopLifter extends Command {
 
-	public StopLifter() {
+    /**
+     *
+     */
+    public StopLifter() {
 		requires(lifter);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

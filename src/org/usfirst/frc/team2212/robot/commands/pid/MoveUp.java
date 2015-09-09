@@ -18,6 +18,9 @@ public class MoveUp extends Command {
 
     private PID pid;
 
+    /**
+     *
+     */
     public MoveUp() {
         requires(lifter);
         pid = new PID(ONE_TOTE_DEST, ONE_TOTE_KP, ONE_TOTE_KI, ONE_TOTE_KD, ONE_TOTE_DT, ONE_TOTE_THRESHOLD);

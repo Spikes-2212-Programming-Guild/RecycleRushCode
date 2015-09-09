@@ -16,138 +16,213 @@ import edu.wpi.first.wpilibj.command.Command;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI /* GEVALD */extends JoystickMap {
+public class OI /* GEVALD */ extends JoystickMap {
 
-	private Command record = new Record("test");
+    private Command record = new Record("test");
 
-	public OI() {
-		UP_BUTTON.whileHeld(new Up());
-		DOWN_BUTTON.whileHeld(new Down());
-		OPEN_BUTTON.whileHeld(new Open());
-		CLOSE_BUTTON.whileHeld(new Close());
-		FORWARD_BUTTON.whileHeld(new Forward());
-		SIDEWAYS_BUTTON.whileHeld(new Sideways());
-		TURN_BUTTON.whileHeld(new Turn());
-		RECORDING.whenPressed(record);
-		STOP_RECORDING.whenPressed(new Command() {
+    /**
+     *
+     */
+    public OI() {
+        UP_BUTTON.whileHeld(new Up());
+        DOWN_BUTTON.whileHeld(new Down());
+        OPEN_BUTTON.whileHeld(new Open());
+        CLOSE_BUTTON.whileHeld(new Close());
+        FORWARD_BUTTON.whileHeld(new Forward());
+        SIDEWAYS_BUTTON.whileHeld(new Sideways());
+        TURN_BUTTON.whileHeld(new Turn());
+        RECORDING.whenPressed(record);
+        STOP_RECORDING.whenPressed(new Command() {
 
-			@Override
-			protected void initialize() {
-				record.cancel();
-			}
+            @Override
+            protected void initialize() {
+                record.cancel();
+            }
 
-			@Override
-			protected void execute() {
+            @Override
+            protected void execute() {
 
-			}
+            }
 
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
+            @Override
+            protected boolean isFinished() {
+                return true;
+            }
 
-			@Override
-			protected void end() {
-			}
+            @Override
+            protected void end() {
+            }
 
-			@Override
-			protected void interrupted() {
-			}
+            @Override
+            protected void interrupted() {
+            }
 
-		});
-		PLAY.whenPressed(new Play("test"));
-		SLOWNESS.whenPressed(new Command() {
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
+        });
+        PLAY.whenPressed(new Play("test"));
+        SLOWNESS.whenPressed(new Command() {
+            @Override
+            protected boolean isFinished() {
+                return true;
+            }
 
-			@Override
-			protected void interrupted() {
-			}
+            @Override
+            protected void interrupted() {
+            }
 
-			@Override
-			protected void initialize() {
-				Robot.driveTrain.changeForwardSensitivity();
-			}
+            @Override
+            protected void initialize() {
+                Robot.driveTrain.changeForwardSensitivity();
+            }
 
-			@Override
-			protected void execute() {
-			}
+            @Override
+            protected void execute() {
+            }
 
-			@Override
-			protected void end() {
-			}
-		});
-	}
+            @Override
+            protected void end() {
+            }
+        });
+    }
 
-	public void setOverride(boolean override) {
-		driverJoystick.setOverride(override);
-		navJoystick.setOverride(override);
-	}
+    /**
+     *
+     * @param override sets override for both joysticks
+     */
+    public void setOverride(boolean override) {
+        driverJoystick.setOverride(override);
+        navJoystick.setOverride(override);
+    }
 
-	public double getDriverY() {
-		return driverJoystick.getOverrideableY();
-	}
+    /**
+     *
+     * @return driver's joystick measured Y; or overriden value
+     */
+    public double getDriverY() {
+        return driverJoystick.getOverrideableY();
+    }
 
-	public boolean getNavigatorButton(int i) {
-		return navJoystick.getRawButton(i);
-	}
+    /**
+     *
+     * @param i - number for the button
+     * @return nav's joystick measured button value; or overriden value
+     */
+    public boolean getNavigatorButton(int i) {
+        return navJoystick.getRawButton(i);
+    }
 
-	public boolean getDriverButton(int button) {
-		return driverJoystick.getRawButton(button);
-	}
+    /**
+     *
+     * @param button - number for the button
+     * @return Driver's joystick measured button value; or overriden value
+     */
+    public boolean getDriverButton(int button) {
+        return driverJoystick.getRawButton(button);
+    }
 
-	public double getNavTwist() {
-		return navJoystick.getOverrideableTwist();
-	}
+    /**
+     *
+     * @return nav's joystick measured twist; or overriden value
+     */
+    public double getNavTwist() {
+        return navJoystick.getOverrideableTwist();
+    }
 
-	public double getDriverX() {
-		return driverJoystick.getOverrideableX();
-	}
+    /**
+     *
+     * @return driver's joystick measured X; or overriden value
+     */
+    public double getDriverX() {
+        return driverJoystick.getOverrideableX();
+    }
 
-	public double getDriverTwist() {
-		return driverJoystick.getOverrideableTwist();
-	}
+    /**
+     *
+     * @return driver's joystick measured twist; or overriden value
+     */
+    public double getDriverTwist() {
+        return driverJoystick.getOverrideableTwist();
+    }
 
-	public double getNavY() {
-		return navJoystick.getOverrideableY();
-	}
+    /**
+     *
+     * @return nav's joystick measured Y; or overriden value
+     */
+    public double getNavY() {
+        return navJoystick.getOverrideableY();
+    }
 
-	public double getNavX() {
-		return navJoystick.getOverrideableX();
-	}
+    /**
+     *
+     * @return nav's joystick measured X; or overriden value
+     */
+    public double getNavX() {
+        return navJoystick.getOverrideableX();
+    }
 
-	public void setDriverButton(int button, boolean state) {
-		driverJoystick.setButton(button, state);
-	}
+    /**
+     *
+     * @param button - the button
+     * @param state - value to be set
+     */
+    public void setDriverButton(int button, boolean state) {
+        driverJoystick.setButton(button, state);
+    }
 
-	public void setDriverX(double value) {
-		driverJoystick.setX(value);
-	}
+    /**
+     *
+     * @param value - value to be set
+     */
+    public void setDriverX(double value) {
+        driverJoystick.setX(value);
+    }
 
-	public void setDriverY(double value) {
-		driverJoystick.setY(value);
-	}
+    /**
+     *
+     * @param value - value to be set
+     */
+    public void setDriverY(double value) {
+        driverJoystick.setY(value);
+    }
 
-	public void setDriverTwist(double value) {
-		driverJoystick.setTwist(value);
-	}
+    /**
+     *
+     * @param value - value to be set
+     */
+    public void setDriverTwist(double value) {
+        driverJoystick.setTwist(value);
+    }
 
-	public void setNavigatorButton(int button, boolean state) {
-		navJoystick.setButton(button, state);
-	}
+    /**
+     *
+     * @param button - the button number
+     * @param state - value to be set
+     */
+    public void setNavigatorButton(int button, boolean state) {
+        navJoystick.setButton(button, state);
+    }
 
-	public void setNavigatorX(double value) {
-		navJoystick.setX(value);
-	}
+    /**
+     *
+     * @param value - value to be set
+     */
+    public void setNavigatorX(double value) {
+        navJoystick.setX(value);
+    }
 
-	public void setNavigatorY(double value) {
-		navJoystick.setY(value);
-	}
+    /**
+     *
+     * @param value - value to be set
+     */
+    public void setNavigatorY(double value) {
+        navJoystick.setY(value);
+    }
 
-	public void setNavigatorTwist(double value) {
-		navJoystick.setTwist(value);
-	}
+    /**
+     *
+     * @param value - value to be set
+     */
+    public void setNavigatorTwist(double value) {
+        navJoystick.setTwist(value);
+    }
 
 }

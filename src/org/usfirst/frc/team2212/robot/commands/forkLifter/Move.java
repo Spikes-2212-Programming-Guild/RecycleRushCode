@@ -15,7 +15,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Move extends Command {
 
-	public Move() {
+    /**
+     * Moves the lifter according to the nav's Y
+     */
+    public Move() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(lifter);

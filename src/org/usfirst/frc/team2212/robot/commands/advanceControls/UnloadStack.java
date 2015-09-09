@@ -23,7 +23,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class UnloadStack extends CommandGroup {
 
-	public UnloadStack() {
+    /**
+     *
+     */
+    public UnloadStack() {
 		addSequential(new MoveToLevelWithTimeout(0));
 		addSequential(new PIDForward(-AUTO_FORWARD_TOTE_SIZE, AUTO_FORWARD_KP,
 				AUTO_FORWARD_KI, AUTO_FORWARD_KD, AUTO_FORWARD_DT,

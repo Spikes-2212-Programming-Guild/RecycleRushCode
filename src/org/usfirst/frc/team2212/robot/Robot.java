@@ -19,7 +19,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain driveTrain = new DriveTrain(
+    /**
+     * object representing the robot's driving system 
+     */
+    public static final DriveTrain driveTrain = new DriveTrain(
 			RobotMap.LEFT_FORWARD_VICTOR_PORT,
 			RobotMap.LEFT_BACKWARDS_VICTOR_PORT,
 			RobotMap.RIGHT_FORWARD_VICTOR_PORT,
@@ -33,16 +36,24 @@ public class Robot extends IterativeRobot {
 			RobotMap.WHEEL_DIAMETER);
 
 	/**
-	 *
+	 * object representing the robot's lifter
 	 */
 	public static final Lifter lifter = new Lifter(RobotMap.LIFTER_TALON_1_ID,
 			RobotMap.LIFTER_TALON_2_ID, RobotMap.LIFTER_UP_DI_PORT,
 			RobotMap.LIFTER_DOWN_DI_PORT, RobotMap.LIFTER_ENCODER_PORT1,
 			RobotMap.LIFTER_ENCODER_PORT2, RobotMap.LIFTER_WHEEL_DIAMETER);
-	public static final Fork fork = new Fork(RobotMap.FORK_TALON_ID,
+
+    /**
+     * object representing the robot's fork
+     */
+    public static final Fork fork = new Fork(RobotMap.FORK_TALON_ID,
 			RobotMap.FORK_OPEN_DI_1_PORT, RobotMap.FORK_OPEN_DI_2_PORT,
 			RobotMap.FORK_CLOSE_DI_PORT);
-	public static OI oi = new OI();
+
+    /**
+     *
+     */
+    public static OI oi = new OI();
 
 	Command autonomousCommand;
 	PutData putData;

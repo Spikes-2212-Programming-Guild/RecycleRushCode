@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 /**
  *
  * @author ThinkRedstone
- * 
+ *  Synchronises two SC to work together
  * 
  *         This code is working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
  */
@@ -19,12 +19,22 @@ public class Gearbox implements SpeedController {
 
 	private VictorSP forward, backwards;
 
-	public Gearbox(VictorSP forward, VictorSP backwards) {
+    /**
+     *
+     * @param forward - forward Victor 
+     * @param backwards - backwards Victor
+     */
+    public Gearbox(VictorSP forward, VictorSP backwards) {
 		this.forward = forward;
 		this.backwards = backwards;
 	}
 
-	public Gearbox(int forwardPort, int backwardsPort) {
+    /**
+     *
+     * @param forwardPort - port for forward Victor
+     * @param backwardsPort - port for backwards Victor
+     */
+    public Gearbox(int forwardPort, int backwardsPort) {
 		this(new VictorSP(forwardPort), new VictorSP(backwardsPort));
 	}
 

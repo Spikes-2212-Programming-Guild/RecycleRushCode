@@ -15,6 +15,9 @@ import org.usfirst.frc.team2212.robot.RobotMap;
  */
 public class LiftALittle extends Command {
     
+    /**
+     * Lifts the lifter a little, to reduce friction 
+     */
     public LiftALittle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

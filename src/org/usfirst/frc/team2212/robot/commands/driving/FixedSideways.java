@@ -4,19 +4,31 @@ import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.oi;
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ *
+ * @author thinkredstone
+ * @deprecated
+ */
 @Deprecated
 public class FixedSideways extends Command {
 
 	private double speed;
 
-	public FixedSideways() {
+    /**
+     *
+     */
+    public FixedSideways() {
 		requires(driveTrain);
 		speed = 0;
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
 
-	public FixedSideways(double speed) {
+    /**
+     *
+     * @param speed
+     */
+    public FixedSideways(double speed) {
 		this();
 		this.speed = speed;
 	}

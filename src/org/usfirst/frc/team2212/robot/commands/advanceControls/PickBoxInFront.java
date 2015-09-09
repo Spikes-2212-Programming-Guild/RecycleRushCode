@@ -24,7 +24,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class PickBoxInFront extends CommandGroup {
 
-	public PickBoxInFront() {
+    /**
+     *
+     */
+    public PickBoxInFront() {
 		addSequential(new MoveToLevelWithTimeout(1));
 		addSequential(new PIDForward(AUTO_FORWARD_TOTE_SIZE, AUTO_FORWARD_KP,
 				AUTO_FORWARD_KI, AUTO_FORWARD_KD, AUTO_FORWARD_DT,

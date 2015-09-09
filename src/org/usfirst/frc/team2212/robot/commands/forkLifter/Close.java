@@ -14,7 +14,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Close extends Command {
 
-	public Close() {
+    /**
+     *
+     */
+    public Close() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(fork);

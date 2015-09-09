@@ -19,7 +19,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PIDForward extends Command {
 	private PID pid;
 
-	public PIDForward(double dest, double KP, double KI, double KD, long DT,
+    /**
+     *
+     * @param dest
+     * @param KP
+     * @param KI
+     * @param KD
+     * @param DT
+     * @param threshold
+     */
+    public PIDForward(double dest, double KP, double KI, double KD, long DT,
 			double threshold) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

@@ -18,7 +18,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class LiftAndMove extends CommandGroup {
 
-	public LiftAndMove() {
+    /**
+     *
+     */
+    public LiftAndMove() {
 		addSequential(new LiftALittle());
 		addParallel(new MoveToLevelWithTimeout(1));
 		addSequential(new PIDSideways(RobotMap.AUTO_SIDEWAYS_DEST,

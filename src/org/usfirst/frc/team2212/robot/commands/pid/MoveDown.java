@@ -18,6 +18,9 @@ public class MoveDown extends Command {
 
     private PID pid;
 
+    /**
+     * Moves the lifter down by the height of one tote
+     */
     public MoveDown() {
         requires(lifter);
 //        Same as up, only the other direction
@@ -26,7 +29,6 @@ public class MoveDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        pid.reset();
         lifter.reset();
     }
 

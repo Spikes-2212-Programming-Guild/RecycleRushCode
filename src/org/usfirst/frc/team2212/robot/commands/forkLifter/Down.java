@@ -17,7 +17,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Down extends Command {
 
-	public Down() {
+    /**
+     *
+     */
+    public Down() {
 		requires(lifter);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

@@ -15,6 +15,9 @@ import static org.usfirst.frc.team2212.robot.Robot.fork;
  */
 public class StopFork extends Command {
 
+    /**
+     *
+     */
     public StopFork() {
         requires(fork);
         // Use requires() here to declare subsystem dependencies

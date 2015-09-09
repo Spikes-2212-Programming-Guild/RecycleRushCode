@@ -38,7 +38,11 @@ public class Play extends Command {
 	
 	String macroName;
 
-	public Play(String macroName) {
+    /**
+     *
+     * @param macroName - the file name for the macro to be played
+     */
+    public Play(String macroName) {
 		this.macroName = macroName;
 		// requires(lock);
 	}

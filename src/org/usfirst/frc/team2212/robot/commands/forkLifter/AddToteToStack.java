@@ -15,7 +15,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AddToteToStack extends CommandGroup {
 
-	public AddToteToStack() {
+    /**
+     * Adds a tote to the stack, given that the robot is holding the stack right above th tote
+     */
+    public AddToteToStack() {
 		// Robot is holding stack right above box
 		addSequential(new Open());
 		addSequential(new Down());

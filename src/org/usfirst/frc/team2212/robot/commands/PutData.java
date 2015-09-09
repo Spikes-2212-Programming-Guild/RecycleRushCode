@@ -11,6 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ *
+ * @author thinkredstone
+ */
 public class PutData extends Command {
 
 	private SendableChooser autoChooser;
@@ -19,6 +23,10 @@ public class PutData extends Command {
 	// Image frame;
 	// CameraServer camera;
 
+    /**
+     *
+     */
+    
 	public PutData() {
 		autoChooser = new SendableChooser();
 		// frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_SGL, 0);
@@ -89,7 +97,11 @@ public class PutData extends Command {
 	protected void interrupted() {
 	}
 
-	public Command getSelectedAutoCommand() {
+    /**
+     *
+     * @return
+     */
+    public Command getSelectedAutoCommand() {
 		return autoChooser != null ? (Command) autoChooser.getSelected() : null;
 	}
 

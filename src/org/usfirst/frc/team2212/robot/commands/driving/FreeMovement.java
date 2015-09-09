@@ -15,7 +15,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class FreeMovement extends Command {
 
-	public FreeMovement() {
+    /**
+     * Moves the robot on both the Y and X axis
+     */
+    public FreeMovement() {
 		requires(driveTrain);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

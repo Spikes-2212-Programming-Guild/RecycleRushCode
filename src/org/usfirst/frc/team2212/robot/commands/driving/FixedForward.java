@@ -18,14 +18,21 @@ public class FixedForward extends Command {
 
 	private double speed;
 
-	public FixedForward() {
+    /**
+     *
+     */
+    public FixedForward() {
 		requires(driveTrain);
 		speed = 0;
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
 
-	public FixedForward(double speed) {
+    /**
+     *
+     * @param speed
+     */
+    public FixedForward(double speed) {
 		this();
 		this.speed = speed;
 	}

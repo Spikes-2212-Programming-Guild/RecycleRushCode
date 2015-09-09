@@ -17,6 +17,9 @@ import org.usfirst.frc.team2212.robot.commands.pid.PIDSideways;
  */
 public class FullCourt extends CommandGroup {
     
+    /**
+     * Picks up a whole row of boxes and then goes over to the next
+     */
     public FullCourt() {
         addSequential(new RepeatingCommandSchedular(3,new PickBoxInFront()));
         addSequential(new PIDForward(AUTO_FORWARD_TOTE_SIZE*-3, AUTO_FORWARD_KP, AUTO_FORWARD_KI, AUTO_FORWARD_KD, AUTO_FORWARD_DT, AUTO_FORWARD_THRESHOLD));

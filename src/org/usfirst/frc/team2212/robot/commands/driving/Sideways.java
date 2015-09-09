@@ -18,14 +18,21 @@ public class Sideways extends Command {
 
 	private double speed;
 
-	public Sideways() {
+    /**
+     *
+     */
+    public Sideways() {
 		requires(driveTrain);
 		speed = 0;
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
 
-	public Sideways(double speed) {
+    /**
+     *
+     * @param speed
+     */
+    public Sideways(double speed) {
 		this();
 		this.speed = speed;
 	}

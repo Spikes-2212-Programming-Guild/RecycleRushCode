@@ -27,7 +27,16 @@ public class Lifter extends Subsystem {
 	private final double wheelDiameter;
 	private int currentLevel;
 
-	public Lifter(CANTalon elevator1, CANTalon elevator2, DigitalInput up,
+    /**
+     *
+     * @param elevator1
+     * @param elevator2
+     * @param up
+     * @param down
+     * @param encoder
+     * @param wheelDiameter
+     */
+    public Lifter(CANTalon elevator1, CANTalon elevator2, DigitalInput up,
 			DigitalInput down, Encoder encoder, double wheelDiameter) {
 		this.elevator1 = elevator1;
 		this.elevator2 = elevator2;
@@ -37,7 +46,17 @@ public class Lifter extends Subsystem {
 		this.wheelDiameter = wheelDiameter;
 	}
 
-	public Lifter(int talon1ID, int talon2ID, int upPort, int downPort,
+    /**
+     *
+     * @param talon1ID
+     * @param talon2ID
+     * @param upPort
+     * @param downPort
+     * @param encoderPort1
+     * @param encoderPort2
+     * @param wheelDiameter
+     */
+    public Lifter(int talon1ID, int talon2ID, int upPort, int downPort,
 			int encoderPort1, int encoderPort2, double wheelDiameter) {
 		this(new CANTalon(talon1ID), new CANTalon(talon2ID),
 				upPort == -1 ? null : new DigitalInput(upPort),
@@ -45,62 +64,104 @@ public class Lifter extends Subsystem {
 				new Encoder(encoderPort1, encoderPort2), wheelDiameter);
 	}
 
-	public void set(double s) {
+    /**
+     *
+     * @param s
+     */
+    public void set(double s) {
 		elevator1.set(-s);
 		elevator2.set(-s);
 	}
 
-	public boolean isUp() {
+    /**
+     *
+     * @return
+     */
+    public boolean isUp() {
 		if (up != null)
 			return up.get();
 		return false;
 	}
 
-	public boolean isDown() {
+    /**
+     *
+     * @return
+     */
+    public boolean isDown() {
 		if (down != null)
 			return down.get();
 		return false;
 	}
 
-	public double getHeight() {
+    /**
+     *
+     * @return
+     */
+    public double getHeight() {
 		return encoder.get() / RobotMap.LIFTER_ENCODER_TICKS_IN_FULL_TURN
 				* Math.PI * wheelDiameter;
 	}
 
-	public void reset() {
+    /**
+     *
+     */
+    public void reset() {
 		encoder.reset();
 	}
 
-	public void levelUp() {
+    /**
+     *
+     */
+    public void levelUp() {
 		// You can only level up if the level is not corrupted
 		if (currentLevel != -1) {
 			currentLevel++;
 		}
 	}
 
-	public void levelDown() {
+    /**
+     *
+     */
+    public void levelDown() {
 		if (currentLevel != -1) {
 			currentLevel--;
 		}
 	}
 
-	public void resetLevel() {
+    /**
+     *
+     */
+    public void resetLevel() {
 		currentLevel = 0;
 	}
 
-	public void corruptLevel() {
+    /**
+     *
+     */
+    public void corruptLevel() {
 		currentLevel = -1;
 	}
 
-	public void setLevel(int level) {
+    /**
+     *
+     * @param level
+     */
+    public void setLevel(int level) {
 		currentLevel = level;
 	}
 
-	public int getLevel() {
+    /**
+     *
+     * @return
+     */
+    public int getLevel() {
 		return currentLevel;
 	}
 
-	public void verifyLevel() {
+    /**
+     *
+     */
+    public void verifyLevel() {
 		if (down != null && down.get()) {
 			this.resetLevel();
 		}

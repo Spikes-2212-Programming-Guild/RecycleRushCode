@@ -17,6 +17,11 @@ public class RepeatingCommandSchedular extends Command {
     private int runs;
     private int repeats;
 
+    /**
+     *
+     * @param repeats - runs c repeats times
+     * @param c - the command to repeat
+     */
     public RepeatingCommandSchedular(int repeats, Command c) {
         this.repeats = repeats;
         // Use requires() here to declare subsystem dependencies

@@ -6,12 +6,20 @@ import org.usfirst.frc.team2212.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ *
+ * @author thinkredstone
+ */
 public class MoveToLevelWithTimeout extends Command {
 
 	private int level;
 	private boolean cantOperate;
 
-	public MoveToLevelWithTimeout(int level) {
+    /**
+     *
+     * @param level
+     */
+    public MoveToLevelWithTimeout(int level) {
 		requires(lifter);
 		this.level = level;
 		if (lifter.getLevel() == -1)
