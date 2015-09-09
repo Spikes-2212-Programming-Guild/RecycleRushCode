@@ -7,7 +7,6 @@ import static org.usfirst.frc.team2212.robot.Robot.lifter;
 import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -16,8 +15,20 @@ public class PutData extends Command {
 
 	private SendableChooser autoChooser;
 
+	// int session;
+	// Image frame;
+	// CameraServer camera;
+
 	public PutData() {
 		autoChooser = new SendableChooser();
+		// frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_SGL, 0);
+
+		// the camera name (ex "cam0") can be found through the roborio web
+		// interface
+		// camera = CameraServer.getInstance();
+		// session = NIVision.IMAQdxOpenCamera("cam0",
+		// NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+		// NIVision.IMAQdxConfigureGrab(session);
 	}
 
 	@Override
@@ -43,6 +54,8 @@ public class PutData extends Command {
 		// SmartDashboard.getNumber("threshold-f", 1));
 		// SmartDashboard.putNumber("forward factor",
 		// RobotMap.FREE_SENSITIVE_FACTOR);
+		// camera.setQuality(5);
+		// NIVision.IMAQdxStartAcquisition(session);
 	}
 
 	@Override
@@ -58,6 +71,8 @@ public class PutData extends Command {
 		SmartDashboard.putBoolean("Lifter Down", lifter.isDown());
 		SmartDashboard.putBoolean("Fork Open", fork.isOpen());
 		SmartDashboard.putBoolean("Fork Closed", fork.isClosed());
+		// NIVision.IMAQdxGrab(session, frame, 1);
+		// camera.setImage(frame);
 	}
 
 	@Override
@@ -67,6 +82,7 @@ public class PutData extends Command {
 
 	@Override
 	protected void end() {
+		// NIVision.IMAQdxStopAcquisition(session);
 	}
 
 	@Override

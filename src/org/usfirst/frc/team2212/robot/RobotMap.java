@@ -82,8 +82,9 @@ public class RobotMap {
 
 	public static final double AUTONOMOUS_CLOSE_TIMEOUT = 0.5;
 
-	public static final double STUPID_AUTO_TIMEOUT = 4;
+	public static final double STUPID_AUTO_TIMEOUT = 1.3;
 	public static final double STUPID_AUTO_SPEED = 0.6;
+	public static final double AUTONOMOUS_UP_TIMEOUT = 0.5;
 
 	public static final double FREE_SENSITIVE_FACTOR = 0.5;
 

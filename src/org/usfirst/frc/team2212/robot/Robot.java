@@ -58,6 +58,7 @@ public class Robot extends IterativeRobot {
 		driveTrain.reset();
 		lifter.reset();
 		putData.start();
+		autonomousCommand = null;// new StupidAutoCommand();// null;
 	}
 
 	@Override
@@ -77,7 +78,7 @@ public class Robot extends IterativeRobot {
 		// "ki-f", 0) / 10000,
 		// SmartDashboard.getNumber("kd-f", 0), RobotMap.AUTO_FORWARD_DT,
 		// SmartDashboard.getNumber("threshold-f", 1));
-		autonomousCommand = putData.getSelectedAutoCommand();
+		// autonomousCommand = putData.getSelectedAutoCommand();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}

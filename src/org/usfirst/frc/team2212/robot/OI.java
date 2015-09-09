@@ -7,6 +7,8 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Up;
+import org.usfirst.frc.team2212.robot.commands.macro.Play;
+import org.usfirst.frc.team2212.robot.commands.macro.Record;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -16,6 +18,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class OI /* GEVALD */extends JoystickMap {
 
+	private Command record = new Record("test");
+
 	public OI() {
 		UP_BUTTON.whileHeld(new Up());
 		DOWN_BUTTON.whileHeld(new Down());
@@ -24,6 +28,34 @@ public class OI /* GEVALD */extends JoystickMap {
 		FORWARD_BUTTON.whileHeld(new Forward());
 		SIDEWAYS_BUTTON.whileHeld(new Sideways());
 		TURN_BUTTON.whileHeld(new Turn());
+		RECORDING.whenPressed(record);
+		STOP_RECORDING.whenPressed(new Command() {
+
+			@Override
+			protected void initialize() {
+				record.cancel();
+			}
+
+			@Override
+			protected void execute() {
+
+			}
+
+			@Override
+			protected boolean isFinished() {
+				return true;
+			}
+
+			@Override
+			protected void end() {
+			}
+
+			@Override
+			protected void interrupted() {
+			}
+
+		});
+		PLAY.whenPressed(new Play("test"));
 		SLOWNESS.whenPressed(new Command() {
 			@Override
 			protected boolean isFinished() {
@@ -49,24 +81,73 @@ public class OI /* GEVALD */extends JoystickMap {
 		});
 	}
 
+	public void setOverride(boolean override) {
+		driverJoystick.setOverride(override);
+		navJoystick.setOverride(override);
+	}
+
 	public double getDriverY() {
-		return driverJoystick.getY();
+		return driverJoystick.getOverrideableY();
+	}
+
+	public boolean getNavigatorButton(int i) {
+		return navJoystick.getRawButton(i);
+	}
+
+	public boolean getDriverButton(int button) {
+		return driverJoystick.getRawButton(button);
+	}
+
+	public double getNavTwist() {
+		return navJoystick.getOverrideableTwist();
 	}
 
 	public double getDriverX() {
-		return driverJoystick.getX();
+		return driverJoystick.getOverrideableX();
 	}
 
 	public double getDriverTwist() {
-		return driverJoystick.getTwist();
+		return driverJoystick.getOverrideableTwist();
 	}
 
 	public double getNavY() {
-		return navJoystick.getY();
+		return navJoystick.getOverrideableY();
 	}
 
 	public double getNavX() {
-		return navJoystick.getX();
+		return navJoystick.getOverrideableX();
+	}
+
+	public void setDriverButton(int button, boolean state) {
+		driverJoystick.setButton(button, state);
+	}
+
+	public void setDriverX(double value) {
+		driverJoystick.setX(value);
+	}
+
+	public void setDriverY(double value) {
+		driverJoystick.setY(value);
+	}
+
+	public void setDriverTwist(double value) {
+		driverJoystick.setTwist(value);
+	}
+
+	public void setNavigatorButton(int button, boolean state) {
+		navJoystick.setButton(button, state);
+	}
+
+	public void setNavigatorX(double value) {
+		navJoystick.setX(value);
+	}
+
+	public void setNavigatorY(double value) {
+		navJoystick.setY(value);
+	}
+
+	public void setNavigatorTwist(double value) {
+		navJoystick.setTwist(value);
 	}
 
 }
