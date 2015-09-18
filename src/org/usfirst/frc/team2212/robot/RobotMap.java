@@ -23,7 +23,6 @@ public class RobotMap {
 	public static final int REAR_ENCODER_A = 4;
 	public static final int REAR_ENCODER_B = 5;
 
-
 	public static final int FORK_TALON = 3;
 	public static final int FORK_OPEN_DI_1 = 7;
 	public static final int FORK_OPEN_DI_2 = 9;
@@ -38,4 +37,7 @@ public class RobotMap {
 	public static final int LIFTER_ENCODER_A = 3;
 	public static final int LIFTER_ENCODER_B = 17;
 
+	public static final double FIX_FORWARD_KP = 17;
+	public static final double FIX_FORWARD_KI = 17;
+	public static final double FIX_FORWARD_KD = 17;
 }
