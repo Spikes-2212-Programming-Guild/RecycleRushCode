@@ -10,6 +10,7 @@ import org.usfirst.frc.team2212.robot.commands.driving.JoystickFreeMovement;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -41,6 +42,7 @@ public class Drivetrain extends Subsystem {
 	VictorSP front, rear;
 	BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
 	Encoder leftE, rightE, frontE, rearE;
+	Gyro gyro;
 
 	public Drivetrain() {
 		this.left = new Gearbox(RobotMap.LEFT_FRONT_VICTOR,
@@ -282,5 +284,47 @@ public class Drivetrain extends Subsystem {
 
 	public boolean isSensitive() {
 		return freeSensitive;
+	}
+
+	public double getanglespeed() {
+		return gyro.getAngle();
+	}
+
+	public void arcade(double moveValue, double rotateValue) {
+
+		double leftMotorSpeed;
+		double rightMotorSpeed;
+
+		if (moveValue > 0.0) {
+			if (rotateValue > 0.0) {
+				leftMotorSpeed = moveValue - rotateValue;
+				rightMotorSpeed = Math.max(moveValue, rotateValue);
+			} else {
+				leftMotorSpeed = Math.max(moveValue, -rotateValue);
+				rightMotorSpeed = moveValue + rotateValue;
+			}
+		} else {
+			if (rotateValue > 0.0) {
+				leftMotorSpeed = -Math.max(-moveValue, rotateValue);
+				rightMotorSpeed = moveValue + rotateValue;
+			} else {
+				leftMotorSpeed = moveValue - rotateValue;
+				rightMotorSpeed = -Math.max(-moveValue, -rotateValue);
+			}
+		}
+		twosidesdrive(leftMotorSpeed, rightMotorSpeed);
+	}
+
+	public void twosidesdrive(double leftMotorSpeed, double rightMotorSpeed) {
+		left.set(leftMotorSpeed);
+		right.set(rightMotorSpeed);
+	}
+
+	public void fieldorienteddriving(double forwardSpeed, double sideSpeed) {
+		double angle = gyro.getAngle();
+		left.set(sideSpeed * Math.sin(angle) - forwardSpeed * Math.cos(angle));
+		right.set(sideSpeed * Math.sin(angle) - forwardSpeed * Math.cos(angle));
+		front.set(-sideSpeed * Math.cos(angle) + forwardSpeed * Math.sin(angle));
+		rear.set(sideSpeed * Math.sin(angle) - forwardSpeed * Math.cos(angle));
 	}
 }
