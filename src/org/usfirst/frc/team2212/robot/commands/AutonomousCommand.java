@@ -19,10 +19,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutonomousCommand extends CommandGroup {
 
-    /**
+	/**
      *
      */
-    public AutonomousCommand() {
+	public AutonomousCommand() {
 		// close the fork to hold the first tote
 		addSequential(new Close(), RobotMap.AUTONOMOUS_CLOSE_TIMEOUT);
 		// lift and move to the first tote
@@ -36,14 +36,12 @@ public class AutonomousCommand extends CommandGroup {
 		// move to autonomous area
 		addSequential(new PIDForward(RobotMap.AUTO_FORWARD_DEST,
 				RobotMap.AUTO_FORWARD_KP, RobotMap.AUTO_FORWARD_KI,
-				RobotMap.AUTO_FORWARD_KD, RobotMap.AUTO_FORWARD_DT,
-				RobotMap.AUTO_FORWARD_THRESHOLD));
+				RobotMap.AUTO_FORWARD_KD, RobotMap.AUTO_FORWARD_THRESHOLD));
 		// release the stack
 		addSequential(new Open());
 		// go back a little
 		addSequential(new PIDForward(RobotMap.AUTO_FORWARD_TOTE_SIZE,
 				RobotMap.AUTO_FORWARD_KP, RobotMap.AUTO_FORWARD_KI,
-				RobotMap.AUTO_FORWARD_KD, RobotMap.AUTO_FORWARD_DT,
-				RobotMap.AUTO_FORWARD_THRESHOLD));
+				RobotMap.AUTO_FORWARD_KD, RobotMap.AUTO_FORWARD_THRESHOLD));
 	}
 }

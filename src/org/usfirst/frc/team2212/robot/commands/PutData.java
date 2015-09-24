@@ -23,10 +23,10 @@ public class PutData extends Command {
 	// Image frame;
 	// CameraServer camera;
 
-    /**
+	/**
      *
      */
-    
+
 	public PutData() {
 		autoChooser = new SendableChooser();
 		// frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_SGL, 0);
@@ -47,7 +47,7 @@ public class PutData extends Command {
 		autoChooser.addDefault("PID", new PIDForward(
 				RobotMap.AUTO_FORWARD_DEST, RobotMap.AUTO_FORWARD_KP,
 				RobotMap.AUTO_FORWARD_KI, RobotMap.AUTO_FORWARD_KD,
-				RobotMap.AUTO_FORWARD_DT, RobotMap.AUTO_FORWARD_THRESHOLD));
+				RobotMap.AUTO_FORWARD_THRESHOLD));
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 		/*
 		 * Initializing the constants if not already initialized
@@ -97,11 +97,11 @@ public class PutData extends Command {
 	protected void interrupted() {
 	}
 
-    /**
-     *
-     * @return
-     */
-    public Command getSelectedAutoCommand() {
+	/**
+	 *
+	 * @return
+	 */
+	public Command getSelectedAutoCommand() {
 		return autoChooser != null ? (Command) autoChooser.getSelected() : null;
 	}
 

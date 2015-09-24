@@ -17,10 +17,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Up extends Command {
 
-    /**
+	/**
      *
      */
-    public Up() {
+	public Up() {
 		requires(lifter);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

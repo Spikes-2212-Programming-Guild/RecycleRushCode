@@ -7,58 +7,61 @@ package org.usfirst.frc.team2212.robot.commands.pid;
 
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 
-import components.PID;
+import org.usfirst.frc.team2212.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.PIDCommand;
 
 /**
  *
  * @author ThinkRedstone
  */
-public class PIDSideways extends Command {
-	private PID pid;
+public class PIDSideways extends PIDCommand {
 
-    /**
-     *
-     * @param dest
-     * @param KP
-     * @param KI
-     * @param KD
-     * @param DT
-     * @param threshold
-     */
-    public PIDSideways(double dest, double KP, double KI, double KD, long DT,
+	private double maximumOutput;
+
+	/**
+	 *
+	 * @param dest
+	 * @param KP
+	 * @param KI
+	 * @param KD
+	 * @param DT
+	 * @param threshold
+	 */
+	public PIDSideways(double dest, double KP, double KI, double KD,
 			double threshold) {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		super(KP, KI, KD);
 		requires(driveTrain);
-		pid = new PID(dest, KP, KI, KD, DT, threshold);
+		getPIDController().setAbsoluteTolerance(threshold);
+		getPIDController().setOutputRange(-RobotMap.DRIVETRAIN_RANGE,
+				RobotMap.DRIVETRAIN_RANGE);
+		setSetpoint(dest);
+
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		driveTrain.reset();
-		pid.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		driveTrain.sideways(pid.doPID(driveTrain.getFront()));
-		pid.waitForPID();
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return pid.hasArrived();
+		return getPIDController().onTarget();
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
 		driveTrain.sideways(0);
+		driveTrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same
@@ -66,5 +69,16 @@ public class PIDSideways extends Command {
 	@Override
 	protected void interrupted() {
 		end();
+	}
+
+	@Override
+	protected double returnPIDInput() {
+		return driveTrain.getRear();
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		maximumOutput = Math.max(Math.abs(output), maximumOutput);
+		driveTrain.sideways(output == 0 ? 0 : output / maximumOutput);
 	}
 }

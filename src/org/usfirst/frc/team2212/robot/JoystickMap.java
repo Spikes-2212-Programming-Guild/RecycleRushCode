@@ -7,8 +7,12 @@ package org.usfirst.frc.team2212.robot;
 
 import macro.JoystickButtonForRecord;
 import macro.MacroJoystick;
+
+import components.GoUp;
+
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 
 /**
  *
@@ -16,74 +20,76 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class JoystickMap {
 
-    /**
-     * Joystick for the driver
-     */
-    protected MacroJoystick driverJoystick = new MacroJoystick(0);
+	/**
+	 * Joystick for the driver
+	 */
+	public MacroJoystick driverJoystick = new MacroJoystick(0);
 
-    /**
-     * Joystick for the Navigator
-     */
-    protected MacroJoystick navJoystick = new MacroJoystick(1);
+	/**
+	 * Joystick for the Navigator
+	 */
+	public MacroJoystick navJoystick = new MacroJoystick(1);
 
-    /**
-     * The button to move the lifter up
-     */
-    protected Button UP_BUTTON = new JoystickButton(navJoystick, 3);
+	/**
+	 * The button to move the lifter up
+	 */
+	public Button UP_BUTTON = new JoystickButton(navJoystick, 3);
 
-    /**
-     * The button to move the lifter down
-     */
-    protected Button DOWN_BUTTON = new JoystickButton(navJoystick, 2);
+	/**
+	 * The button to move the lifter down
+	 */
+	public Button DOWN_BUTTON = new JoystickButton(navJoystick, 2);
 
-    /**
-     * The button to open the fork
-     */
-    protected Button OPEN_BUTTON = new JoystickButton(navJoystick, 7);
+	/**
+	 * The button to open the fork
+	 */
+	public Button OPEN_BUTTON = new JoystickButton(navJoystick, 7);
 
-    /**
-     * The button to close the fork
-     */
-    protected Button CLOSE_BUTTON = new JoystickButton(navJoystick, 6);
+	/**
+	 * The button to close the fork
+	 */
+	public Button CLOSE_BUTTON = new JoystickButton(navJoystick, 6);
 
-    /**
-     * The button to drive forward only
-     */
-    protected Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 9);
+	/**
+	 * The button to drive forward only
+	 */
+	public Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 9);
 
-    /**
-     * The button to drive sideways only
-     */
-    protected Button SIDEWAYS_BUTTON = new JoystickButton(driverJoystick, 10);
+	/**
+	 * The button to drive sideways only
+	 */
+	public Button SIDEWAYS_BUTTON = new JoystickButton(driverJoystick, 10);
 
-    /**
-     * The button to only turn
-     */
-    protected Button TURN_BUTTON = new JoystickButton(driverJoystick, 1);
+	/**
+	 * The button to only turn
+	 */
+	public Button TURN_BUTTON = new JoystickButton(driverJoystick, 1);
 
-    /**
-     * Makes the robot go slow?
-     */
-    protected Button SLOWNESS = new JoystickButton(driverJoystick, 7);
+	/**
+	 * Makes the robot go slow?
+	 */
+	public Button SLOWNESS = new JoystickButton(driverJoystick, 7);
 
-    /**
-     * @deprecated 
-     */
-    protected Button NORMAL = new JoystickButton(driverJoystick, 8);
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	public Button NORMAL = new JoystickButton(driverJoystick, 8);
 
-    /**
-     * Stops macro recoding 
-     */
-    protected Button STOP_RECORDING = new JoystickButton(driverJoystick, 11);
+	/**
+	 * Stops macro recoding
+	 */
+	public Button STOP_RECORDING = new JoystickButton(driverJoystick, 11);
 
-    /**
-     * Starts macro recoding
-     */
-    protected Button RECORDING = new JoystickButtonForRecord(driverJoystick, 12);
+	/**
+	 * Starts macro recoding
+	 */
+	public Button RECORDING = new JoystickButtonForRecord(driverJoystick, 12);
 
-    /**
-     * Plays currently loaded macro
-     */
-    protected Button PLAY = new JoystickButtonForRecord(driverJoystick, 5);
+	/**
+	 * Plays currently loaded macro
+	 */
+	public Button PLAY = new JoystickButtonForRecord(driverJoystick, 5);
 
+	public Trigger UP = new GoUp();
 }

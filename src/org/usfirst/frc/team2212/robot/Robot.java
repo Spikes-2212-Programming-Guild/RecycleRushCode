@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
+import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -9,6 +10,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,10 +21,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 
-    /**
-     * object representing the robot's driving system 
-     */
-    public static final DriveTrain driveTrain = new DriveTrain(
+	/**
+	 * object representing the robot's driving system
+	 */
+	public static final DriveTrain driveTrain = new DriveTrain(
 			RobotMap.LEFT_FORWARD_VICTOR_PORT,
 			RobotMap.LEFT_BACKWARDS_VICTOR_PORT,
 			RobotMap.RIGHT_FORWARD_VICTOR_PORT,
@@ -43,17 +45,17 @@ public class Robot extends IterativeRobot {
 			RobotMap.LIFTER_DOWN_DI_PORT, RobotMap.LIFTER_ENCODER_PORT1,
 			RobotMap.LIFTER_ENCODER_PORT2, RobotMap.LIFTER_WHEEL_DIAMETER);
 
-    /**
-     * object representing the robot's fork
-     */
-    public static final Fork fork = new Fork(RobotMap.FORK_TALON_ID,
+	/**
+	 * object representing the robot's fork
+	 */
+	public static final Fork fork = new Fork(RobotMap.FORK_TALON_ID,
 			RobotMap.FORK_OPEN_DI_1_PORT, RobotMap.FORK_OPEN_DI_2_PORT,
 			RobotMap.FORK_CLOSE_DI_PORT);
 
-    /**
+	/**
      *
      */
-    public static OI oi = new OI();
+	public static OI oi = new OI();
 
 	Command autonomousCommand;
 	PutData putData;
@@ -69,7 +71,8 @@ public class Robot extends IterativeRobot {
 		driveTrain.reset();
 		lifter.reset();
 		putData.start();
-		autonomousCommand = null;// new StupidAutoCommand();// null;
+		// StupidAutoCommand();//
+		// null;
 	}
 
 	@Override
@@ -79,6 +82,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
+		autonomousCommand = new PIDForward(
+				SmartDashboard.getNumber("destination"), 0.01, 0, 0, 10);
 		if (!putData.isRunning()) {
 			putData.start();
 		}
@@ -132,6 +137,9 @@ public class Robot extends IterativeRobot {
 		try {
 			putData.cancel();
 			driveTrain.reset();
+			if (autonomousCommand != null) {
+				autonomousCommand.cancel();
+			}
 
 			lifter.reset();
 		} catch (Exception e) {
