@@ -40,12 +40,6 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		drivetrain.reset();
 		lifter.reset();
-		autoChooser.addObject("Full Auto", new Autonomous());
-		autoChooser.addObject("Stupid Auto", new StupidAuto());
-		autoChooser.addObject("No Auto", null);
-		autoChooser.addDefault("PID Auto", new PIDForward(
-				Commands.AUTO_FORWARD_DEST));
-		SmartDashboard.putData("Auto Chooser", autoChooser);
 	}
 
 	@Override
