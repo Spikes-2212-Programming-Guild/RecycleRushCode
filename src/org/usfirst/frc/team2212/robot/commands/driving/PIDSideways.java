@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
  */
 public class PIDSideways extends PIDCommand {
 
-	public static final double P = 0.25;
+	public static final double P = 0.02;
 	public static final double I = 0;
 	public static final double D = 0;
 
@@ -63,7 +63,7 @@ public class PIDSideways extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
-		return drivetrain.getFrontSpeed();
+		return drivetrain.getFront();
 	}
 
 	@Override
