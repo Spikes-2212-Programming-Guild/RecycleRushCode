@@ -5,6 +5,7 @@ import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
 
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -42,6 +43,7 @@ public class Robot extends IterativeRobot {
 	public static final Fork fork = new Fork(RobotMap.FORK_TALON_ID,
 			RobotMap.FORK_OPEN_DI_1_PORT, RobotMap.FORK_OPEN_DI_2_PORT,
 			RobotMap.FORK_CLOSE_DI_PORT);
+	public static BuiltInAccelerometer accelometer = new BuiltInAccelerometer();
 	public static OI oi = new OI();
 
 	Command autonomousCommand;

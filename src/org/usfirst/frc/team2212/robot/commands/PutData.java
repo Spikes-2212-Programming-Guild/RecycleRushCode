@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2212.robot.commands;
 
+import static org.usfirst.frc.team2212.robot.Robot.accelometer;
 import static org.usfirst.frc.team2212.robot.Robot.driveTrain;
 import static org.usfirst.frc.team2212.robot.Robot.fork;
 import static org.usfirst.frc.team2212.robot.Robot.lifter;
@@ -7,7 +8,6 @@ import static org.usfirst.frc.team2212.robot.Robot.lifter;
 import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -15,11 +15,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PutData extends Command {
 
 	private SendableChooser autoChooser;
-	private CameraServer camera;
+	private int speedX;
+	private int speedY;
+	private long dt;
+	private long prevTime;
+
+	// private CameraServer camera;
 
 	public PutData() {
+
 		autoChooser = new SendableChooser();
-		camera = CameraServer.getInstance();
+		speedX = 0;
+		speedY = 0;
+		dt = 0;
+		prevTime = 0;
+		// camera = CameraServer.getInstance();
 	}
 
 	@Override
@@ -45,23 +55,33 @@ public class PutData extends Command {
 		// SmartDashboard.getNumber("threshold-f", 1));
 		// SmartDashboard.putNumber("forward factor",
 		// RobotMap.FREE_SENSITIVE_FACTOR);
-		camera.setQuality(50);
-		camera.startAutomaticCapture("cam0");
+		// camera.setQuality(50);
+		// camera.startAutomaticCapture("cam0");
 	}
 
 	@Override
 	protected void execute() {
-		SmartDashboard.putBoolean("Forward Sensitive",
-				driveTrain.isForwardSensitive());
-		SmartDashboard.putNumber("Left Encoder", driveTrain.getLeft());
-		SmartDashboard.putNumber("Right Encoder", driveTrain.getRight());
-		SmartDashboard.putNumber("Front Encoder", driveTrain.getFront());
-		SmartDashboard.putNumber("Rear Encoder", driveTrain.getRear());
-		SmartDashboard.putNumber("Lifter Encoder", lifter.getHeight());
-		SmartDashboard.putBoolean("Lifter Up", lifter.isUp());
-		SmartDashboard.putBoolean("Lifter Down", lifter.isDown());
-		SmartDashboard.putBoolean("Fork Open", fork.isOpen());
-		SmartDashboard.putBoolean("Fork Closed", fork.isClosed());
+
+		dt = System.currentTimeMillis() - prevTime;
+		speedX += accelometer.getY() * dt + speedX;
+		speedY += accelometer.getX() * dt + speedY;
+		SmartDashboard.putNumber("speed in Y", speedY);
+		SmartDashboard.putNumber("speed in X", speedX);
+		SmartDashboard.putNumber("front left wheel", driveTrain.getLeft());
+		SmartDashboard.putNumber("back left wheel", driveTrain.getLeft());
+		SmartDashboard.putNumber("back right wheel", driveTrain.getRight());
+		SmartDashboard.putNumber("back right wheel", driveTrain.getRight());
+		SmartDashboard.putNumber("front wheel", driveTrain.getFront());
+		SmartDashboard.putNumber("rear wheel", driveTrain.getRear());
+		SmartDashboard.putNumber("height", lifter.getHeight());
+		SmartDashboard.putNumber("level", lifter.getLevel());
+		SmartDashboard.putBoolean("is up", lifter.isUp());
+		SmartDashboard.putBoolean("is down", lifter.isDown());
+		SmartDashboard.putBoolean("is colse", fork.isClosed());
+		SmartDashboard.putBoolean("is open", fork.isOpen());
+
+		// SmartDashboard.putNumber("angle", gyro.getAngle);
+		prevTime = System.currentTimeMillis();
 	}
 
 	@Override

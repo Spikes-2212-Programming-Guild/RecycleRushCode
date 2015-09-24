@@ -97,7 +97,12 @@ public class Lifter extends Subsystem {
 	}
 
 	public int getLevel() {
+		findLevel();
 		return currentLevel;
+	}
+
+	public void findLevel() {
+		setLevel((int) (getHeight() / RobotMap.TOAT_HEIGHT));
 	}
 
 	public void verifyLevel() {
