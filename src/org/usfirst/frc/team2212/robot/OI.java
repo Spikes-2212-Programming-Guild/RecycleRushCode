@@ -5,6 +5,8 @@ import org.usfirst.frc.team2212.robot.commands.driving.Sideways;
 import org.usfirst.frc.team2212.robot.commands.driving.Turn;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
+import org.usfirst.frc.team2212.robot.commands.forkLifter.GetDownToNext;
+import org.usfirst.frc.team2212.robot.commands.forkLifter.GetUpToNext;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Up;
 
@@ -24,6 +26,8 @@ public class OI /* GEVALD */extends JoystickMap {
 		FORWARD_BUTTON.whileHeld(new Forward());
 		SIDEWAYS_BUTTON.whileHeld(new Sideways());
 		TURN_BUTTON.whileHeld(new Turn());
+		FIX_UP_BUTTON.whenPressed(new GetUpToNext());
+		FIX_DOWN_BUTTON.whenPressed(new GetDownToNext());
 		SLOWNESS.whenPressed(new Command() {
 			@Override
 			protected boolean isFinished() {
