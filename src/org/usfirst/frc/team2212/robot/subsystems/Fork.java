@@ -56,7 +56,7 @@ public class Fork extends Subsystem {
      */
 	public void open() {
 		// assuming forward for open
-		lock.set(-RobotMap.FORK_SPEED);
+		lock.set(RobotMap.FORK_SPEED);
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class Fork extends Subsystem {
      */
 	public void close() {
 		// assuming forward for open
-		lock.set(RobotMap.FORK_SPEED);
+		lock.set(-RobotMap.FORK_SPEED);
 	}
 
 	/**
