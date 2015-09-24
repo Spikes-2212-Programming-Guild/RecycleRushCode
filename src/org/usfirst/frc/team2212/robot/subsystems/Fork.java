@@ -22,14 +22,14 @@ public class Fork extends Subsystem {
 	private final CANTalon lock;
 	private final DigitalInput open1, open2, close;
 
-    /**
-     *
-     * @param lock
-     * @param open1
-     * @param open2
-     * @param close
-     */
-    public Fork(CANTalon lock, DigitalInput open1, DigitalInput open2,
+	/**
+	 *
+	 * @param lock
+	 * @param open1
+	 * @param open2
+	 * @param close
+	 */
+	public Fork(CANTalon lock, DigitalInput open1, DigitalInput open2,
 			DigitalInput close) {
 		this.lock = lock;
 		this.open1 = open1;
@@ -37,56 +37,56 @@ public class Fork extends Subsystem {
 		this.close = close;
 	}
 
-    /**
-     *
-     * @param talonID
-     * @param open1Port
-     * @param open2Port
-     * @param closePort
-     */
-    public Fork(int talonID, int open1Port, int open2Port, int closePort) {
+	/**
+	 *
+	 * @param talonID
+	 * @param open1Port
+	 * @param open2Port
+	 * @param closePort
+	 */
+	public Fork(int talonID, int open1Port, int open2Port, int closePort) {
 		this(new CANTalon(talonID), open1Port == -1 ? null : new DigitalInput(
 				open1Port), open2Port == -1 ? null
 				: new DigitalInput(open2Port), closePort == -1 ? null
 				: new DigitalInput(closePort));
 	}
 
-    /**
+	/**
      *
      */
-    public void open() {
+	public void open() {
 		// assuming forward for open
 		lock.set(-RobotMap.FORK_SPEED);
 	}
 
-    /**
+	/**
      *
      */
-    public void close() {
+	public void close() {
 		// assuming forward for open
 		lock.set(RobotMap.FORK_SPEED);
 	}
 
-    /**
+	/**
      *
      */
-    public void stop() {
+	public void stop() {
 		lock.set(0);
 	}
 
-    /**
-     *
-     * @return
-     */
-    public boolean isClosed() {
-		return close != null && close.get();
+	/**
+	 *
+	 * @return
+	 */
+	public boolean isClosed() {
+		return close != null && !close.get();// limit switch is normally closed
 	}
 
-    /**
-     *
-     * @return
-     */
-    public boolean isOpen() {
+	/**
+	 *
+	 * @return
+	 */
+	public boolean isOpen() {
 		if (open1 == null)
 			return !open2.get();
 		else if (open2 == null)
