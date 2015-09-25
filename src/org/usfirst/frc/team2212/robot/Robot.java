@@ -1,7 +1,5 @@
 package org.usfirst.frc.team2212.robot;
 
-import org.usfirst.frc.team2212.robot.commands.Autonomous;
-import org.usfirst.frc.team2212.robot.commands.StupidAuto;
 import org.usfirst.frc.team2212.robot.commands.driving.PIDForward;
 import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
@@ -46,7 +44,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		drivetrain.reset();
 		lifter.reset();
-		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand = new PIDForward(100);
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
