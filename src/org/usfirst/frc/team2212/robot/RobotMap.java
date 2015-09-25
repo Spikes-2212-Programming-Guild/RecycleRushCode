@@ -238,7 +238,7 @@ public class RobotMap {
 	/**
      *
      */
-	public static final double AUTO_FORWARD_KP = 0.25;
+	public static final double AUTO_FORWARD_KP = 0.01;
 
 	/**
      *
@@ -273,7 +273,7 @@ public class RobotMap {
 	/**
      *
      */
-	public static final double AUTO_SIDEWAYS_KP = 0.25;
+	public static final double AUTO_SIDEWAYS_KP = 0.02;
 
 	/**
      *

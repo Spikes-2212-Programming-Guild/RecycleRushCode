@@ -7,9 +7,6 @@ package org.usfirst.frc.team2212.robot;
 
 import macro.JoystickButtonForRecord;
 import macro.MacroJoystick;
-
-import components.GoUp;
-
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
@@ -90,6 +87,4 @@ public class JoystickMap {
 	 * Plays currently loaded macro
 	 */
 	public Button PLAY = new JoystickButtonForRecord(driverJoystick, 5);
-
-	public Trigger UP = new GoUp();
 }
