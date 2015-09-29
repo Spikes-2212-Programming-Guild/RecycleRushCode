@@ -50,7 +50,7 @@ public class JoystickMap {
 	/**
 	 * The button to drive forward only
 	 */
-	public Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 9);
+	public Button FORWARD_BUTTON = new JoystickButton(driverJoystick, 7);
 
 	/**
 	 * The button to drive sideways only
@@ -61,11 +61,6 @@ public class JoystickMap {
 	 * The button to only turn
 	 */
 	public Button TURN_BUTTON = new JoystickButton(driverJoystick, 1);
-
-	/**
-	 * Makes the robot go slow?
-	 */
-	public Button SLOWNESS = new JoystickButton(driverJoystick, 7);
 
 	/**
 	 * @deprecated

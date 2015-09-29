@@ -101,6 +101,7 @@ public class PutData extends Command {
 	 *
 	 * @return
 	 */
+
 	public Command getSelectedAutoCommand() {
 		return autoChooser != null ? (Command) autoChooser.getSelected() : null;
 	}

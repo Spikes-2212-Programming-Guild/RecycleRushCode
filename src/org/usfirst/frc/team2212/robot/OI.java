@@ -7,7 +7,6 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Up;
-import org.usfirst.frc.team2212.robot.commands.macro.Play;
 import org.usfirst.frc.team2212.robot.commands.macro.Record;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,57 +30,6 @@ public class OI /* GEVALD */extends JoystickMap {
 		FORWARD_BUTTON.whileHeld(new Forward());
 		SIDEWAYS_BUTTON.whileHeld(new Sideways());
 		TURN_BUTTON.whileHeld(new Turn());
-		RECORDING.whenPressed(record);
-		STOP_RECORDING.whenPressed(new Command() {
-
-			@Override
-			protected void initialize() {
-				record.cancel();
-			}
-
-			@Override
-			protected void execute() {
-
-			}
-
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-
-			@Override
-			protected void end() {
-			}
-
-			@Override
-			protected void interrupted() {
-			}
-
-		});
-		PLAY.whenPressed(new Play("test"));
-		SLOWNESS.whenPressed(new Command() {
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-
-			@Override
-			protected void interrupted() {
-			}
-
-			@Override
-			protected void initialize() {
-				Robot.driveTrain.changeForwardSensitivity();
-			}
-
-			@Override
-			protected void execute() {
-			}
-
-			@Override
-			protected void end() {
-			}
-		});
 	}
 
 	/**

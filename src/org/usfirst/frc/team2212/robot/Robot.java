@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.commands.PutData;
-import org.usfirst.frc.team2212.robot.commands.pid.PIDForward;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -10,7 +9,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -82,8 +80,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = new PIDForward(
-				SmartDashboard.getNumber("destination"), 0.01, 0, 0, 10);
+		// autonomousCommand = new PIDForward(
+		// SmartDashboard.getNumber("destination"), 0.01, 0, 0, 10);
 		if (!putData.isRunning()) {
 			putData.start();
 		}
