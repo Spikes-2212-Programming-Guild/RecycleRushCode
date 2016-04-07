@@ -24,9 +24,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public static final DriveTrain driveTrain = new DriveTrain(
 			RobotMap.LEFT_FORWARD_VICTOR_PORT,
-			RobotMap.LEFT_BACKWARDS_VICTOR_PORT,
 			RobotMap.RIGHT_FORWARD_VICTOR_PORT,
-			RobotMap.RIGHT_BACKWARDS_VICTOR_PORT,
 			RobotMap.MIDDLE_FRONT_VICTOR_PORT,
 			RobotMap.MIDDLE_BACKWARDS_VICTOR_PORT,
 			RobotMap.LEFT_ENCODER_1_PORT, RobotMap.LEFT_ENCODER_2_PORT,
