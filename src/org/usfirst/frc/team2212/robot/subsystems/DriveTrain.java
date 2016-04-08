@@ -11,9 +11,9 @@ import org.usfirst.frc.team2212.robot.RobotMap;
 import org.usfirst.frc.team2212.robot.commands.driving.FreeMovement;
 
 import components.Gearbox;
-
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -26,7 +26,7 @@ public class DriveTrain extends Subsystem {
 	boolean freeSensitive;
 
 	private final Gearbox left, right;
-	private final VictorSP front, rear;
+	private final Talon front, rear;
 	private final double wheelDiameter;
 	private final BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
 	private final Encoder leftE, rightE, frontE, rearE;
@@ -43,8 +43,8 @@ public class DriveTrain extends Subsystem {
 	 * @param rearE
 	 * @param wheelDiameter
 	 */
-	public DriveTrain(Gearbox left, Gearbox right, VictorSP front,
-			VictorSP rear, Encoder leftE, Encoder rightE, Encoder frontE,
+	public DriveTrain(Gearbox left, Gearbox right, Talon front,
+			Talon rear, Encoder leftE, Encoder rightE, Encoder frontE,
 			Encoder rearE, double wheelDiameter) {
 		this.left = left;
 		this.right = right;
@@ -79,14 +79,12 @@ public class DriveTrain extends Subsystem {
 	 * @param rearEncoderPort2
 	 * @param wheelDiameter
 	 */
-	public DriveTrain(int leftForward, int leftBackwards, int rightForward,
-			int rightBackwards, int middleFront, int middleRear,
+	public DriveTrain(int left, int right, int middleFront, int middleRear,
 			int leftEncoderPort1, int leftEncoderPort2, int rightEncoderPort1,
 			int rightEncoderPort2, int frontEncoderPort1,
 			int frontEncoderPort2, int rearEncoderPort1, int rearEncoderPort2,
 			double wheelDiameter) {
-		this(new Gearbox(leftForward, leftBackwards), new Gearbox(rightForward,
-				rightBackwards), new VictorSP(middleFront), new VictorSP(
+		this(new Gearbox(left), new Gearbox(right), new Talon(middleFront), new Talon(
 				middleRear), new Encoder(leftEncoderPort1, leftEncoderPort2),
 				new Encoder(rightEncoderPort1, rightEncoderPort2), new Encoder(
 						frontEncoderPort1, frontEncoderPort2),

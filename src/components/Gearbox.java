@@ -6,7 +6,7 @@
 package components;
 
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  *
@@ -16,17 +16,20 @@ import edu.wpi.first.wpilibj.VictorSP;
  *         This code is working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
  */
 public class Gearbox implements SpeedController {
-
-	private VictorSP forward, backwards;
+	
+	/*
+	 * Phineas has only one speed controller,
+	 * which controls both motors.
+	 */
+	private Talon talon;
 
     /**
      *
      * @param forward - forward Victor 
      * @param backwards - backwards Victor
      */
-    public Gearbox(VictorSP forward, VictorSP backwards) {
-		this.forward = forward;
-		this.backwards = backwards;
+    public Gearbox(Talon talon) {
+    	this.talon = talon;
 	}
 
     /**
@@ -34,14 +37,13 @@ public class Gearbox implements SpeedController {
      * @param forwardPort - port for forward Victor
      * @param backwardsPort - port for backwards Victor
      */
-    public Gearbox(int forwardPort, int backwardsPort) {
-		this(new VictorSP(forwardPort), new VictorSP(backwardsPort));
+    public Gearbox(int port) {
+		this(new Talon(port));
 	}
 
 	@Override
 	public void set(double speed) {
-		forward.set(speed);
-		backwards.set(speed);
+		talon.set(speed);
 	}
 
 	@Override
@@ -51,21 +53,34 @@ public class Gearbox implements SpeedController {
 
 	@Override
 	public double get() {
-		return forward.get();
+		return talon.get();
 	}
 
 	@Deprecated
 	@Override
 	public void set(double speed, byte syncGroup) {
-		forward.set(speed, syncGroup);
-		backwards.set(speed, syncGroup);
-
+		talon.set(speed, syncGroup);
 	}
 
 	@Override
 	public void disable() {
-		forward.disable();
-		backwards.disable();
+		talon.disable();
+	}
+	
+	@Override
+	public void setInverted(boolean isInverted) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * Do not call this function, it does not exist in the new WPILIB libraries.
+	 */
+	@Deprecated
+	@Override
+	public boolean getInverted() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
