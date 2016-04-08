@@ -47,7 +47,6 @@ public class Down extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		lifter.verifyLevel();
 		lifter.set(0);
 	}
 

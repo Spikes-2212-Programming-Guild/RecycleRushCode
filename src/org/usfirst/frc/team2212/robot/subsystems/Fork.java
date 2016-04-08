@@ -28,6 +28,7 @@ public class Fork extends Subsystem {
 	 * @param open1
 	 * @param open2
 	 * @param close
+	 * 
 	 */
 	public Fork(CANTalon lock, DigitalInput open1, DigitalInput open2,
 			DigitalInput close) {

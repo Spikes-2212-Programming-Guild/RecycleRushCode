@@ -22,8 +22,8 @@ public class Forward extends Command {
      *
      */
     public Forward() {
-		requires(driveTrain);
-		speed = 0;
+
+		this(0);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
@@ -33,8 +33,8 @@ public class Forward extends Command {
      * @param speed
      */
     public Forward(double speed) {
-		this();
 		this.speed = speed;
+		requires(driveTrain);
 	}
 
 	// Called just before this Command runs the first time
@@ -62,7 +62,6 @@ public class Forward extends Command {
 	@Override
 	protected void end() {
 		driveTrain.forward(0);
-		driveTrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same

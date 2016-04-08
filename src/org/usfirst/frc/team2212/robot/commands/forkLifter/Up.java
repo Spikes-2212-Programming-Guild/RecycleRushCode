@@ -22,8 +22,6 @@ public class Up extends Command {
      */
 	public Up() {
 		requires(lifter);
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 	}
 
 	// Called just before this Command runs the first time
@@ -47,7 +45,6 @@ public class Up extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		lifter.verifyLevel();
 		lifter.set(0);
 	}
 

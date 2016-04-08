@@ -5,9 +5,7 @@
  */
 package org.usfirst.frc.team2212.robot;
 
-import macro.JoystickButtonForRecord;
-import macro.MacroJoystick;
-//import components.GoUp;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -20,12 +18,12 @@ public class JoystickMap {
 	/**
 	 * Joystick for the driver
 	 */
-	public MacroJoystick driverJoystick = new MacroJoystick(0);
+	public Joystick driverJoystick = new Joystick(0);
 
 	/**
 	 * Joystick for the Navigator
 	 */
-	public MacroJoystick navJoystick = new MacroJoystick(1);
+	public Joystick navJoystick = new Joystick(1);
 
 	/**
 	 * The button to move the lifter up
@@ -62,26 +60,4 @@ public class JoystickMap {
 	 */
 	public Button TURN_BUTTON = new JoystickButton(driverJoystick, 1);
 
-	/**
-	 * @deprecated
-	 */
-	@Deprecated
-	public Button NORMAL = new JoystickButton(driverJoystick, 8);
-
-	/**
-	 * Stops macro recoding
-	 */
-	public Button STOP_RECORDING = new JoystickButton(driverJoystick, 11);
-
-	/**
-	 * Starts macro recoding
-	 */
-	public Button RECORDING = new JoystickButtonForRecord(driverJoystick, 12);
-
-	/**
-	 * Plays currently loaded macro
-	 */
-	public Button PLAY = new JoystickButtonForRecord(driverJoystick, 5);
-
-	// public Trigger UP = new GoUp();
 }

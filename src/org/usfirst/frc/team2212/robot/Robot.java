@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2212.robot;
 
-import org.usfirst.frc.team2212.robot.commands.PutData;
 import org.usfirst.frc.team2212.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2212.robot.subsystems.Fork;
 import org.usfirst.frc.team2212.robot.subsystems.Lifter;
@@ -26,20 +25,14 @@ public class Robot extends IterativeRobot {
 			RobotMap.LEFT_FORWARD_VICTOR_PORT,
 			RobotMap.RIGHT_FORWARD_VICTOR_PORT,
 			RobotMap.MIDDLE_FRONT_VICTOR_PORT,
-			RobotMap.MIDDLE_BACKWARDS_VICTOR_PORT,
-			RobotMap.LEFT_ENCODER_1_PORT, RobotMap.LEFT_ENCODER_2_PORT,
-			RobotMap.RIGHT_ENCODER_1_PORT, RobotMap.RIGHT_ENCODER_2_PORT,
-			RobotMap.FRONT_ENCODER_1_PORT, RobotMap.FRONT_ENCODER_2_PORT,
-			RobotMap.REAR_ENCODER_1_PORT, RobotMap.REAR_ENCODER_2_PORT,
-			RobotMap.WHEEL_DIAMETER);
+			RobotMap.MIDDLE_BACKWARDS_VICTOR_PORT);
 
 	/**
 	 * object representing the robot's lifter
 	 */
 	public static final Lifter lifter = new Lifter(RobotMap.LIFTER_TALON_1_ID,
 			RobotMap.LIFTER_TALON_2_ID, RobotMap.LIFTER_UP_DI_PORT,
-			RobotMap.LIFTER_DOWN_DI_PORT, RobotMap.LIFTER_ENCODER_PORT1,
-			RobotMap.LIFTER_ENCODER_PORT2, RobotMap.LIFTER_WHEEL_DIAMETER);
+			RobotMap.LIFTER_DOWN_DI_PORT);
 
 	/**
 	 * object representing the robot's fork
@@ -54,7 +47,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi = new OI();
 
 	Command autonomousCommand;
-	PutData putData;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -63,10 +55,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// instantiate the command used for the autonomous period
-		putData = new PutData();
-		driveTrain.reset();
-		lifter.reset();
-		putData.start();
 		// StupidAutoCommand();//
 		// null;
 	}
@@ -80,11 +68,6 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// autonomousCommand = new PIDForward(
 		// SmartDashboard.getNumber("destination"), 0.01, 0, 0, 10);
-		if (!putData.isRunning()) {
-			putData.start();
-		}
-		driveTrain.reset();
-		lifter.reset();
 		// autonomousCommand = new PIDForward(RobotMap.AUTO_FORWARD_DEST,
 		// SmartDashboard.getNumber("kp-f", 0), SmartDashboard.getNumber(
 		// "ki-f", 0) / 10000,
@@ -116,11 +99,6 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
-		if (!putData.isRunning()) {
-			putData.start();
-		}
-		driveTrain.reset();
-		lifter.reset();
 
 	}
 
@@ -131,13 +109,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledInit() {
 		try {
-			putData.cancel();
-			driveTrain.reset();
 			if (autonomousCommand != null) {
 				autonomousCommand.cancel();
 			}
-
-			lifter.reset();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

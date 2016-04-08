@@ -47,7 +47,6 @@ public class FreeMovement extends Command {
 	@Override
 	protected void end() {
 		driveTrain.freeMovement(0, 0, 0);
-		driveTrain.reset();
 	}
 
 	// Called when another command which requires one or more of the same

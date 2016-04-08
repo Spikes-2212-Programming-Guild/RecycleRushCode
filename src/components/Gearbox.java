@@ -67,12 +67,6 @@ public class Gearbox implements SpeedController {
 		talon.disable();
 	}
 	
-	@Override
-	public void setInverted(boolean isInverted) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	/**
 	 * Do not call this function, it does not exist in the new WPILIB libraries.
 	 */
@@ -87,12 +81,6 @@ public class Gearbox implements SpeedController {
 	public void setInverted(boolean isInverted) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public boolean getInverted() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

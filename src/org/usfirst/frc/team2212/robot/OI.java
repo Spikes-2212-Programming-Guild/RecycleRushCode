@@ -7,17 +7,12 @@ import org.usfirst.frc.team2212.robot.commands.forkLifter.Close;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Down;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Open;
 import org.usfirst.frc.team2212.robot.commands.forkLifter.Up;
-import org.usfirst.frc.team2212.robot.commands.macro.Record;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI /* GEVALD */extends JoystickMap {
-
-	private Command record = new Record("test");
 
 	/**
      *
@@ -34,20 +29,10 @@ public class OI /* GEVALD */extends JoystickMap {
 
 	/**
 	 *
-	 * @param override
-	 *            sets override for both joysticks
-	 */
-	public void setOverride(boolean override) {
-		driverJoystick.setOverride(override);
-		navJoystick.setOverride(override);
-	}
-
-	/**
-	 *
 	 * @return driver's joystick measured Y; or overriden value
 	 */
 	public double getDriverY() {
-		return driverJoystick.getOverrideableY();
+		return driverJoystick.getY();
 	}
 
 	/**
@@ -75,7 +60,7 @@ public class OI /* GEVALD */extends JoystickMap {
 	 * @return nav's joystick measured twist; or overriden value
 	 */
 	public double getNavTwist() {
-		return navJoystick.getOverrideableTwist();
+		return navJoystick.getTwist();
 	}
 
 	/**
@@ -83,7 +68,7 @@ public class OI /* GEVALD */extends JoystickMap {
 	 * @return driver's joystick measured X; or overriden value
 	 */
 	public double getDriverX() {
-		return driverJoystick.getOverrideableX();
+		return driverJoystick.getX();
 	}
 
 	/**
@@ -91,7 +76,7 @@ public class OI /* GEVALD */extends JoystickMap {
 	 * @return driver's joystick measured twist; or overriden value
 	 */
 	public double getDriverTwist() {
-		return driverJoystick.getOverrideableTwist();
+		return driverJoystick.getTwist();
 	}
 
 	/**
@@ -99,7 +84,7 @@ public class OI /* GEVALD */extends JoystickMap {
 	 * @return nav's joystick measured Y; or overriden value
 	 */
 	public double getNavY() {
-		return navJoystick.getOverrideableY();
+		return navJoystick.getY();
 	}
 
 	/**
@@ -107,83 +92,7 @@ public class OI /* GEVALD */extends JoystickMap {
 	 * @return nav's joystick measured X; or overriden value
 	 */
 	public double getNavX() {
-		return navJoystick.getOverrideableX();
+		return navJoystick.getX();
 	}
-
-	/**
-	 *
-	 * @param button
-	 *            - the button
-	 * @param state
-	 *            - value to be set
-	 */
-	public void setDriverButton(int button, boolean state) {
-		driverJoystick.setButton(button, state);
-	}
-
-	/**
-	 *
-	 * @param value
-	 *            - value to be set
-	 */
-	public void setDriverX(double value) {
-		driverJoystick.setX(value);
-	}
-
-	/**
-	 *
-	 * @param value
-	 *            - value to be set
-	 */
-	public void setDriverY(double value) {
-		driverJoystick.setY(value);
-	}
-
-	/**
-	 *
-	 * @param value
-	 *            - value to be set
-	 */
-	public void setDriverTwist(double value) {
-		driverJoystick.setTwist(value);
-	}
-
-	/**
-	 *
-	 * @param button
-	 *            - the button number
-	 * @param state
-	 *            - value to be set
-	 */
-	public void setNavigatorButton(int button, boolean state) {
-		navJoystick.setButton(button, state);
-	}
-
-	/**
-	 *
-	 * @param value
-	 *            - value to be set
-	 */
-	public void setNavigatorX(double value) {
-		navJoystick.setX(value);
-	}
-
-	/**
-	 *
-	 * @param value
-	 *            - value to be set
-	 */
-	public void setNavigatorY(double value) {
-		navJoystick.setY(value);
-	}
-
-	/**
-	 *
-	 * @param value
-	 *            - value to be set
-	 */
-	public void setNavigatorTwist(double value) {
-		navJoystick.setTwist(value);
-	}
-
+	
 }
